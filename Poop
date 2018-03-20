@@ -27,8 +27,8 @@ Class poop{
 public static void main (String args[]){
 butt daBois = new butt("poop","poopie","poopier");
 
-System.out.println("Malachi is a: " + daBois.Malachi +", while Aiden is a: "+daBois.Aiden
-+". Lastly Zac is the: "+daBois.Zac);
+System.out.println("Malachi is a: " + daBois.getMalachi +", while Aidan is a: "+daBois.getAidan
++". Lastly Zac is the: "+daBois.getZac);
 }
 }
 
