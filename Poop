@@ -25,7 +25,7 @@ return Zac;
 
 Class poop{
 public static void main (String args[]){
-butt daBois = new butt("poop","poopie","poopier");
+butt daBois = new butt("poop","poopier","poopiest");
 
 System.out.println("Malachi is a: " + daBois.getMalachi +", while Aidan is a: "+daBois.getAidan
 +". Lastly Zac is the: "+daBois.getZac);
