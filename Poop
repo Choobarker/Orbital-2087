@@ -1,0 +1,35 @@
+Class butt{
+
+private String malachi, aidan, zac;
+
+
+public butt(String malachi, String aidan, String zac){
+this.malachi = malachi;
+this.aiden = aidan;
+this.zac = zac;
+}
+
+public String getMalachi(){
+return Malachi;
+}
+
+public String getAidan(){
+return Aidan;
+}
+
+public String getZac(){
+return Zac;
+}
+
+}
+
+Class poop{
+public static void main (String args[]){
+butt daBois = new butt("poop","poopie","poopier");
+
+System.out.println("Malachi is a: " + daBois.Malachi +", while Aiden is a: "+daBois.Aiden
++". Lastly Zac is the: "+daBois.Zac);
+}
+}
+
+//Was worth it ;)
