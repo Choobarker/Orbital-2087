@@ -10,15 +10,15 @@ this.zac = zac;
 }
 
 public String getMalachi(){
-return Malachi;
+return malachi;
 }
 
 public String getAidan(){
-return Aidan;
+return aidan;
 }
 
 public String getZac(){
-return Zac;
+return zac;
 }
 
 }
@@ -27,8 +27,8 @@ Class poop{
 public static void main (String args[]){
 butt daBois = new butt("poop","poopier","poopiest");
 
-System.out.println("Malachi is a: " + daBois.getMalachi +", while Aidan is a: "+daBois.getAidan
-+". Lastly Zac is the: "+daBois.getZac);
+System.out.println("Malachi is a: " + daBois.getMalachi() +", while Aidan is a: " + daBois.getAidan()
++". Lastly Zac is the: " + daBois.getZac());
 }
 }
 
