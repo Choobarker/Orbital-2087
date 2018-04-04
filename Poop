@@ -1,35 +1,37 @@
-Class butt{
+class Butt {
+    private String malachi, aidan, zac, rina;
 
-private String malachi, aidan, zac;
+    public Butt(String malachi, String aidan, String zac, String rina){
+        this.malachi = malachi;
+        this.aidan = aidan;
+        this.zac = zac;
+        this.rina = rina;
+    }
+    
+    public String getMalachi(){
+        return malachi;
+    }
 
+    public String getAidan(){
+        return aidan;
+    }
 
-public butt(String malachi, String aidan, String zac){
-this.malachi = malachi;
-this.aiden = aidan;
-this.zac = zac;
+    public String getZac(){
+        return zac;
+    }
+    
+    public String getRina(){
+        return rina;
+    }
 }
 
-public String getMalachi(){
-return Malachi;
-}
+class Poop{
+    public static void main (String args[]){
+    Butt daBois = new Butt("poop","poopier","poopiest","poopiest x2");
 
-public String getAidan(){
-return Aidan;
-}
-
-public String getZac(){
-return Zac;
-}
-
-}
-
-Class poop{
-public static void main (String args[]){
-butt daBois = new butt("poop","poopier","poopiest");
-
-System.out.println("Malachi is a: " + daBois.getMalachi +", while Aidan is a: "+daBois.getAidan
-+". Lastly Zac is the: "+daBois.getZac);
-}
+    System.out.println("Malachi is a: " + daBois.getMalachi() +", while Aidan is a: "+daBois.getAidan()
+    +", Zac is the: "+daBois.getZac() + ",\nand Rina is the: " + daBois.getRina());
+    }
 }
 
 //Was worth it ;)
