@@ -74,8 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  speed: 50
-  moveTime: 0.5
+  speed: 1
+  moveTime: 3
 --- !u!212 &212105482814313508
 SpriteRenderer:
   m_ObjectHideFlags: 1
