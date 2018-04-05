@@ -30,17 +30,25 @@ public class EnemyBehaviour : MonoBehaviour {
 				inPosition = true;
 			}
 		}
-
-		if(health <= 0)
-		{
-			Debug.Log("Destroying");
-			Destroy(gameObject);
-		}
 	}
 
 	void OnMouseDown()
 	{
-		Debug.Log("Clicked");
-		health -= 1;
+		TakeDamage(1f);
+	}
+
+	void TakeDamage(float damage)
+	{
+		health -= damage;
+
+		CheckHealth();
+	}
+
+	void CheckHealth()
+	{
+		if(health <= 0)
+		{
+			Destroy(gameObject);
+		}
 	}
 }
