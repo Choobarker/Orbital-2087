@@ -5,21 +5,24 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour {
 
 	public float health = 2f;
-	public float speed = 2f;
+	public float speed;
+
+	private bool alive = false;
 	private bool inPosition = false;
+
 	public float moveTime = 2f;
 	private float timeMoved = 0f;
 	
-	void start()
+	void Start()
 	{
-		Debug.Log("Enemy Behaviour started");
+		alive = true;
 	}
 	
 	void Update () 
-	{		
-		while(!inPosition)
+	{
+		if(alive && !inPosition)
 		{
-			transform.position += Vector3.forward * Time.deltaTime * speed;
+			transform.position += Vector3.down * Time.deltaTime * speed;
 			timeMoved += Time.deltaTime;
 
 			if(timeMoved >= moveTime)
