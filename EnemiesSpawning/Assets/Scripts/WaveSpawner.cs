@@ -19,6 +19,9 @@ public class WaveSpawner : MonoBehaviour {
 	public Wave[] waves;
 	private int nextWave = 0;
 
+	public List<Vector2> points = new List<Vector2>();
+	public float r = 9;
+
 	public float timeBetweenWaves = 5f;
 	private float waveCountDown = 0;
 	private float searchCountDown = 1f;
@@ -26,8 +29,11 @@ public class WaveSpawner : MonoBehaviour {
 	private SpawnState state = SpawnState.COUNTING;
 	private System.Random rand = new System.Random();
 
+	public Transform enemyYa;
+
 	void Start()
 	{
+		GetPoints();
 		waveCountDown = timeBetweenWaves;
 	}
 
@@ -50,7 +56,7 @@ public class WaveSpawner : MonoBehaviour {
 			if(state != SpawnState.SPAWNING)
 			{
 				StartCoroutine(SpawnWave(waves[nextWave]));
-			}			
+			}
 		}
 		else
 		{
@@ -120,5 +126,30 @@ public class WaveSpawner : MonoBehaviour {
 
 		Instantiate(enemy, new Vector3(x, y, z), transform.rotation);
 		 */
+	}
+
+	void SpawnEnemyAtPoint()
+	{
+	
+	}
+
+	void GetPoints()
+	{
+		for(float x = -r; x <= r; x += 0.5f)
+		{
+			float y = (float)System.Math.Sqrt(r*r - System.Math.Abs(x*x));
+			points.Add(new Vector2(x, y));
+
+		
+			Transform sp = spawnPoints[0];
+			sp.position = new Vector3(x, y, 0);
+			Instantiate(enemyYa, sp.position, sp.rotation);
+
+			sp.position = new Vector3(x, -y, 0);
+			Instantiate(enemyYa, sp.position, sp.rotation);
+			
+		}
+
+		Debug.Log(points);
 	}
 }

@@ -50,5 +50,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+		Debug.Log(System.Math.Sqrt(4));
+		Debug.Log(System.Math.Abs(-3));
 	}
 }
