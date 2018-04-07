@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour {
-
+	
 	public float health = 2f;
 	public float speed;
 
 	private bool alive = false;
 	private bool inPosition = false;
 
-	public float moveTime = 2f;
+	public float moveTime;
 	private float timeMoved = 0f;
+
+	private Vector3 direction;
 	
 	void Start()
 	{
 		alive = true;
+
+		direction = -transform.position / 5;
+		moveTime = Random.value * 2 + 1;
 	}
 	
 	void Update () 
 	{
 		if(alive && !inPosition)
 		{
-			transform.position += Vector3.down * Time.deltaTime * speed;
+			transform.position += direction * Time.deltaTime * speed;
 			timeMoved += Time.deltaTime;
 
 			if(timeMoved >= moveTime)
@@ -34,7 +39,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		TakeDamage(1f);
+		TakeDamage(2f);
 	}
 
 	void TakeDamage(float damage)
@@ -50,7 +55,5 @@ public class EnemyBehaviour : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
-		Debug.Log(System.Math.Sqrt(4));
-		Debug.Log(System.Math.Abs(-3));
 	}
 }
