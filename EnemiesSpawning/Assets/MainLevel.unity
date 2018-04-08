@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ace19e23193e44da83e724a2a1ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testSpawns: 1
   testEnemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
   secondsBetweenWaves: 5
   waves:

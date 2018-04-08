@@ -8,7 +8,7 @@ public class WaveSpawner : MonoBehaviour {
 
 	// Spawn an alien at each spawn point on creation
 	// also disables regular wave spawning
-	bool testSpawns = true;
+	public bool testSpawns = true;
 
 	// Transform of the enenmy that will be spawned 
 	public Transform testEnemy;
