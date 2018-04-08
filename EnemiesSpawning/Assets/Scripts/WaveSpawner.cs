@@ -6,11 +6,9 @@ public class WaveSpawner : MonoBehaviour {
 
 	// ***** Debugging Tools *****
 
-
 	// Spawn an alien at each spawn point on creation
 	// also disables regular wave spawning
-	bool testSpawns = true;
-
+	bool testSpawns = false;
 	// ***** End Of Debugging Tools *****
 
 	public enum SpawnState{SPAWNING, WAITING, COUNTING};
