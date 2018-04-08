@@ -8,15 +8,22 @@ public class WaveSpawner : MonoBehaviour {
 
 	// Spawn an alien at each spawn point on creation
 	// also disables regular wave spawning
-	bool testSpawns = false;
+	bool testSpawns = true;
+
+	// Transform of the enenmy that will be spawned 
+	public Transform testEnemy;
+
 	// ***** End Of Debugging Tools *****
 
-	public enum SpawnState{SPAWNING, WAITING, COUNTING};
+	public enum SpawnState{SPAWNING, WAITING, COUNTING};	
+	private SpawnState state = SpawnState.COUNTING;
 
-	public Transform outline;
-
-	public float timeBetweenWaves = 5f;
-	public float waveCountDown = 0;
+	// Time after previous wave until the next wave starts spawning
+	public float secondsBetweenWaves = 5f;
+	private float waveCountDown = 0;	
+	// Number of seconds between each search for enemies still alive
+	// A number too low will be too demanding on performance, and too
+	// high will create too much of a delay. 1 second seems to work well
 	private float searchCountDown = 1f;
 
 	[System.Serializable]
@@ -25,35 +32,30 @@ public class WaveSpawner : MonoBehaviour {
 		public string name;
 		public Transform enemy;
 		public int count;
-		public int range;
 		public float delay;
+		// Number of spawns on either side of the center 
+		// e.g. 'range = 2' means enemies can spawn 2 locations to the left or right of the center spawn
+		// for a total of 5 possible locations
+		public int range;		
 	}
 
 	public Wave[] waves;
 	private int nextWave = 0;
 
-	public List<Transform> spawns = new List<Transform>();
+	// Transform object that will be cloned for spawn locations
 	public Transform enemySpawnPoint;
-
-	
-
-	private SpawnState state = SpawnState.COUNTING;
-	private System.Random rand = new System.Random();
-
-	public Transform enemyYa;
+	private List<Transform> spawns = new List<Transform>();	
 
 	public float playerViewDistance;
 	public int numberOfSpawns;
-	public float distanceBetweenSpawns;
-	public float angleBetweenSpawns;
-	public float angleOnPerimeter;
-	
+	private float distanceBetweenSpawns;
+	private float angleBetweenSpawns;
+	private float angleOnPerimeter;	
 
 	void Start()
 	{
-		//GetSpawns();
-		AnotherGetSpawns();
-		waveCountDown = timeBetweenWaves;
+		CreateSpawns();
+		waveCountDown = secondsBetweenWaves;
 	}
 
 	void Update()
@@ -91,7 +93,7 @@ public class WaveSpawner : MonoBehaviour {
 		Debug.Log("Wave Completed");
 
 		state = SpawnState.COUNTING;
-		waveCountDown = timeBetweenWaves;
+		waveCountDown = secondsBetweenWaves;
 
 		nextWave++;
 		if(nextWave >= waves.Length)
@@ -121,6 +123,8 @@ public class WaveSpawner : MonoBehaviour {
 		Debug.Log("Spawning Wave: " + wave.name);
 		state = SpawnState.SPAWNING;
 
+		// spawnPoints list is an array of possible spawns based on
+		// the range of the wave
 		List<Transform> spawnPoints = new List<Transform>();
 		if((wave.range * 2 + 1) > spawns.Count)
 		{
@@ -154,95 +158,9 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-
-		// Spawn the enemy at a predefined location
 	}
 
-	void SpawnEnemyAtPoint()
-	{
-	
-	}
-
-	void GetSpawns()
-	{
-		distanceBetweenSpawns = (float)(2 * System.Math.PI * playerViewDistance) / numberOfSpawns;
-		angleBetweenSpawns = (float)(distanceBetweenSpawns / (2 * System.Math.PI * playerViewDistance)) * 360;
-		angleOnPerimeter = (180 - angleBetweenSpawns) / 2;
-
-		Vector3 nextPoint = new Vector3(0, playerViewDistance, 0);
-		Vector3 lastPoint;
-		Vector3 pointBeforeLast = Vector3.zero;
-
-		for(int i = 0; i < numberOfSpawns; i++)
-		{
-			enemySpawnPoint.position = nextPoint;
-			spawns.Add(Instantiate(enemySpawnPoint, enemySpawnPoint.position, enemySpawnPoint.rotation));
-			lastPoint = nextPoint;
-
-			Debug.Log(nextPoint.x + " " + nextPoint.y);
-
-			Instantiate(enemyYa, enemySpawnPoint.position, enemySpawnPoint.rotation);
-
-			float C = 90f;
-			float c = playerViewDistance / Sin(angleOnPerimeter) * Sin(angleBetweenSpawns);
-			float Y = 90 - angleOnPerimeter;
-			float y = (c / Sin(C) * Sin(Y));
-			float x = (float)(System.Math.Sqrt(c * c - y * y));
-			
-			Debug.Log("cal x: " + x + " calc y: " + y);
-
-			bool good = false;
-			int count = 0;
-
-			while(!good)
-			{
-				if(OnArch(new Vector3(nextPoint.x + x, nextPoint.y + y, 0)) && !SamePoints(new Vector3(nextPoint.x + x, nextPoint.y + y, 0), pointBeforeLast))
-				{
-					Debug.Log("good");
-					good = true;					
-				}
-				else
-				{
-					if(OnArch(new Vector3(nextPoint.x - x, nextPoint.y + y, 0)) && !SamePoints(new Vector3(nextPoint.x - x, nextPoint.y + y, 0), pointBeforeLast))
-					{
-						x *= -1;
-					}
-					else if(OnArch(new Vector3(nextPoint.x + x, nextPoint.y - y, 0)) && !SamePoints(new Vector3(nextPoint.x + x, nextPoint.y - y, 0), pointBeforeLast))
-					{
-						y *= -1;
-					}
-					else if(OnArch(new Vector3(nextPoint.x - x, nextPoint.y - y, 0)) && !SamePoints(new Vector3(nextPoint.x - x, nextPoint.y - y, 0), pointBeforeLast))
-					{
-						x *= -1;
-						y *= -1;						
-					}
-					else
-					{
-						float temp = x;
-						x = y;
-						y = temp;
-					}
-				}
-				count++;
-
-				if(count > 2)
-				{
-					Debug.Log("infinite loop..... aborting");
-					good = true;
-				}
-			}
-
-			//nextPoint = new Vector3(nextPoint.x + x, nextPoint.y + y, 0);
-			nextPoint.x += x;
-			nextPoint.y += y;
-
-			pointBeforeLast = lastPoint;
-
-			Debug.Log("final x: " + nextPoint.x + " y: " + nextPoint.y);
-		}
-	}
-
-	void AnotherGetSpawns()
+	void CreateSpawns()
 	{
 		distanceBetweenSpawns = (float)(2 * System.Math.PI * playerViewDistance) / numberOfSpawns;
 		angleBetweenSpawns = (float)(distanceBetweenSpawns / (2 * System.Math.PI * playerViewDistance)) * 360;		
@@ -261,7 +179,7 @@ public class WaveSpawner : MonoBehaviour {
 			
 			if(testSpawns)
 			{
-				Instantiate(enemyYa, enemySpawnPoint.position, enemySpawnPoint.rotation);
+				Instantiate(testEnemy, enemySpawnPoint.position, enemySpawnPoint.rotation);
 			}
 
 			nextPoint = startPoint;
@@ -296,22 +214,22 @@ public class WaveSpawner : MonoBehaviour {
 			
 				while(!good)
 				{
-					if(OnArch(new Vector3(nextPoint.x + x, nextPoint.y + y, 0)) && !PointExists(new Vector3(nextPoint.x + x, nextPoint.y + y, 0)))
+					if(GoodPoint(nextPoint, x, y))
 					{
 						Debug.Log("good");
 						good = true;					
 					}
 					else
 					{
-						if(OnArch(new Vector3(nextPoint.x - x, nextPoint.y + y, 0)) && !PointExists(new Vector3(nextPoint.x - x, nextPoint.y + y, 0)))
+						if(GoodPoint(nextPoint, -x, y))
 						{
 							x *= -1f;
 						}
-						else if(OnArch(new Vector3(nextPoint.x + x, nextPoint.y - y, 0)) && !PointExists(new Vector3(nextPoint.x + x, nextPoint.y - y, 0)))
+						else if(GoodPoint(nextPoint, x, -y))
 						{
 							y *= -1f;
 						}
-						else if(OnArch(new Vector3(nextPoint.x - x, nextPoint.y - y, 0)) && !PointExists(new Vector3(nextPoint.x - x, nextPoint.y - y, 0)))
+						else if(GoodPoint(nextPoint, -x, -y))
 						{
 							x *= -1f;
 							y *= -1f;						
@@ -336,9 +254,26 @@ public class WaveSpawner : MonoBehaviour {
 				nextPoint.y += y;
 			}			
 		}
-
 	}
 
+	// Checks if the location at point + (x, y, 0) is on the arch of the player view distance
+	// and isn't already a spawn point
+	bool GoodPoint(Vector3 point, float x, float y)
+	{
+		bool goodPoint = false;
+		
+		Vector3 nextPoint = new Vector3(point.x + x, point.y + y, 0);
+
+		if(OnArch(nextPoint) && !PointExists(nextPoint))
+		{
+			goodPoint = true;
+		}
+
+		return goodPoint;
+	}
+
+	// A better method for calculating sine values for angles which handles converting
+	// from radians to degrees
 	float Sin(float angle)
 	{
 		double a = DegreesToRadians(angle);
@@ -357,11 +292,11 @@ public class WaveSpawner : MonoBehaviour {
 
 		for(int i = 0; i < spawns.Count; i++)
 		{
-			float x1 = (float)System.Math.Round(spawns[i].position.x);
-			float y1 = (float)System.Math.Round(spawns[i].position.y);
+			float x1 = (float)System.Math.Round(spawns[i].position.x, 2);
+			float y1 = (float)System.Math.Round(spawns[i].position.y, 2);
 
-			float x2 = (float)System.Math.Round(point.x);
-			float y2 = (float)System.Math.Round(point.y);
+			float x2 = (float)System.Math.Round(point.x, 2);
+			float y2 = (float)System.Math.Round(point.y, 2);
 
 			if(x1 == x2 && y1 == y2)
 			{
@@ -389,18 +324,5 @@ public class WaveSpawner : MonoBehaviour {
 		Debug.Log("On arch");
 
 		return true;
-	}
-
-	bool SamePoints(Vector3 lastPoint, Vector3 nextPoint)
-	{
-		if(lastPoint.x == nextPoint.x && lastPoint.y == nextPoint.y)
-		{
-			Debug.Log("same points");
-			return true;
-		}
-
-		Debug.Log("Different Points");
-
-		return false;
-	}
+	}	
 }
