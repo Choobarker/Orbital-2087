@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour 
 {
 	public float speed;
+	public float xMin, xMax, zMin, zMax;
 
 	public GameObject shot;
 	public Transform shotSpawn;
@@ -25,9 +26,12 @@ public class MovePlayer : MonoBehaviour
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVeritical = Input.GetAxis ("Vertical");
+
 		Rigidbody rb = GetComponent<Rigidbody> ();
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVeritical);
 		rb.velocity = movement * speed;
+
+		rb.position = new Vector3 (Mathf.Clamp(rb.position.x, xMin, xMax), 0.0f, Mathf.Clamp(rb.position.z, zMin, zMax));
 	}
 }
