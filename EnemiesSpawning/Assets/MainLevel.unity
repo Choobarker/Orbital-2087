@@ -238,7 +238,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -318,7 +318,7 @@ MonoBehaviour:
   enemySpawnPoint: {fileID: 4952248789202910, guid: f879df7a3aaf1eb438e7c1b9f5cd99ae,
     type: 2}
   playerViewDistance: 10
-  numberOfSpawns: 25
+  numberOfSpawns: 20
 --- !u!212 &1877509433
 SpriteRenderer:
   m_ObjectHideFlags: 0

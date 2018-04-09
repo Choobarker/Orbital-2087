@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour {
+
+	public Transform bulletProjectile;
 	
 	public float health = 2f;
 	public float speed;
@@ -23,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		moveTime = Random.value * 2 + 1;
 	}
 	
-	void Update () 
+	void Update ()
 	{
 		if(alive && !inPosition)
 		{
@@ -55,5 +57,11 @@ public class EnemyBehaviour : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		Destroy(other.gameObject);
+		TakeDamage(1f);
 	}
 }

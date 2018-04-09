@@ -90,8 +90,6 @@ public class WaveSpawner : MonoBehaviour {
 
 	void WaveCompleted()
 	{
-		Debug.Log("Wave Completed");
-
 		state = SpawnState.COUNTING;
 		waveCountDown = secondsBetweenWaves;
 
@@ -99,7 +97,6 @@ public class WaveSpawner : MonoBehaviour {
 		if(nextWave >= waves.Length)
 		{
 			nextWave = 0;
-			Debug.Log("All Waves Complete");
 		}
 	}
 
@@ -120,7 +117,6 @@ public class WaveSpawner : MonoBehaviour {
 
 	IEnumerator SpawnWave(Wave wave)
 	{
-		Debug.Log("Spawning Wave: " + wave.name);
 		state = SpawnState.SPAWNING;
 
 		// spawnPoints list is an array of possible spawns based on
@@ -189,7 +185,6 @@ public class WaveSpawner : MonoBehaviour {
 
 			if(nextAngle == 180)
 			{
-				Debug.Log("nextAngle = 180");
 				nextPoint.y = -playerViewDistance;
 			}
 			else
@@ -207,8 +202,6 @@ public class WaveSpawner : MonoBehaviour {
 				float y = (c / Sin(C) * Sin(Y));
 				float x = (float)(System.Math.Sqrt(c * c - y * y));
 
-				Debug.Log("cal x: " + x + " calc y: " + y);
-
 				bool good = false;
 				int count = 0;
 			
@@ -216,7 +209,6 @@ public class WaveSpawner : MonoBehaviour {
 				{
 					if(GoodPoint(nextPoint, x, y))
 					{
-						Debug.Log("good");
 						good = true;					
 					}
 					else
@@ -304,24 +296,17 @@ public class WaveSpawner : MonoBehaviour {
 			}
 		}
 
-		Debug.Log("Exists: " + exists);
-
 		return exists;
 	}
 
 	bool OnArch(Vector3 nextPoint)
 	{
 		float h = System.Math.Abs((nextPoint.x * nextPoint.x) + (System.Math.Abs(nextPoint.y * nextPoint.y)));
-		Debug.Log("x len: "  + nextPoint.x + " y len: " + nextPoint.y);
 		h = (float)System.Math.Round(h);
-		Debug.Log(h);
 		if(System.Math.Sqrt(h) != playerViewDistance)
 		{
-			Debug.Log("Not on arch");
 			return false;
 		}
-
-		Debug.Log("On arch");
 
 		return true;
 	}	
