@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   tilt: 0
-  circumference: 5
+  circumference: 2
 --- !u!1 &1877509431
 GameObject:
   m_ObjectHideFlags: 0
