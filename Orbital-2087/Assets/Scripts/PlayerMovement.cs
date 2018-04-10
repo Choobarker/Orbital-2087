@@ -17,12 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveVar -= Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float x = Mathf.Cos(moveVar) * circumference;
-        float y = 0;
-        float z = Mathf.Sin(moveVar) * circumference;
+        moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        float y = Mathf.Cos(moveVar) * circumference;
+        float z = 0;
+        float x = Mathf.Sin(moveVar) * circumference;
         transform.position = new Vector3(x, y, z);
-        transform.rotation = Quaternion.LookRotation(transform.position);
+        //transform.rotation = Quaternion.LookRotation(transform.position);
 
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler (0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
     }
