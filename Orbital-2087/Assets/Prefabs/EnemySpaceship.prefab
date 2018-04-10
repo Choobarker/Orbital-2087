@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049823505560322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.68149877, z: 0}
+  m_LocalPosition: {x: 0, y: -0.68149877, z: -180}
   m_LocalScale: {x: 3.2007291, y: 3.1805384, z: 2.1296856}
   m_Children: []
   m_Father: {fileID: 4995424439321658}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbc1ddb1a3b71e4289f8507316111eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 2
   damage: 10
   whatToHit:
     serializedVersion: 2
