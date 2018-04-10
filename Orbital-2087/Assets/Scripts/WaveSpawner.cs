@@ -309,5 +309,12 @@ public class WaveSpawner : MonoBehaviour {
 		}
 
 		return true;
-	}	
+	}
+
+	void RangomMethod()
+	{
+		
+	}
 }
+
+
