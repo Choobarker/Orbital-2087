@@ -10,9 +10,20 @@ public class PlayerMovement : MonoBehaviour
     float moveVar;//Edits
     public float circumference;
 
+    public GameObject shot;
+    public Transform shotSpawn;
+    public float fireRate;
+
+    private float nextFire;
+
+    //Instantiate the players shot
     void Update()
     {
-
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        }
     }
 
     void FixedUpdate()

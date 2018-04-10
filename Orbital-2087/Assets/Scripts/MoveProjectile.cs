@@ -5,11 +5,24 @@ using UnityEngine;
 public class MoveProjectile : MonoBehaviour
 {
 	public float speed;
-	public Rigidbody rb;
+    private Rigidbody rb;
 
-	void Start()
+    public Rigidbody Rb
+    {
+        get
+        {
+            return rb;
+        }
+
+        set
+        {
+            rb = value;
+        }
+    }
+
+    void Start()
 	{
-		rb = (Rigidbody)GetComponent (typeof(Rigidbody));
+		Rb = (Rigidbody)GetComponent (typeof(Rigidbody));
 
 		Vector3 movement = new Vector3 (0.0f, 0.0f, 1.0f);
 		GetComponent<Rigidbody> ().velocity = movement * speed;
