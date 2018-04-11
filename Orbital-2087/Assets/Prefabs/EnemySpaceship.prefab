@@ -138,7 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2801f7fb8d63e234da3d08689630230b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletProjectile: {fileID: 0}
+  bulletProjectile: {fileID: 4857776546564982, guid: ea07ba8c75781054a8070cdf3cec9943,
+    type: 2}
   health: 2
   speed: 1
   moveTime: 3
