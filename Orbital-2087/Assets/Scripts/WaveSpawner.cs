@@ -156,6 +156,7 @@ public class WaveSpawner : MonoBehaviour {
 		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
 	}
 
+	// TODO (zac) split this method. Perhaps have; CreateSpawns(), GetNextPoint() 
 	void CreateSpawns()
 	{
 		distanceBetweenSpawns = (float)(2 * System.Math.PI * playerViewDistance) / numberOfSpawns;
@@ -237,7 +238,11 @@ public class WaveSpawner : MonoBehaviour {
 
 					if(count > 2)
 					{
-						Debug.Log("infinite loop..... aborting");
+						if(i != numberOfSpawns - 1)
+						{
+							Debug.Log("infinite loop..... aborting");
+						}
+
 						good = true;
 					}
 				}
@@ -282,13 +287,13 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		bool exists = false;
 
+		float x1 = (float)System.Math.Round(point.x, 3);
+		float y1 = (float)System.Math.Round(point.y, 3);
+
 		for(int i = 0; i < spawns.Count; i++)
 		{
-			float x1 = (float)System.Math.Round(spawns[i].position.x, 2);
-			float y1 = (float)System.Math.Round(spawns[i].position.y, 2);
-
-			float x2 = (float)System.Math.Round(point.x, 2);
-			float y2 = (float)System.Math.Round(point.y, 2);
+			float x2 = (float)System.Math.Round(spawns[i].position.x, 3);
+			float y2 = (float)System.Math.Round(spawns[i].position.y, 3);
 
 			if(x1 == x2 && y1 == y2)
 			{
@@ -310,11 +315,4 @@ public class WaveSpawner : MonoBehaviour {
 
 		return true;
 	}
-
-	void RangomMethod()
-	{
-		
-	}
 }
-
-
