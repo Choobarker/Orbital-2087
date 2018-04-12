@@ -8,12 +8,16 @@ public class EnemyBehaviour : MonoBehaviour {
 	
 	public float health = 2f;
 	public float speed;
+	public float playerViewDistance;
 
 	private bool alive = false;
 	private bool inPosition = false;
-
-	public float moveTime;
+	
+	private float moveTime;
 	private float timeMoved = 0f;
+	
+	public float minMovePercent = 10;
+	public float maxMovePercent = 60;
 
 	private Vector3 direction;
 	
@@ -21,15 +25,15 @@ public class EnemyBehaviour : MonoBehaviour {
 	{
 		alive = true;
 
-		direction = -transform.position / 5;
-		moveTime = Random.value * 2 + 1;
+		SetDirection();
+		SetMovementTime();
 	}
 	
 	void Update ()
 	{
 		if(alive && !inPosition)
 		{
-			transform.position += direction * Time.deltaTime * speed;
+			transform.position += direction * Time.deltaTime;
 			timeMoved += Time.deltaTime;
 
 			if(timeMoved >= moveTime)
@@ -37,6 +41,24 @@ public class EnemyBehaviour : MonoBehaviour {
 				inPosition = true;
 			}
 		}
+	}
+
+	// Sets the direction the alien will travel based on its location
+	// Effectively, the direction vector is the distance the alien will be moved every second
+	// The mod value of .1f and speed 1 means that every second, the alien will be moved 10% of 
+	// the player view distance.
+	void SetDirection()
+	{
+		direction = -transform.position;
+
+		float mod = .1f * speed;
+		direction.x *= mod;
+		direction.y *= mod;
+	}
+
+	void SetMovementTime()
+	{
+		moveTime = Random.Range(minMovePercent / 10, maxMovePercent / 10) / speed;
 	}
 
 	void OnMouseDown()

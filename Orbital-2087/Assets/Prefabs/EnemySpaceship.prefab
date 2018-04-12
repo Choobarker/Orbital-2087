@@ -141,7 +141,9 @@ MonoBehaviour:
   bulletProjectile: {fileID: 0}
   health: 2
   speed: 1
-  moveTime: 3
+  playerViewDistance: 12
+  minMovePercent: 10
+  maxMovePercent: 60
 --- !u!212 &212105482814313508
 SpriteRenderer:
   m_ObjectHideFlags: 1
