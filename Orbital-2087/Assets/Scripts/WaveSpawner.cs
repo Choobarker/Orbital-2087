@@ -155,21 +155,25 @@ public class WaveSpawner : MonoBehaviour {
 		Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
 	}
-
-	// TODO (zac) split this method. Perhaps have; CreateSpawns(), GetNextPoint() 
+	
 	void CreateSpawns()
 	{
 		distanceBetweenSpawns = (float)(2 * System.Math.PI * playerViewDistance) / numberOfSpawns;
 		angleBetweenSpawns = (float)(distanceBetweenSpawns / (2 * System.Math.PI * playerViewDistance)) * 360;		
 
 		Vector3 startPoint = new Vector3(0, playerViewDistance, 0);
-		Vector3 nextPoint = startPoint;
+		Vector3 nextPoint;
 
 		float totalAngle = 0;
 		float nextAngle = 0;
 
 		for(int i = 0; i < numberOfSpawns; i++)
 		{
+			totalAngle += angleBetweenSpawns;
+			nextAngle = totalAngle;
+
+			nextPoint = GetNextPoint(startPoint, totalAngle, nextAngle);
+
 			enemySpawnPoint.position = nextPoint;
 			enemySpawnPoint.rotation = Quaternion.Euler(0, 0, -totalAngle);
 			spawns.Add(Instantiate(enemySpawnPoint, enemySpawnPoint.position, enemySpawnPoint.rotation));
@@ -177,84 +181,82 @@ public class WaveSpawner : MonoBehaviour {
 			if(testSpawns)
 			{
 				Instantiate(testEnemy, enemySpawnPoint.position, enemySpawnPoint.rotation);
-			}
-
-			nextPoint = startPoint;
-
-			totalAngle += angleBetweenSpawns;
-			nextAngle = totalAngle;
-
-			if(nextAngle == 180)
-			{
-				nextPoint.y = -playerViewDistance;
-			}
-			else
-			{
-				if(nextAngle > 180)
-				{
-					nextAngle = 360 - totalAngle;
-				}
-
-				angleOnPerimeter = (180 - nextAngle) / 2;
-
-				float C = 90f;
-				float c = playerViewDistance / Sin(angleOnPerimeter) * Sin(nextAngle);
-				float Y = 90 - angleOnPerimeter;
-				float y = (c / Sin(C) * Sin(Y));
-				float x = (float)(System.Math.Sqrt(c * c - y * y));
-
-				bool good = false;
-				int count = 0;
-			
-				while(!good)
-				{
-					if(GoodPoint(nextPoint, x, y))
-					{
-						good = true;					
-					}
-					else
-					{
-						if(GoodPoint(nextPoint, -x, y))
-						{
-							x *= -1f;
-						}
-						else if(GoodPoint(nextPoint, x, -y))
-						{
-							y *= -1f;
-						}
-						else if(GoodPoint(nextPoint, -x, -y))
-						{
-							x *= -1f;
-							y *= -1f;						
-						}
-						else
-						{
-							float temp = x;
-							x = y;
-							y = temp;
-						}
-					}
-					count++;
-
-					if(count > 2)
-					{
-						if(i != numberOfSpawns - 1)
-						{
-							Debug.Log("infinite loop..... aborting");
-						}
-
-						good = true;
-					}
-				}
-
-				nextPoint.x += x;
-				nextPoint.y += y;
-			}			
+			}		
 		}
 	}
 
+	Vector3 GetNextPoint(Vector3 startPoint, float totalAngle, float nextAngle)
+	{
+		Vector3 nextPoint = startPoint;
+
+		if(nextAngle == 180)
+		{
+			nextPoint.y = -playerViewDistance;
+		}
+		else if(nextAngle != 0)
+		{
+			if(nextAngle > 180)
+			{
+				nextAngle = 360 - totalAngle;
+			}
+
+			angleOnPerimeter = (180 - nextAngle) / 2;
+
+			float C = 90f;
+			float c = playerViewDistance / Sin(angleOnPerimeter) * Sin(nextAngle);
+			float Y = 90 - angleOnPerimeter;
+			float y = (c / Sin(C) * Sin(Y));
+			float x = (float)(System.Math.Sqrt(c * c - y * y));
+
+			bool good = false;
+			int count = 0;
+		
+			while(!good)
+			{
+				if(GoodPoint(nextPoint, x, y))
+				{
+					good = true;					
+				}
+				else
+				{
+					if(GoodPoint(nextPoint, -x, y))
+					{
+						x *= -1f;
+					}
+					else if(GoodPoint(nextPoint, x, -y))
+					{
+						y *= -1f;
+					}
+					else if(GoodPoint(nextPoint, -x, -y))
+					{
+						x *= -1f;
+						y *= -1f;						
+					}
+					else
+					{
+						float temp = x;
+						x = y;
+						y = temp;
+					}
+				}
+				count++;
+
+				if(count > 2)
+				{
+					Debug.Log("infinite loop..... aborting");
+					good = true;
+				}
+			}
+
+			nextPoint.x += x;
+			nextPoint.y += y;
+		}
+
+		return nextPoint;
+	}
+
 	// Checks if the location at point + (x, y, 0) is on the arch of the player view distance
-	// and isn't already a spawn point
+	// and isn't already a spawn point, using OnArch() and PointExists()
 	bool GoodPoint(Vector3 point, float x, float y)
 	{
 		bool goodPoint = false;
@@ -283,6 +285,7 @@ public class WaveSpawner : MonoBehaviour {
 		return angle * (System.Math.PI / 180);
 	}
 
+	// Checks if the point parameter already exists in the spawns list
 	bool PointExists(Vector3 point)
 	{
 		bool exists = false;
@@ -304,6 +307,7 @@ public class WaveSpawner : MonoBehaviour {
 		return exists;
 	}
 
+	// Checkes if the point is on the circle of the players view distance
 	bool OnArch(Vector3 nextPoint)
 	{
 		float h = System.Math.Abs((nextPoint.x * nextPoint.x) + (System.Math.Abs(nextPoint.y * nextPoint.y)));
