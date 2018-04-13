@@ -40,3 +40,10 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+Orbital-2087/.vs/Orbital-2087/v15/Server/sqlite3/storage.ide-shm
+*.ide-wal
+*.ide-shm
+*.ide
+*.lock
+*.ide-wal
+*.ide-shm
