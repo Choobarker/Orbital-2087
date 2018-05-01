@@ -12,8 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveVar;
     public Transform earth;
 
-
-
+    
     private void FixedUpdate()
     {
         //Controls player movement
@@ -23,14 +22,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!playerJoystickControl)
         {
-<<<<<<< HEAD
+
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
             moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;//RA Remove inputgetaxis when building android ver.
 
-=======
+
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer
             moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;//RA Remove inputgetaxis when building android ver.
->>>>>>> 90e1b5a8b5f35c9db7ed481130f767852b228584
+
         }
         float x = Mathf.Sin(moveVar) * radius;
         float y = Mathf.Cos(moveVar) * radius;
@@ -45,11 +44,7 @@ public class PlayerMovement : MonoBehaviour
         float rotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 90; //+90 or the ship doesn't face outwards
         this.transform.eulerAngles = new Vector3(0, 0, rotation);
         
-
         //TODO Tilt?
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler (0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
     }
 }
-
-
-
