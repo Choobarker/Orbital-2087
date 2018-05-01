@@ -1,40 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool playerButtonControl;
     public float speed;
-    public float tilt;
-
-    float moveVar;//Edits
+    //public float tilt; //Unused atm
     public float circumference;
+    private float moveVar;
+    public Transform earth;
 
-    public GameObject shot;
-    public Transform shotSpawn;
-    public float fireRate;
-
-    private float nextFire;
-
-    //Instantiate the players shot
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-        }
     }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        //Controls player movement //TODO Tidy up 
+        if (playerButtonControl)
+        {
+            moveVar += CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * speed; //RA Remove inputgetaxis when building android ver.
+        }
+        else if (!playerButtonControl)
+        {
+            //Vector3 tilt = Input.acceleration * Time.deltaTime * speed; //Accelerometer
+            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        }
+        float x = Mathf.Sin(moveVar) * circumference;
         float y = Mathf.Cos(moveVar) * circumference;
         float z = 0;
-        float x = Mathf.Sin(moveVar) * circumference;
-        transform.position = new Vector3(x, y, z);
-        //transform.rotation = Quaternion.LookRotation(transform.position);
+        Vector3 move = new Vector3(x, y, z);
+        transform.position = move;
+        
+        //Controls player rotation
+        Vector2 direction = new Vector2(earth.position.x - move.x, earth.position.y - move.y);
+        float rotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 90;
+        this.transform.eulerAngles = new Vector3(0, 0, rotation);
+        
 
+        //TODO Tilt?
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler (0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
     }
 }
