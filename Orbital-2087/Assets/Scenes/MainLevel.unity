@@ -357,6 +357,9 @@ MonoBehaviour:
   speed: 5
   circumference: 3
   earth: {fileID: 1877509434}
+  projectile: {fileID: 1298290165926048, guid: ea07ba8c75781054a8070cdf3cec9943, type: 2}
+  projectileSpawn: {fileID: 1611069147}
+  fireRate: 0.25
 --- !u!1 &1526132557
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +458,7 @@ GameObject:
   - component: {fileID: 1611069147}
   - component: {fileID: 1611069150}
   m_Layer: 0
-  m_Name: Shot Spawn
+  m_Name: Projectile Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +509,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1877509431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58ace19e23193e44da83e724a2a1ddae, type: 3}
   m_Name: 
