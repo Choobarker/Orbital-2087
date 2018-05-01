@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4646469408289602}
   - component: {fileID: 54620731180109306}
   - component: {fileID: 136838382750950432}
+  - component: {fileID: 114861965015699796}
   - component: {fileID: 114541854664775884}
   m_Layer: 0
   m_Name: Projectile
@@ -135,13 +136,25 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298290165926048}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f5c1f9d9fff7a84fabf35f2c1e3f7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  rb: {fileID: 0}
+--- !u!114 &114861965015699796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298290165926048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b5831142c20bb4fb5f00334d6140d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 100000
+  Earth: {fileID: 4376929303876616, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
 --- !u!136 &136838382750950432
 CapsuleCollider:
   m_ObjectHideFlags: 1
