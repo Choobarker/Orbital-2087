@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	private float timeMoved = 0f;
 	
 	public float minMovePercent = 10;
-	public float maxMovePercent = 60;
+	public float maxMovePercent = 25;
 
 	private Vector3 direction;
 	

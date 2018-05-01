@@ -12,38 +12,33 @@ public class PlayerMovement : MonoBehaviour
     private float moveVar;
     public Transform earth;
 
-    public GameObject projectile;
-    public Transform projectileSpawn;
-    public float fireRate;
-    private float nextFire;
 
-
-    void Update()
-    {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
-        }
-    }
 
     private void FixedUpdate()
     {
-        //Controls player movement //TODO Tidy up 
+        //Controls player movement
         if (playerJoystickControl)
         {
             moveVar += CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * speed; 
         }
         else if (!playerJoystickControl)
         {
+<<<<<<< HEAD
+            moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
+            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;//RA Remove inputgetaxis when building android ver.
+
+=======
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer
-            //moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;//RA Remove inputgetaxis when building android ver.
+            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;//RA Remove inputgetaxis when building android ver.
+>>>>>>> 90e1b5a8b5f35c9db7ed481130f767852b228584
         }
         float x = Mathf.Sin(moveVar) * radius;
         float y = Mathf.Cos(moveVar) * radius;
-        float z = 0;
+        float z = 0; //Keeps player ship on a 2d axis.
         Vector3 move = new Vector3(x, y, z);
         transform.position = move;
+
+        Debug.Log(move);
         
         //Controls player rotation
         Vector2 direction = new Vector2(earth.position.x - move.x, earth.position.y - move.y);
