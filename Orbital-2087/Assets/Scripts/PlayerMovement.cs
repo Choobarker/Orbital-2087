@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         else if (!playerJoystickControl)
         {
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer
-            //moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;//RA Remove inputgetaxis when building android ver.
+            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed;//RA Remove inputgetaxis when building android ver.
         }
         float x = Mathf.Sin(moveVar) * radius;
         float y = Mathf.Cos(moveVar) * radius;
