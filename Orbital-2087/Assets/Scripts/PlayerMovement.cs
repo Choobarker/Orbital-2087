@@ -12,9 +12,21 @@ public class PlayerMovement : MonoBehaviour
     private float moveVar;
     public Transform earth;
 
+    public GameObject projectile;
+    public Transform projectileSpawn;
+    public float fireRate;
+    private float nextFire;
+
+
     void Update()
     {
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+        }
     }
+
     private void FixedUpdate()
     {
         //Controls player movement //TODO Tidy up 

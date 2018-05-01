@@ -7,24 +7,9 @@ public class MoveProjectile : MonoBehaviour
 	public float speed;
     private Rigidbody rb;
 
-    public Rigidbody Rb
-    {
-        get
-        {
-            return rb;
-        }
-
-        set
-        {
-            rb = value;
-        }
-    }
-
     void Start()
 	{
-		Rb = (Rigidbody)GetComponent (typeof(Rigidbody));
-
-		Vector3 movement = new Vector3 (0.0f, 0.0f, 1.0f);
-		GetComponent<Rigidbody> ().velocity = movement * speed;
+		rb = (Rigidbody)GetComponent (typeof(Rigidbody));
+        rb.velocity = transform.up * speed;
 	}	
 }
