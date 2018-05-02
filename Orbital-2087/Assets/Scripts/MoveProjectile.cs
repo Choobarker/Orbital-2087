@@ -11,5 +11,16 @@ public class MoveProjectile : MonoBehaviour
 	{
 		rb = (Rigidbody)GetComponent (typeof(Rigidbody));
         rb.velocity = transform.up * speed;
-	}	
+	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //checks if the gameobject is an ememy ship and destroys it.
+        if (GameObject.Find("EnemySpaceship"))
+        {
+            GameObject enemy = GameObject.Find("EnemySpaceship");
+            Destroy(enemy);
+            Debug.Log(name + " was destroyed");
+        }
+    }
 }
