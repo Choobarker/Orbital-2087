@@ -16,16 +16,7 @@ public class MoveTrail : MonoBehaviour {
         
         transform.Translate(Vector3.down / moveSpeed);
         Destroy(this.gameObject, 2);
-        Vector2 earthPosition = new Vector2(earth.position.x, earth.position.y);
-        Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, earthPosition - firePointPosition, 100, whatToHit);
+        
 
-        if (hit.collider != null)
-        {
-            Destroy(this.gameObject);
-            Debug.DrawLine(firePointPosition, hit.point, Color.red);
-            Debug.Log("We hit " + hit.collider.name + " and did " + damage + " damage.");
-
-        }
     }
 }

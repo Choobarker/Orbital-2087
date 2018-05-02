@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(x, y, z);
         transform.position = move;
 
-        Debug.Log(move);
+        //Debug.Log(move);
         
         //Controls player rotation
         Vector2 direction = new Vector2(earth.position.x - move.x, earth.position.y - move.y);

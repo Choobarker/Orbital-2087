@@ -45,6 +45,7 @@ public class Weapon : MonoBehaviour {
 
             Debug.DrawLine(firePointPosition, hit.point, Color.red);
             Debug.Log("We hit " + hit.collider.name + " and did " + damage + " damage." );
+
         }
     }
 
@@ -52,4 +53,5 @@ public class Weapon : MonoBehaviour {
 
         Instantiate(BulletTrailPrefab, firepoint.position, firepoint.rotation);
     }
+
 }
