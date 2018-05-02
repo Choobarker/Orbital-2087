@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-    public float fireRate = 0;
+    public float fireRate = 1;
     public float damage = 10;
     public LayerMask whatToHit;
     public Transform BulletTrailPrefab;
@@ -13,15 +13,6 @@ public class Weapon : MonoBehaviour {
     private float timeToSpawnEffect = 0;
     public float effectSpawnRate = 10;
     Transform firepoint;
-    
-	// Use this for initialization
-	/*void Awake () {
-        firepoint = transform.Find("FirePoint");
-        if (firepoint == null){
-
-            Debug.LogError("No firePoint!");
-        }
-    }*/
 	
 	void Update () {
 

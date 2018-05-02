@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4105477013590054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 50228674158492134}
   - component: {fileID: 70420639377422236}
   - component: {fileID: 114600157211481228}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemySpaceship
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -52,13 +52,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049823505560322}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.68149877, z: 0}
   m_LocalScale: {x: 3.2007291, y: 3.1805384, z: 2.1296856}
   m_Children: []
   m_Father: {fileID: 4995424439321658}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4995424439321658
 Transform:
   m_ObjectHideFlags: 1
@@ -123,8 +123,8 @@ MonoBehaviour:
   damage: 10
   whatToHit:
     serializedVersion: 2
-    m_Bits: 0
-  BulletTrailPrefab: {fileID: 4505044165992600, guid: 0b64de6f0690e5d4285e784c4a217fc7,
+    m_Bits: 4294966728
+  BulletTrailPrefab: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9,
     type: 2}
   earth: {fileID: 4376929303876616, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
   effectSpawnRate: 100
