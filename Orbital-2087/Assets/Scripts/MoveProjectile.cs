@@ -11,17 +11,14 @@ public class MoveProjectile : MonoBehaviour
 	{
 		rb = (Rigidbody)GetComponent (typeof(Rigidbody));
         rb.velocity = transform.up * speed;
-	}	
+        DestroyShots();
 	}
-
-    private void OnTriggerEnter(Collider other)
+    
+    //destroys the fired shots after 4 seconds as they will have exited the game area.
+    void DestroyShots()
     {
-        //checks if the gameobject is an ememy ship and destroys it.
-        if (GameObject.Find("EnemySpaceship"))
-        {
-            GameObject enemy = GameObject.Find("EnemySpaceship");
-            Destroy(enemy);
-            Debug.Log(name + " was destroyed");
-        }
+        float lifeTime = 4.0f;
+        Destroy(gameObject, lifeTime);
     }
+
 }
