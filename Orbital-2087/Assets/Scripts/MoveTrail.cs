@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class MoveTrail : MonoBehaviour {
 
-    public int moveSpeed = 100;
-    public Transform Earth;
-    //Transform FirePoint;
-    Vector3 EarthDirection;
+    public int moveSpeed;
+    public Transform firePoint;
+    public Transform earth;
+    public LayerMask whatToHit;
+    public float damage = 10;
 
 
-    void Awake()
-    {
-        if (Earth == null)
-        {
-            Debug.LogError("No Earth!");
-        }
-        
-        EarthDirection = new Vector3(Earth.position.x, Earth.position.y, Earth.position.z); 
-    }
 
     void Update () {
+        
+        transform.Translate(Vector3.down / moveSpeed);
+        Destroy(this.gameObject, 2);
+        
 
-        transform.Translate(EarthDirection);//* Time.deltaTime * moveSpeed);
-        Destroy(this.gameObject, 3);
-	}
+    }
 }
