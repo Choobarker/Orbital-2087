@@ -272,15 +272,15 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	// A better method for calculating sine values for angles which handles converting
-	// from radians to degrees
-	float Sin(float angle)
+	// from degrees to radians
+	public float Sin(float angle)
 	{
 		double a = DegreesToRadians(angle);
 		angle = (float)System.Math.Sin(a);
 		return angle;
 	}
 
-	double DegreesToRadians(float angle)
+	public double DegreesToRadians(double angle)
 	{
 		return angle * (System.Math.PI / 180);
 	}
