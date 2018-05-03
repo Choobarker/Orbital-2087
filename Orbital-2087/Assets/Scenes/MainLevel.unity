@@ -171,7 +171,7 @@ SpriteRenderer:
   m_Size: {x: 16.8, y: 16.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &392517930
 Transform:
@@ -645,7 +645,7 @@ Prefab:
     - target: {fileID: 114827883296512636, guid: 4a3be68bf1d116f40948b89cba2e6e8d,
         type: 2}
       propertyPath: testSpawns
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}

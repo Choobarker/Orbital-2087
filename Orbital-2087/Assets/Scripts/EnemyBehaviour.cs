@@ -88,8 +88,9 @@ public class EnemyBehaviour : MonoBehaviour {
         if (other.tag.Equals("Shot") == true)
         {
             Destroy(other.gameObject);
+            TakeDamage(1f);
         }   
-        TakeDamage(1f);
+        
     }
 
 }
