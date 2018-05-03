@@ -71,6 +71,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		health -= damage;
 
 		CheckHealth();
+        //Debug.Log(health);
 	}
 
 	void CheckHealth()
