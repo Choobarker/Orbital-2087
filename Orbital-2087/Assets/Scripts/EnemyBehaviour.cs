@@ -62,20 +62,20 @@ public class EnemyBehaviour : MonoBehaviour {
 		moveTime = Random.Range(minMovePercent / 10, maxMovePercent / 10) / speed;
 	}
 
-	void OnMouseDown()
-	{
-		TakeDamage(2f);
-	}
+    //void OnMouseDown()
+    //{
+    //    TakeDamage(2f);
+    //}
 
-	void TakeDamage(float damage)
-	{
-		health -= damage;
+    void TakeDamage(float damage)
+    {
+        health -= damage;
 
-		CheckHealth();
+        CheckHealth();
         //Debug.Log(health);
-	}
+    }
 
-	void CheckHealth()
+    void CheckHealth()
 	{
 		if(health <= 0)
 		{
@@ -84,10 +84,14 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other)
-	{
-		Destroy(other.gameObject);
-		TakeDamage(1f);
-	}
+    {
+        //checks if it is colliding with a shot from the player
+        if (other.tag.Equals("Shot") == true)
+        {
+            Destroy(other.gameObject);
+            TakeDamage(1f);
+        }        
+    }
 
 	void DestroyEnemy()
 	{
