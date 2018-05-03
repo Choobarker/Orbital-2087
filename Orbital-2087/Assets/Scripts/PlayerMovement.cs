@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float radius;
     private float moveVar;
     public Transform earth;
-
     
     private void FixedUpdate()
     {
