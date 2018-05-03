@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbc1ddb1a3b71e4289f8507316111eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 5
+  fireRate: 1
   damage: 10
   whatToHit:
     serializedVersion: 2
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletProjectile: {fileID: 4646469408289602, guid: ea07ba8c75781054a8070cdf3cec9943,
     type: 2}
+  explosion: {fileID: 4538704813663956, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
   health: 2
   speed: 1
   playerViewDistance: 12

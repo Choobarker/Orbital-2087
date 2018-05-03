@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour {
 
 	public Transform bulletProjectile;
+	public Transform explosion;
 	
 	public float health = 2f;
 	public float speed;
@@ -78,7 +79,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	{
 		if(health <= 0)
 		{
-			Destroy(gameObject);
+			DestroyEnemy();
 		}
 	}
 
@@ -86,5 +87,11 @@ public class EnemyBehaviour : MonoBehaviour {
 	{
 		Destroy(other.gameObject);
 		TakeDamage(1f);
+	}
+
+	void DestroyEnemy()
+	{
+		Instantiate(explosion, transform.position, transform.rotation);
+		Destroy(gameObject);
 	}
 }

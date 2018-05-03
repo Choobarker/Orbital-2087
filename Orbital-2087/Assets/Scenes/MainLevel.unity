@@ -171,7 +171,7 @@ SpriteRenderer:
   m_Size: {x: 16.8, y: 16.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &392517930
 Transform:
@@ -697,6 +697,9 @@ MonoBehaviour:
   axesToUse: 1
   horizontalAxisName: Horizontal
   verticalAxisName: Vertical
+  m_StartPos: {x: 0, y: 0, z: 0}
+  m_UseX: 0
+  m_UseY: 0
 --- !u!114 &2119325001
 MonoBehaviour:
   m_ObjectHideFlags: 0
