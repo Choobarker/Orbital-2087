@@ -645,7 +645,7 @@ Prefab:
     - target: {fileID: 114827883296512636, guid: 4a3be68bf1d116f40948b89cba2e6e8d,
         type: 2}
       propertyPath: testSpawns
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
@@ -698,13 +698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b85cbd7d1fb824395177e5ab49fcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementRange: 100
-  axesToUse: 1
-  horizontalAxisName: Horizontal
-  verticalAxisName: Vertical
-  m_StartPos: {x: 0, y: 0, z: 0}
-  m_UseX: 0
-  m_UseY: 0
 --- !u!114 &2119325001
 MonoBehaviour:
   m_ObjectHideFlags: 0
