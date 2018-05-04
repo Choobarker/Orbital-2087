@@ -95,7 +95,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	void DestroyEnemy()
 	{
-		Instantiate(explosion, transform.position, transform.rotation);
+		Destroy(Instantiate(explosion, transform.position, transform.rotation).gameObject, 2);
 		Destroy(gameObject);
 	}
 }
