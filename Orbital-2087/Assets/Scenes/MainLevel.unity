@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3dc214c701582408949edbc1dd5a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoystickControl: 0
+  playerJoystickControl: 1
   speed: 4
   radius: 3
   earth: {fileID: 1877509434}
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1298290165926048, guid: ea07ba8c75781054a8070cdf3cec9943, type: 2}
   projectileSpawn: {fileID: 1611069147}
-  fireRate: 0.25
+  fireRate: 10
 --- !u!1 &1526132557
 GameObject:
   m_ObjectHideFlags: 0
