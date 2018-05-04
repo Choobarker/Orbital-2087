@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EarthHealth : MonoBehaviour {
 
@@ -13,26 +14,15 @@ public class EarthHealth : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D Bullet)
     {
         Destroy(Bullet.gameObject);
-        // Debug.Log("Earth hit!");
-
-        /*
-        if (health > 0)
-        {
-            DamageTaken(Bullet);
-        }
-        else {
-            Debug.Log("Earth has been DESTROYED!!!");
-        }
-        */
-
+        
         DamageTaken(Bullet);
 
         if(!CheckHealth())
         {
             DestroyEarth();
+            StartCoroutine("Waiting");
         }
         
-
     }
 
     void DamageTaken(Collider2D weaponType) {
@@ -48,6 +38,7 @@ public class EarthHealth : MonoBehaviour {
         if(health <= 0)
         {
             isAlive = false;
+            health = 0;
         }
 
         return isAlive;
@@ -56,8 +47,16 @@ public class EarthHealth : MonoBehaviour {
     void DestroyEarth()
     {
         Instantiate(earthExplosion, new Vector3(0, 0, 0), transform.rotation);
-
-        Destroy(this.gameObject);
+        gameObject.GetComponent<Renderer>().enabled = false;
     }
+
+    IEnumerator Waiting() {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Destroy(this.gameObject);
+        
+    }
+
+    
 
 }
