@@ -647,6 +647,12 @@ Prefab:
       propertyPath: testSpawns
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114627715054764442, guid: 4a3be68bf1d116f40948b89cba2e6e8d,
+        type: 2}
+      propertyPath: earthExplosion
+      value: 
+      objectReference: {fileID: 4741765856837516, guid: f5205bdbeab7c44b38c7d14af2760bac,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
   m_IsPrefabParent: 0

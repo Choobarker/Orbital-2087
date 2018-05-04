@@ -32,10 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
         //Debug.Log(move); //Tests to make sure player is moving
         
-        //Controls player rotation
-        Vector2 direction = new Vector2(earth.position.x - move.x, earth.position.y - move.y);
-        float rotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 90; //+90 or the sprite doesn't face outwards
-        this.transform.eulerAngles = new Vector3(0, 0, rotation);
+        if(earth != null)
+        {
+            //Controls player rotation
+            Vector2 direction = new Vector2(earth.position.x - move.x, earth.position.y - move.y);
+            float rotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 90; //+90 or the sprite doesn't face outwards
+            this.transform.eulerAngles = new Vector3(0, 0, rotation);
+        }
         
         //TODO Tilt?
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler (0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
