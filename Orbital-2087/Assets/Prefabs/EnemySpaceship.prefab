@@ -119,7 +119,7 @@ MonoBehaviour:
   BulletTrailPrefab: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9,
     type: 2}
   earth: {fileID: 4376929303876616, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
-  effectSpawnRate: 100
+  effectSpawnRate: 0.55
 --- !u!114 &114682236554228468
 MonoBehaviour:
   m_ObjectHideFlags: 1
