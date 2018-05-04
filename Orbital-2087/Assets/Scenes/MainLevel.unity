@@ -372,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1298290165926048, guid: ea07ba8c75781054a8070cdf3cec9943, type: 2}
   projectileSpawn: {fileID: 1611069147}
-  fireRate: 10
+  fireRate: 0.25
 --- !u!1 &1526132557
 GameObject:
   m_ObjectHideFlags: 0
