@@ -320,10 +320,4 @@ public class WaveSpawner : MonoBehaviour {
 		return true;
 	}
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Destroy(other.gameObject);
-        Debug.Log("laser destroyed by hitting the earth.");
-    }
-
 }
