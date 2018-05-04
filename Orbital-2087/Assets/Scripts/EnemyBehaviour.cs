@@ -79,6 +79,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	{
 		if(health <= 0)
 		{
+            ScoreKeeping.ScoreValue += 10;
 			DestroyEnemy();
 		}
 	}
