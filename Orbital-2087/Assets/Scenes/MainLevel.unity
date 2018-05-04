@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3dc214c701582408949edbc1dd5a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoystickControl: 0
+  playerJoystickControl: 1
   speed: 4
   radius: 3
   earth: {fileID: 1877509434}
@@ -701,9 +701,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119324998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b85cbd7d1fb824395177e5ab49fcfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 00c3c865782347f41b6358d9fba14b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementRange: 100
+  axesToUse: 1
+  horizontalAxisName: Horizontal
+  verticalAxisName: Vertical
 --- !u!114 &2119325001
 MonoBehaviour:
   m_ObjectHideFlags: 0
