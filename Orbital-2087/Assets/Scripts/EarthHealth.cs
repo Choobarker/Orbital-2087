@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EarthHealth : MonoBehaviour {
 
-    private float health = 500;
+    public static float health = 500;
     private float damageTaken = 10;
     public Transform Basic;
     public Transform earthExplosion;

@@ -11,6 +11,7 @@ public class FinalScore : MonoBehaviour {
     void Start () {
         Score = GetComponent<Text>();
         Score.text = "S C O R E :  " + ScoreKeeping.ScoreValue;
+        ScoreKeeping.ScoreValue = 0;
     }
 	
 	
