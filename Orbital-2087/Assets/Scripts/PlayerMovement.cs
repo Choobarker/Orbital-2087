@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         else if (!playerJoystickControl)
         {
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
-            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed/3.0f; //Remove inputgetaxis when building android ver.
+            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed/3.0f; //RA Remove inputgetaxis when building android ver.
 
         }
         float x = Mathf.Sin(moveVar) * radius; //Used to make player rotate on the circular axis
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(x, y, z);
         transform.position = move;
 
-        //Debug.Log(move);
+        //Debug.Log(move); //Tests to make sure player is moving
         
         //Controls player rotation
         Vector2 direction = new Vector2(earth.position.x - move.x, earth.position.y - move.y);
