@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3dc214c701582408949edbc1dd5a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoystickControl: 1
+  playerJoystickControl: 0
   speed: 4
   radius: 3
   earth: {fileID: 1877509434}
@@ -398,9 +398,9 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1526132557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71398ce7fbc3a5b4fa50b50bd54317a7, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1526132559
@@ -645,7 +645,7 @@ Prefab:
     - target: {fileID: 114827883296512636, guid: 4a3be68bf1d116f40948b89cba2e6e8d,
         type: 2}
       propertyPath: testSpawns
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114627715054764442, guid: 4a3be68bf1d116f40948b89cba2e6e8d,
         type: 2}
@@ -701,13 +701,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119324998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c3c865782347f41b6358d9fba14b48, type: 3}
+  m_Script: {fileID: 11500000, guid: f5b85cbd7d1fb824395177e5ab49fcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementRange: 100
-  axesToUse: 1
-  horizontalAxisName: Horizontal
-  verticalAxisName: Vertical
 --- !u!114 &2119325001
 MonoBehaviour:
   m_ObjectHideFlags: 0
