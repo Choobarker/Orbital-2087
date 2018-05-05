@@ -14,11 +14,11 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D Bullet)
     {
+		Debug.Log("taking hits");
 		Destroy(Instantiate(hitSplash, Bullet.transform.position, Bullet.transform.rotation).gameObject, 2);
+		DamageTaken(Bullet);
         Destroy(Bullet.gameObject);
         
-        DamageTaken(Bullet);
-
         if(!CheckHealth())
         {
             DestroyPlayer();

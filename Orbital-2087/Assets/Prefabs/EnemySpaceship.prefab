@@ -134,6 +134,7 @@ MonoBehaviour:
   bulletProjectile: {fileID: 4646469408289602, guid: ea07ba8c75781054a8070cdf3cec9943,
     type: 2}
   explosion: {fileID: 4538704813663956, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
+  hitSplash: {fileID: 4526292040355790, guid: 644d1a1d2342a16449fa39b9a72014d3, type: 2}
   health: 2
   speed: 1
   playerViewDistance: 12
