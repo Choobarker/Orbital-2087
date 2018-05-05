@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class EarthHealth : MonoBehaviour {
 
-    public static float health = 500;
+    private float startingHealth = 500;
+    private float health;
     private float damageTaken = 10;
     public Transform Basic;
     public Transform earthExplosion;
 
+
+    private void Start()
+    {
+        health = startingHealth;
+    }
 
     void OnTriggerEnter2D(Collider2D Bullet)
     {
