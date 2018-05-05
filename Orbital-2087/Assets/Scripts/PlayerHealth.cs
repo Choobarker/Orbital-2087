@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour 
 {
-	public static float health = 100;
+	private float startingHealth = 100;
+    private float health;
+
     private float damageTaken = 10;
     public Transform Basic;
     public Transform explosion;
 	public Transform hitSplash;
+
+    private void Start()
+    {
+        health = startingHealth;
+    }
 
 
     void OnTriggerEnter2D(Collider2D Bullet)
