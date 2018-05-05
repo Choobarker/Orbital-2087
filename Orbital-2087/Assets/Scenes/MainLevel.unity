@@ -383,7 +383,6 @@ GameObject:
   - component: {fileID: 1526132561}
   - component: {fileID: 1526132560}
   - component: {fileID: 1526132559}
-  - component: {fileID: 1526132558}
   m_Layer: 5
   m_Name: MobileSingleStickControl
   m_TagString: Untagged
@@ -391,18 +390,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1526132558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400012, guid: 766355bc25e35264998fc33e7fb2743d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526132557}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1526132559
 MonoBehaviour:
   m_ObjectHideFlags: 0

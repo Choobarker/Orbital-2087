@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EarthHealth : MonoBehaviour 
-{
-    public static float health = 500;
+public class EarthHealth : MonoBehaviour {
+
+    private float startingHealth = 500;
+    private float health;
     private float damageTaken = 10;
 
     public Transform Basic;
     public Transform earthExplosion;
     public Transform hitSplash;
 
+
+    private void Start()
+    {
+        health = startingHealth;
+    }
 
     void OnTriggerEnter2D(Collider2D Bullet)
     {        
@@ -58,10 +64,6 @@ public class EarthHealth : MonoBehaviour
     IEnumerator Waiting() {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Destroy(this.gameObject);
-        
+        Destroy(this.gameObject);        
     }
-
-    
-
 }
