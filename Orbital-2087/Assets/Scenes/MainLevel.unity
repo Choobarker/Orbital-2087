@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 871861304}
   - component: {fileID: 871861306}
   - component: {fileID: 871861307}
+  - component: {fileID: 871861308}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -373,6 +374,20 @@ MonoBehaviour:
   projectile: {fileID: 1298290165926048, guid: ea07ba8c75781054a8070cdf3cec9943, type: 2}
   projectileSpawn: {fileID: 1611069147}
   fireRate: 0.25
+--- !u!114 &871861308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 871861303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ed798884b380e468496b10147914d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Basic: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9, type: 2}
+  explosion: {fileID: 4538704813663956, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
+  hitSplash: {fileID: 4526292040355790, guid: 644d1a1d2342a16449fa39b9a72014d3, type: 2}
 --- !u!1 &1526132557
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +659,7 @@ Prefab:
     - target: {fileID: 114627715054764442, guid: 4a3be68bf1d116f40948b89cba2e6e8d,
         type: 2}
       propertyPath: hitSplash
+      value: 
       objectReference: {fileID: 4526292040355790, guid: 644d1a1d2342a16449fa39b9a72014d3,
         type: 2}
     m_RemovedComponents: []
