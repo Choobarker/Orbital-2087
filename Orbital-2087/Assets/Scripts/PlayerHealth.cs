@@ -3,37 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EarthHealth : MonoBehaviour 
+public class PlayerHealth : MonoBehaviour 
 {
-    public static float health = 500;
+	public static float health = 100;
     private float damageTaken = 10;
-
     public Transform Basic;
-    public Transform earthExplosion;
-    public Transform hitSplash;
+    public Transform explosion;
+	public Transform hitSplash;
 
 
     void OnTriggerEnter2D(Collider2D Bullet)
-    {        
-        Destroy(Instantiate(hitSplash, Bullet.transform.position, Bullet.transform.rotation).gameObject, 2);
+    {
+		Destroy(Instantiate(hitSplash, Bullet.transform.position, Bullet.transform.rotation).gameObject, 2);
         Destroy(Bullet.gameObject);
         
         DamageTaken(Bullet);
 
-        
-
         if(!CheckHealth())
         {
-            DestroyEarth();
+            DestroyPlayer();
             StartCoroutine("Waiting");
-        }        
+        }
+        
     }
 
     void DamageTaken(Collider2D weaponType) 
-    {
-        
+	{        
         health = health - damageTaken;
-        Debug.Log("Earth Health: " + health);
+        Debug.Log("Player Health: " + health);
     }
 
     bool CheckHealth()
@@ -49,19 +46,16 @@ public class EarthHealth : MonoBehaviour
         return isAlive;
     }
 
-    void DestroyEarth()
+    void DestroyPlayer()
     {
-        Destroy(Instantiate(earthExplosion, new Vector3(0, 0, 0), transform.rotation).gameObject, 2);
+        Destroy(Instantiate(explosion, transform.position, transform.rotation).gameObject, 2);
         gameObject.GetComponent<Renderer>().enabled = false;
     }
 
-    IEnumerator Waiting() {
+    IEnumerator Waiting() 
+	{
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Destroy(this.gameObject);
-        
+        Destroy(this.gameObject);        
     }
-
-    
-
 }

@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	public Transform bulletProjectile;
 	public Transform explosion;
+	public Transform hitSplash;
 	
 	public float health = 2f;
 	public float speed;
@@ -89,6 +90,7 @@ public class EnemyBehaviour : MonoBehaviour {
         //checks if it is colliding with a shot from the player
         if (other.tag.Equals("Shot") == true)
         {
+			Destroy(Instantiate(hitSplash, other.transform.position, other.transform.rotation).gameObject, 2);
             Destroy(other.gameObject);
             TakeDamage(1f);
         }        
