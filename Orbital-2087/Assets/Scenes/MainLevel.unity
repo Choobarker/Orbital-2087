@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3dc214c701582408949edbc1dd5a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoystickControl: 1
+  playerJoystickControl: 0
   speed: 4
   radius: 3
   earth: {fileID: 1877509434}
@@ -947,6 +947,11 @@ Prefab:
       value: 
       objectReference: {fileID: 4526292040355790, guid: 644d1a1d2342a16449fa39b9a72014d3,
         type: 2}
+    - target: {fileID: 114827883296512636, guid: 4a3be68bf1d116f40948b89cba2e6e8d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
   m_IsPrefabParent: 0
