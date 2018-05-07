@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using NUnit.Framework;
 
-public class ShootProjectileTest 
+public class ShootProjectileTest : MonoBehaviour
 {
-    float lifeTime = 4.0f;
+    GameObject shot;
 
     [Test]
     public void DestroyShotsTest()
     {
-        //checks that the shots aren't getting destroyed
-        Assert.AreEqual(4.0f, lifeTime);
+        ShootProjectile sp = new ShootProjectile();
+        shot = sp.CreateShot();
+        StartCoroutine("Waiting");
+    }
+
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(2);
+        Assert.IsNotNull(shot);
+        yield return new WaitForSeconds(2);
+        Assert.IsNull(shot);
     }
 }

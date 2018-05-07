@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 392517930}
   - component: {fileID: 392517929}
   m_Layer: 0
-  m_Name: spawn_outline
+  m_Name: SpawnOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

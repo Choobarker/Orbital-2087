@@ -10,13 +10,13 @@ public class MoveProjectile : MonoBehaviour
     void Start()
 	{
 		rb = (Rigidbody)GetComponent (typeof(Rigidbody));
-        rb.velocity = transform.up * speed;
-        DestroyShots();
+        rb.velocity = transform.up * speed; // move the shot in a straight line
+        DestroyShots(4f); // destroys shots after 4 seconds of being fired
 	}
 
-    //destroys the fired shots after 4 seconds as they will have exited the game area
-    void DestroyShots()
+    //destroys the fired shots after a specified lifetime
+    void DestroyShots(float lifeTime)
     {
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, lifeTime);
     }
 }

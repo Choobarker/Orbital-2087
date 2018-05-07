@@ -14,7 +14,13 @@ public class ShootProjectile : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+            CreateShot();
         }
+    }
+
+    public GameObject CreateShot()
+    {
+        GameObject shot = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation) as GameObject;
+        return shot;
     }
 }
