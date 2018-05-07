@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     void DamageTaken(Collider2D weaponType) 
 	{        
-        health = health - damageTaken;
+        health -= damageTaken;
     }
 
     bool CheckHealth()

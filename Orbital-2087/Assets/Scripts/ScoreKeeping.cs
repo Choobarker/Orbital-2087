@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreKeeping : MonoBehaviour {
-
+public class ScoreKeeping : MonoBehaviour
+{
     public static int ScoreValue = 0;
     Text Score;
     
