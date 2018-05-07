@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using UnityEditor;
-using UnityEngine.TestTools;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using NUnit.Framework;
-using System.Collections;
 
-public class AlienShootingTest {
-
+public class AlienShootingTest 
+{
 	[Test]
     public void DamageTest()
     {
@@ -17,6 +16,4 @@ public class AlienShootingTest {
 
         Assert.AreEqual(startHealth, newHealth + earthHealth.damageTaken);
     }
-
-
 }
