@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class EarthHealth : MonoBehaviour 
 {
-    private float startingHealth = 500;
-    private float health;
-    private float damageTaken = 10;
+    public float startingHealth = 500;
+    public float health;
+    public float damageTaken = 10;
 
     public Transform Basic;
     public Transform earthExplosion;
@@ -32,7 +32,7 @@ public class EarthHealth : MonoBehaviour
         }        
     }
 
-    void DamageTaken(Collider2D weaponType) 
+    public void DamageTaken(Collider2D weaponType) 
     {        
         health = health - damageTaken;
     }
