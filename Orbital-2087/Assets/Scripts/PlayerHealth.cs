@@ -7,8 +7,8 @@ public class PlayerHealth : MonoBehaviour
 {
 	private float startingHealth = 100;
     private float health;
-
     private float damageTaken = 10;
+
     public Transform Basic;
     public Transform explosion;
 	public Transform hitSplash;
@@ -18,10 +18,8 @@ public class PlayerHealth : MonoBehaviour
         health = startingHealth;
     }
 
-
     void OnTriggerEnter2D(Collider2D Bullet)
     {
-		Debug.Log("taking hits");
 		Destroy(Instantiate(hitSplash, Bullet.transform.position, Bullet.transform.rotation).gameObject, 2);
 		DamageTaken(Bullet);
         Destroy(Bullet.gameObject);
@@ -30,14 +28,12 @@ public class PlayerHealth : MonoBehaviour
         {
             DestroyPlayer();
             StartCoroutine("Waiting");
-        }
-        
+        }        
     }
 
     void DamageTaken(Collider2D weaponType) 
 	{        
         health = health - damageTaken;
-        Debug.Log("Player Health: " + health);
     }
 
     bool CheckHealth()
@@ -59,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
         gameObject.GetComponent<Renderer>().enabled = false;
     }
 
-    IEnumerator Waiting() 
+    IEnumerator Waiting()
 	{
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

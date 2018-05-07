@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveSpawner : MonoBehaviour {
-
+public class WaveSpawner : MonoBehaviour 
+{
 	// ***** Debugging Tools *****
 
 	// Spawn an alien at each spawn point on creation
 	// also disables regular wave spawning
-	public bool testSpawns = true;
+	public bool testSpawns = false;
 
 	// Transform of the enenmy that will be spawned 
 	public Transform testEnemy;
@@ -319,5 +319,4 @@ public class WaveSpawner : MonoBehaviour {
 
 		return true;
 	}
-
 }

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float radius = 3;
     private float moveVar;
+
     public Transform earth;
 
     public Vector3 getNextLocation(float moveVar)
@@ -17,8 +18,10 @@ public class PlayerMovement : MonoBehaviour
         float y = Mathf.Cos(moveVar) * radius;
         float z = 0f;
         Vector3 move = new Vector3(x, y, z);
+        
         return move;
     }
+
     private void FixedUpdate()
     {
         //Controls player movement

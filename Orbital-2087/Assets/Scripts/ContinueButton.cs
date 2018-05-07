@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ContinueButton : MonoBehaviour {
-
+public class ContinueButton : MonoBehaviour 
+{
     public void playGame()
     {
         SceneManager.LoadScene(1);
-        //EarthHealth.health = 500;
     }
 }

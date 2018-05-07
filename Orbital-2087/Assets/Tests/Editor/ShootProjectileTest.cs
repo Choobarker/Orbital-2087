@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NUnit.Framework;
 
-public class ShootProjectileTest : MonoBehaviour
+public class ShootProjectileTest 
 {
     float lifeTime = 4.0f;
 

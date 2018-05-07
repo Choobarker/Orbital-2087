@@ -113,13 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   damage: 10
+  effectSpawnRate: 0.55
   whatToHit:
     serializedVersion: 2
     m_Bits: 4294966728
-  BulletTrailPrefab: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9,
-    type: 2}
+  bullet: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9, type: 2}
   earth: {fileID: 4376929303876616, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
-  effectSpawnRate: 0.55
 --- !u!114 &114682236554228468
 MonoBehaviour:
   m_ObjectHideFlags: 1

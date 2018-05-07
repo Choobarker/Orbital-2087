@@ -11,15 +11,13 @@ public class EnemyBehaviour : MonoBehaviour {
 	public float health = 2f;
 	public float speed;
 	public float playerViewDistance;
-
-	private bool alive = false;
-	private bool inPosition = false;
-	
 	private float moveTime;
-	private float timeMoved = 0f;
-	
+	private float timeMoved = 0f;	
 	public float minMovePercent = 10;
 	public float maxMovePercent = 25;
+
+	private bool alive = false;
+	private bool inPosition = false;	
 
 	private Vector3 direction;
 	
@@ -63,17 +61,11 @@ public class EnemyBehaviour : MonoBehaviour {
 		moveTime = Random.Range(minMovePercent / 10, maxMovePercent / 10) / speed;
 	}
 
-    //void OnMouseDown()
-    //{
-    //    TakeDamage(2f);
-    //}
-
     void TakeDamage(float damage)
     {
         health -= damage;
 
         CheckHealth();
-        //Debug.Log(health);
     }
 
     void CheckHealth()

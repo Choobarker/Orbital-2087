@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EarthHealth : MonoBehaviour {
-
+public class EarthHealth : MonoBehaviour 
+{
     private float startingHealth = 500;
     private float health;
     private float damageTaken = 10;
@@ -12,7 +12,6 @@ public class EarthHealth : MonoBehaviour {
     public Transform Basic;
     public Transform earthExplosion;
     public Transform hitSplash;
-
 
     private void Start()
     {
@@ -24,9 +23,7 @@ public class EarthHealth : MonoBehaviour {
         Destroy(Instantiate(hitSplash, Bullet.transform.position, Bullet.transform.rotation).gameObject, 2);
         Destroy(Bullet.gameObject);
         
-        DamageTaken(Bullet);
-
-        
+        DamageTaken(Bullet);   
 
         if(!CheckHealth())
         {
@@ -36,10 +33,8 @@ public class EarthHealth : MonoBehaviour {
     }
 
     void DamageTaken(Collider2D weaponType) 
-    {
-        
+    {        
         health = health - damageTaken;
-        Debug.Log("Earth Health: " + health);
     }
 
     bool CheckHealth()
@@ -61,7 +56,8 @@ public class EarthHealth : MonoBehaviour {
         gameObject.GetComponent<Renderer>().enabled = false;
     }
 
-    IEnumerator Waiting() {
+    IEnumerator Waiting() 
+    {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Destroy(this.gameObject);        

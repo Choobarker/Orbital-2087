@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NUnit.Framework;
 
-public class PlayerMovementTest
-{
+public class PlayerMovementTest {
     [Test]
     public void MovementTest()
     {
