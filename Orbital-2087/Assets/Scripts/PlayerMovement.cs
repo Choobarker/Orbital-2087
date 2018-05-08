@@ -28,10 +28,12 @@ public class PlayerMovement : MonoBehaviour
         if (playerJoystickControl)
         {
             moveVar += CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * speed; //Joystick controller
+            moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller. TEMPORARY
+
         }
         else if (!playerJoystickControl)
         {
-            moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
+            //moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
             moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed/3.0f; //RA Remove inputgetaxis when building final android ver.
         }
 
