@@ -14,11 +14,11 @@ public class EnemyBehaviour : MonoBehaviour
 	public float playerViewDistance;
 	private float moveTime;
 	private float timeMoved = 0f;	
-	public float minMovePercent = 10;
-	public float maxMovePercent = 25;
+	private float minMovePercent = 10;
+	private float maxMovePercent = 50;
 
 	private bool alive = false;
-	private bool inPosition = false;	
+	private bool inPosition = false;
 
 	private Vector3 direction;
 	
@@ -59,7 +59,9 @@ public class EnemyBehaviour : MonoBehaviour
 
 	void SetMovementTime()
 	{
-		moveTime = Random.Range(minMovePercent / 10, maxMovePercent / 10) / speed;
+		Debug.Log(minMovePercent + " " + maxMovePercent);
+		moveTime = Random.Range(minMovePercent / 10, maxMovePercent / 10);
+		Debug.Log(moveTime);
 	}
 
     void TakeDamage(float damage)
