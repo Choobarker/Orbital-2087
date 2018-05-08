@@ -59,7 +59,6 @@ public class EnemyBehaviour : MonoBehaviour
 
 	void SetMovementTime()
 	{
-		Debug.Log(minMovePercent + " " + maxMovePercent);
 		moveTime = Random.Range(minMovePercent / 10, maxMovePercent / 10);
 	}
 
