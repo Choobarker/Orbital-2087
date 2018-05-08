@@ -61,7 +61,6 @@ public class EnemyBehaviour : MonoBehaviour
 	{
 		Debug.Log(minMovePercent + " " + maxMovePercent);
 		moveTime = Random.Range(minMovePercent / 10, maxMovePercent / 10);
-		Debug.Log(moveTime);
 	}
 
     void TakeDamage(float damage)
