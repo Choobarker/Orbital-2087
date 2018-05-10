@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour 
 {
-	private float startingHealth = 100;
-    private float health;
+	public const float STARTING_HEALTH = 100;
+    public static float health;
     private float damageTaken = 10;
 
     public Transform Basic;
@@ -15,8 +15,26 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        health = startingHealth;
+        health = STARTING_HEALTH;
     }
+
+    //adds a specified amount of health to the player
+    public void HealPlayer(float amount)
+    {
+        health += amount;
+
+        //ensures that the players health cannot exceed 100
+        if (health >= 100)
+        {
+            health = STARTING_HEALTH;
+        }
+    }
+
+    //just for testing that healing is working and also displaying
+    //private void OnMouseDown()
+    //{
+    //    HealPlayer(10f);
+    //}
 
     void OnTriggerEnter2D(Collider2D Bullet)
     {
