@@ -15,5 +15,19 @@ public class DisplayPlayerHealth : MonoBehaviour
     private void Update()
     {
         healthBox.text = "HEALTH: " + PlayerHealth.health;
+        ChangeTextColour();
+    }
+
+    //changes the colour of the text to help alert the player of their current health
+    public void ChangeTextColour()
+    {
+        if (PlayerHealth.health <= 50)
+        {
+            healthBox.color = Color.yellow;
+            if (PlayerHealth.health <= 25)
+            {
+                healthBox.color = Color.red;
+            }           
+        }
     }
 }
