@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4419321353107408}
   - component: {fileID: 212103173689567468}
-  - component: {fileID: 114260456323677836}
+  - component: {fileID: 114509379536455608}
   - component: {fileID: 60272251139302884}
   m_Layer: 0
   m_Name: ShieldBoost
@@ -89,7 +89,7 @@ PolygonCollider2D:
       - {x: 0.17, y: -0.39999998}
       - {x: 0.22, y: -0.38}
       - {x: 0.32999998, y: 0}
---- !u!114 &114260456323677836
+--- !u!114 &114509379536455608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1810128410224634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e2ef3a3d04c334409d38f62407d6d5d, type: 3}
+  m_Script: {fileID: 11500000, guid: dfdaf2c60a1f4924b87f47be2a3004c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212103173689567468

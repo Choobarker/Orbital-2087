@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class FireRateBoost : MonoBehaviour 
 {
-    private float duration = 5f;
-    GameObject player;
+    private const float DURATION = 10f;
+    private const float MULTIPLIER = 2;
+
     ShootProjectile playerWeapon;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerWeapon = player.GetComponent<ShootProjectile>();
+        playerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<ShootProjectile>();
     }
 
-    void OnMouseDown()
+    public void Activate()
     {
-        playerWeapon.BoostFireRate(1f, duration);
+        playerWeapon.ActivateFireRateBoost(DURATION, MULTIPLIER);
     }
 }

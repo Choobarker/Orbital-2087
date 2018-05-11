@@ -6,9 +6,13 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerMovement : MonoBehaviour
 {
     public bool playerJoystickControl;
+    public bool speedBoostActive = false;
+
     public float speed;
     public float radius = 3;
     private float moveVar;
+    private float boostDurationLeft = 0;
+    private float boostMultiplier = 0;
 
     public Transform earth;
 
@@ -24,6 +28,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(speedBoostActive)
+        {
+            boostDurationLeft -= Time.deltaTime;
+
+            if(boostDurationLeft <= 0)
+            {
+                speedBoostActive = false;
+                speed /= boostMultiplier;
+            }
+        }
+        
         //Controls player movement
         if (playerJoystickControl)
         {
@@ -46,5 +61,13 @@ public class PlayerMovement : MonoBehaviour
             float rotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 90; //+90 or the sprite doesn't face outwards
             this.transform.eulerAngles = new Vector3(0, 0, rotation);
         }
+    }
+
+    public void ActivateSpeedBoost(float duration, float boostMultiplier)
+    {
+        speedBoostActive = true;
+        speed *= boostMultiplier;
+        this.boostMultiplier = boostMultiplier;
+        boostDurationLeft = duration + Time.deltaTime;
     }
 }

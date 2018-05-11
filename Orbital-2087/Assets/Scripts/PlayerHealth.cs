@@ -5,16 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour 
 {
-	public const float STARTING_HEALTH = 100;
+	private const float STARTING_HEALTH = 100;
+
+    private bool shieldActive = false;
 
     private float health;
     private float damageTaken = 10;
-
-    private bool shieldActive = false;
+    private float shieldDurationLeft = 0;    
 
     public Transform Basic;
     public Transform explosion;
 	public Transform hitSplash;
+
+    private SpriteRenderer spriteRenderer;
+    public Sprite ship;
+    public Sprite shipShielded;
 
     private DisplayPlayerHealth healthDisplay;
 
@@ -23,6 +28,29 @@ public class PlayerHealth : MonoBehaviour
         health = STARTING_HEALTH;
         healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
         healthDisplay.UpdateText(health);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        if(shieldActive)
+        {
+            shieldDurationLeft -= Time.deltaTime;
+
+            if(shieldDurationLeft <= 0)
+            {
+                shieldActive = false;
+                spriteRenderer.sprite = ship;
+            }
+        }
+    }
+
+    public void ActivateShield(float duration)
+    {
+        shieldActive = true;
+        shieldDurationLeft = duration + Time.deltaTime;
+        spriteRenderer.sprite = shipShielded;
     }
 
     //adds a specified amount of health to the player
@@ -35,17 +63,6 @@ public class PlayerHealth : MonoBehaviour
         {
             health = STARTING_HEALTH;
         }
-    }
-
-    //just for testing that healing is working and also displaying
-    //private void OnMouseDown()
-    //{
-    //    HealPlayer(10f);
-    //}
-
-    void OnTriggerEnter2D(Collider2D Bullet)
-    {
-		       
     }
 
     public void PlayerHit(string weaponName)

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerColliderController : MonoBehaviour
 {
-    public Transform hitSplash;
+    private bool shield = false;
 
-    public GameObject fireRateBoost, shieldBoost, speedBoost, projectile;
+    public Transform hitSplash;
+    public GameObject fireRateBoost, shieldBoost, speedBoost, projectile, player;
 
     private PlayerHealth playerHealth;
 
     void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -23,12 +25,19 @@ public class PlayerColliderController : MonoBehaviour
             
             playerHealth.PlayerHit(collider.name);
         }
+        else if(collider.name == fireRateBoost.name)
+        {
+            collider.GetComponent<FireRateBoost>().Activate();
+        }
+        else if(collider.name == shieldBoost.name)
+        {
+            collider.GetComponent<ShieldBoost>().Activate();
+        }
+        else if(collider.name == speedBoost.name)
+        {
+            collider.GetComponent<SpeedBoost>().Activate();
+        }
 
         Destroy(collider.gameObject);
-    }
-
-    private bool IsFireRateBoost(Collider2D collider)
-    {
-        return collider.name == fireRateBoost.name;
     }
 }

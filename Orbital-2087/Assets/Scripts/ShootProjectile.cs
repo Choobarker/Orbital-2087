@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour 
 {
-    public GameObject projectile;
-    public Transform projectileSpawn;
+    private bool fireRateBoostActive = false;
+
     public float fireRate;
     private float nextFire;
+    private float boostDurationLeft = 0;
+    private float boostMultiplier = 0;    
+
+    public GameObject projectile;
+    public Transform projectileSpawn;
 
     void Update()
     {
@@ -15,6 +20,17 @@ public class ShootProjectile : MonoBehaviour
         {
             nextFire = Time.time + 1 / fireRate;
             CreateShot();
+        }
+
+        if(fireRateBoostActive)
+        {
+            boostDurationLeft -= Time.deltaTime;
+
+            if(boostDurationLeft <= 0)
+            {
+                fireRateBoostActive = false;
+                fireRate /= boostMultiplier;
+            }
         }
     }
 
@@ -24,8 +40,11 @@ public class ShootProjectile : MonoBehaviour
         return shot;
     }
 
-    public void BoostFireRate(float boost, float time)
+    public void ActivateFireRateBoost(float duration, float boostMultiplier)
     {
-        fireRate += boost;
+        fireRateBoostActive = true;
+        fireRate *= boostMultiplier;
+        this.boostMultiplier = boostMultiplier;
+        boostDurationLeft = duration + Time.deltaTime;
     }
 }
