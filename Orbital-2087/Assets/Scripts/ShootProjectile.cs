@@ -13,7 +13,7 @@ public class ShootProjectile : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + 1 / fireRate;
             CreateShot();
         }
     }
@@ -22,5 +22,10 @@ public class ShootProjectile : MonoBehaviour
     {
         GameObject shot = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation) as GameObject;
         return shot;
+    }
+
+    public void BoostFireRate(float boost, float time)
+    {
+        fireRate += boost;
     }
 }
