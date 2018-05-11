@@ -6,16 +6,23 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour 
 {
 	public const float STARTING_HEALTH = 100;
-    public static float health;
+
+    private float health;
     private float damageTaken = 10;
+
+    private bool shieldActive = false;
 
     public Transform Basic;
     public Transform explosion;
 	public Transform hitSplash;
 
-    private void Start()
+    private DisplayPlayerHealth healthDisplay;
+
+    void Start()
     {
         health = STARTING_HEALTH;
+        healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
+        healthDisplay.UpdateText(health);
     }
 
     //adds a specified amount of health to the player
@@ -38,20 +45,33 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D Bullet)
     {
-		Destroy(Instantiate(hitSplash, Bullet.transform.position, Bullet.transform.rotation).gameObject, 2);
-		DamageTaken(Bullet);
-        Destroy(Bullet.gameObject);
-        
-        if(!CheckHealth())
-        {
-            DestroyPlayer();
-            StartCoroutine("Waiting");
-        }        
+		       
     }
 
-    void DamageTaken(Collider2D weaponType) 
-	{        
+    public void PlayerHit(string weaponName)
+    {
+        if(!shieldActive)
+        {
+            TakeDamage(weaponName);
+
+            if(!CheckHealth())
+            {
+                DestroyPlayer();
+                StartCoroutine("Waiting");
+            }
+        }
+    }
+
+    void TakeDamage(string weaponName)
+	{
         health -= damageTaken;
+
+        if(health < 0)
+        {
+            health = 0;
+        }
+
+        healthDisplay.UpdateText(health);
     }
 
     bool CheckHealth()

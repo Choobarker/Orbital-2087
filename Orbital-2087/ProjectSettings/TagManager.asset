@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Shot
+  - Projectile
+  - PlayerHealthDisplay
+  - EarthHealthDisplay
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,9 @@ public class AlienShootingTest
     {
         EarthHealth earthHealth = new EarthHealth();
 
-        float startHealth = EarthHealth.health;
-        earthHealth.DamageTaken(null);
-        float newHealth = EarthHealth.health;
+        float startHealth = earthHealth.GetHealth();
+        earthHealth.TakeDamage(null);
+        float newHealth = earthHealth.GetHealth();
 
         Assert.AreEqual(startHealth, newHealth + earthHealth.damageTaken);
     }

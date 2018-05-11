@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireRateBoost : MonoBehaviour 
 {
+    private float duration = 5f;
     GameObject player;
     ShootProjectile playerWeapon;
 
@@ -15,8 +16,6 @@ public class FireRateBoost : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("Clicked");
-
-        playerWeapon.BoostFireRate(1f, 0f);
+        playerWeapon.BoostFireRate(1f, duration);
     }
 }

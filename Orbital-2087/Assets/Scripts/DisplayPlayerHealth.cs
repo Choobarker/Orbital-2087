@@ -7,24 +7,39 @@ public class DisplayPlayerHealth : MonoBehaviour
 {
     public Text healthBox; // textbox to display the players health
 
-    private void Start()
+    void Start()
     {
         healthBox = GetComponent<Text>();
     }
 
+/*
     private void Update()
     {
-        healthBox.text = "HEALTH: " + PlayerHealth.health;
+        healthBox.text = "HEALTH: " + playerHealth.getHealth();
         ChangeTextColour();
+        Debug.Log("ahhh");
+    }
+*/
+
+    public void UpdateText(float health)
+    {
+        if(healthBox == null)
+        {
+            Start();
+        }
+
+        healthBox.text = "HEALTH: " + health;
+        UpdateTextColour(health);
     }
 
     //changes the colour of the text to help alert the player of their current health
-    public void ChangeTextColour()
+    void UpdateTextColour(float health)
     {
-        if (PlayerHealth.health <= 50)
+        if (health <= 50)
         {
             healthBox.color = Color.yellow;
-            if (PlayerHealth.health <= 25)
+
+            if (health <= 25)
             {
                 healthBox.color = Color.red;
             }           

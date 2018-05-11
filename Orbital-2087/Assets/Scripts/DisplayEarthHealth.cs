@@ -12,18 +12,31 @@ public class DisplayEarthHealth : MonoBehaviour
         healthBox = GetComponent<Text>();
     }
 
+/*
     private void Update()
     {
         healthBox.text = "EARTH: " + EarthHealth.health;
-        ChangeTextColour();
+        UpdateTextColour(3);
+    }
+*/
+
+    public void UpdateText(float health)
+    {
+        if(healthBox == null)
+        {
+            Start();
+        }
+
+        healthBox.text = "EARTH: " + health;
+        UpdateTextColour(health);
     }
 
-    public void ChangeTextColour()
+    public void UpdateTextColour(float health)
     {
-        if (EarthHealth.health <= 250)
+        if (health <= 250)
         {
             healthBox.color = Color.yellow;
-            if (EarthHealth.health <= 50)
+            if (health <= 50)
             {
                 healthBox.color = Color.red;
             }
