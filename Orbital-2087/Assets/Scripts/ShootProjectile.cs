@@ -42,9 +42,16 @@ public class ShootProjectile : MonoBehaviour
 
     public void ActivateFireRateBoost(float duration, float boostMultiplier)
     {
-        fireRateBoostActive = true;
-        fireRate *= boostMultiplier;
-        this.boostMultiplier = boostMultiplier;
-        boostDurationLeft = duration + Time.deltaTime;
+        if(!fireRateBoostActive)
+        {
+            fireRateBoostActive = true;
+            fireRate *= boostMultiplier;
+            this.boostMultiplier = boostMultiplier;
+            boostDurationLeft = duration + Time.deltaTime;
+        }
+        else
+        {
+            boostDurationLeft += duration;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class MoveTrail : MonoBehaviour
     public LayerMask whatToHit;    
 
     void Update () 
-    {        
+    {
         transform.Translate(Vector3.down * Time.timeScale / moveSpeed);
         Destroy(this.gameObject, 10);
     }

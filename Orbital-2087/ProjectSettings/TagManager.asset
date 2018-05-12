@@ -9,6 +9,10 @@ TagManager:
   - Projectile
   - PlayerHealthDisplay
   - EarthHealthDisplay
+  - Boost
+  - FireRateBoost
+  - SpeedBoost
+  - ShieldBoost
   layers:
   - Default
   - TransparentFX
@@ -21,7 +25,7 @@ TagManager:
   - Player
   - Aliens
   - Earth
-  - 
+  - Boosts
   - 
   - 
   - 

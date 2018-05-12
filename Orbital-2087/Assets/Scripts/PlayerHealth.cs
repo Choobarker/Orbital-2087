@@ -48,9 +48,16 @@ public class PlayerHealth : MonoBehaviour
 
     public void ActivateShield(float duration)
     {
-        shieldActive = true;
-        shieldDurationLeft = duration + Time.deltaTime;
-        spriteRenderer.sprite = shipShielded;
+        if(!shieldActive)
+        {
+            shieldActive = true;
+            shieldDurationLeft = duration + Time.deltaTime;
+            spriteRenderer.sprite = shipShielded;
+        }
+        else
+        {
+            shieldDurationLeft += duration;
+        }
     }
 
     //adds a specified amount of health to the player

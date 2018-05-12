@@ -65,9 +65,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void ActivateSpeedBoost(float duration, float boostMultiplier)
     {
-        speedBoostActive = true;
-        speed *= boostMultiplier;
-        this.boostMultiplier = boostMultiplier;
-        boostDurationLeft = duration + Time.deltaTime;
+        if(!speedBoostActive)
+        {
+            speedBoostActive = true;
+            speed *= boostMultiplier;
+            this.boostMultiplier = boostMultiplier;
+            boostDurationLeft = duration + Time.deltaTime;
+        }
+        else
+        {
+            boostDurationLeft += duration;
+        }        
     }
 }

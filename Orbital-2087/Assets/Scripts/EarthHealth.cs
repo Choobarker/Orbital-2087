@@ -27,18 +27,21 @@ public class EarthHealth : MonoBehaviour
         return health;
     }
 
-    void OnTriggerEnter2D(Collider2D Bullet)
+    void OnTriggerEnter2D(Collider2D collider)
     {        
-        Destroy(Instantiate(hitSplash, Bullet.transform.position, Bullet.transform.rotation).gameObject, 2);
-        Destroy(Bullet.gameObject);
-        
-        TakeDamage(Bullet);   
-
-        if(!CheckHealth())
+        if(collider.tag == "Projectile")
         {
-            DestroyEarth();
-            StartCoroutine("Waiting");
-        }        
+            TakeDamage(collider);   
+
+            if(!CheckHealth())
+            {
+                DestroyEarth();
+                StartCoroutine("Waiting");
+            }
+        }
+        
+        Destroy(Instantiate(hitSplash, collider.transform.position, collider.transform.rotation).gameObject, 2);
+        Destroy(collider.gameObject);        
     }
 
     public void TakeDamage(Collider2D weaponType) 

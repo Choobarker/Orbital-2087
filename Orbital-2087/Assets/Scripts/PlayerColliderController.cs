@@ -25,15 +25,15 @@ public class PlayerColliderController : MonoBehaviour
             
             playerHealth.PlayerHit(collider.name);
         }
-        else if(collider.name == fireRateBoost.name)
+        else if(collider.tag == fireRateBoost.tag)
         {
             collider.GetComponent<FireRateBoost>().Activate();
         }
-        else if(collider.name == shieldBoost.name)
+        else if(collider.tag == shieldBoost.tag)
         {
             collider.GetComponent<ShieldBoost>().Activate();
         }
-        else if(collider.name == speedBoost.name)
+        else if(collider.tag == speedBoost.tag)
         {
             collider.GetComponent<SpeedBoost>().Activate();
         }

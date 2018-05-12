@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    private const float BOOST_DROP_RATE = 20;
 
-	public Transform bulletProjectile;
-	public Transform explosion;
-	public Transform hitSplash;
-	
-	public float health = 2f;
+    public float health = 2f;
 	public float speed;
 	public float playerViewDistance;
 	private float moveTime;
@@ -17,8 +14,15 @@ public class EnemyBehaviour : MonoBehaviour
 	private float minMovePercent = 10;
 	private float maxMovePercent = 50;
 
-	private bool alive = false;
+    private bool alive = false;
 	private bool inPosition = false;
+
+	public Transform bulletProjectile;
+	public Transform explosion;
+	public Transform hitSplash;
+    public Transform fireRateBoost;
+    public Transform shieldBoost;
+    public Transform speedBoost;
 
 	private Vector3 direction;
 	
@@ -92,6 +96,33 @@ public class EnemyBehaviour : MonoBehaviour
 	void DestroyEnemy()
 	{
 		Destroy(Instantiate(explosion, transform.position, transform.rotation).gameObject, 2);
+        DropBoost();
 		Destroy(gameObject);
 	}
+
+    void DropBoost()
+    {
+        float result = Random.Range(1, 100);
+        if(result <= BOOST_DROP_RATE)
+        {
+            Transform drop = null;
+
+            result = Random.Range(1,100);
+            
+            if(result > 66)
+            {
+                drop = fireRateBoost;
+            }
+            else if(result > 33)
+            {
+                drop = shieldBoost;
+            }
+            else
+            {
+                drop = speedBoost;
+            }
+
+            Instantiate(drop, transform.position, transform.rotation);
+        }
+    }
 }
