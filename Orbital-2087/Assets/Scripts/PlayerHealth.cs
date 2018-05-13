@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour 
@@ -23,11 +24,15 @@ public class PlayerHealth : MonoBehaviour
 
     private DisplayPlayerHealth healthDisplay;
 
+    public Slider healthbar;
+
     void Start()
     {
         health = STARTING_HEALTH;
         healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
         healthDisplay.UpdateText(health);
+
+        healthbar.value = CalculateHealth();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -46,6 +51,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public float CalculateHealth()
+    {
+        return health / STARTING_HEALTH;
+    }
+
     public void ActivateShield(float duration)
     {
         if(!shieldActive)
@@ -60,12 +70,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    //adds a specified amount of health to the player
     public void HealPlayer(float amount)
     {
         health += amount;
 
-        //ensures that the players health cannot exceed 100
         if (health >= 100)
         {
             health = STARTING_HEALTH;
@@ -96,6 +104,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         healthDisplay.UpdateText(health);
+        healthbar.value = CalculateHealth();
     }
 
     bool CheckHealth()

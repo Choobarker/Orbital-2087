@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class EarthHealth : MonoBehaviour 
@@ -14,12 +15,19 @@ public class EarthHealth : MonoBehaviour
     public Transform hitSplash;
 
     private DisplayEarthHealth healthDisplay;
+    public Slider healthbar;
 
     private void Start()
     {
         health = STARTING_HEALTH;
         healthDisplay = GameObject.FindGameObjectWithTag("EarthHealthDisplay").GetComponent<DisplayEarthHealth>();
         healthDisplay.UpdateText(health);
+        healthbar.value = CalculateHealth();
+    }
+
+    public float CalculateHealth()
+    {
+        return health / STARTING_HEALTH;
     }
 
     public float GetHealth()
@@ -48,6 +56,7 @@ public class EarthHealth : MonoBehaviour
     {
         health -= damageTaken;
         healthDisplay.UpdateText(health);
+        healthbar.value = CalculateHealth();
     }
 
     bool CheckHealth()
