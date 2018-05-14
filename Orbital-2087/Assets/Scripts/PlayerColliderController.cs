@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerColliderController : MonoBehaviour
 {
-    private bool shield = false;
-
     public Transform hitSplash;
     public GameObject fireRateBoost, shieldBoost, speedBoost, projectile, player;
 

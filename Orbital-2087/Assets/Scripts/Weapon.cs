@@ -7,47 +7,35 @@ public class Weapon : MonoBehaviour
     
     public float fireRate = 1;
     public float damage = 10;
+    private float delayBeforeFirstShot = 2.5f;
     private float timeToFire = 0;
-    private float timeToSpawnEffect = 0;
-    public float effectSpawnRate = 10;
+    private float nextFire = 0;
 
     public LayerMask whatToHit;
     public Transform projectile;
     public Transform earth;
-    private Transform firepoint;
+    public Transform firepoint;
+
+    void Start()
+    {
+        nextFire += Time.time + delayBeforeFirstShot;
+    }
 	
 	void Update() 
     {
-        if (Time.time > timeToFire)
+        if (Time.time >= nextFire)
         {
-            firepoint = transform.Find("FirePoint");
-            if (firepoint == null)
-            {
-
-                Debug.LogError("No firePoint!");
-            }
-
-            timeToFire = Time.time + 1 / fireRate;
+            nextFire = Time.time + 1 / fireRate;
             Shoot();
         }
 	}
 
     void Shoot()
     {
-        Vector2 earthPosition = new Vector2(earth.position.x, earth.position.y);
-        Vector2 firePointPosition = new Vector2(firepoint.position.x, firepoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, earthPosition - firePointPosition, 100, whatToHit);
+        // Vector2 earthPosition = new Vector2(earth.position.x, earth.position.y);
+        // Vector2 firePointPosition = new Vector2(firepoint.position.x, firepoint.position.y);
+        // RaycastHit2D hit = Physics2D.Raycast(firePointPosition, earthPosition - firePointPosition, 100, whatToHit);
 
-        if (Time.time >= timeToSpawnEffect)
-        {
-            CreateBullet();
-            timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
-        }
+        Instantiate(projectile, firepoint.position, firepoint.rotation).GetComponent<ProjectileInfo>().SetDamage(damage);
     }
-
-    void CreateBullet()
-    {
-        Instantiate(projectile, firepoint.position, firepoint.rotation).GetComponent<ProjectileInfo>().SetDamage(damage);       
-    }
-
 }

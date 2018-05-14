@@ -10,14 +10,16 @@ public class ShootProjectile : MonoBehaviour
     private float nextFire;
     private float damage = 1;
     private float boostDurationLeft = 0;
-    private float boostMultiplier = 0;    
+    private float boostMultiplier = 0;
+
+    private bool weaponActive = true;
 
     public GameObject projectile;
     public Transform projectileSpawn;
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (Input.GetButton("Fire1") && Time.time > nextFire && weaponActive)
         {
             nextFire = Time.time + 1 / fireRate;
             CreateShot();
@@ -65,5 +67,10 @@ public class ShootProjectile : MonoBehaviour
     public float GetDamage()
     {
         return damage;
+    }
+    
+    public void setWeaponActive(bool active)
+    {
+        weaponActive = active;
     }
 }

@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1250640231413630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.901255, y: -3.6066275, z: 0}
+  m_LocalPosition: {x: -17.88, y: 4.88, z: 0}
   m_LocalScale: {x: 0.4695529, y: 0.4695529, z: 0.4695529}
   m_Children:
   - {fileID: 4105477013590054}
@@ -117,8 +117,9 @@ MonoBehaviour:
   whatToHit:
     serializedVersion: 2
     m_Bits: 4294966728
-  bullet: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9, type: 2}
+  projectile: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9, type: 2}
   earth: {fileID: 4376929303876616, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
+  firepoint: {fileID: 4105477013590054}
 --- !u!114 &114682236554228468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,11 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2801f7fb8d63e234da3d08689630230b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
   speed: 1
-  playerViewDistance: 12
-  bulletProjectile: {fileID: 4646469408289602, guid: ea07ba8c75781054a8070cdf3cec9943,
-    type: 2}
+  playerViewDistance: 17
   explosion: {fileID: 4538704813663956, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
   hitSplash: {fileID: 4526292040355790, guid: 644d1a1d2342a16449fa39b9a72014d3, type: 2}
   fireRateBoost: {fileID: 4072508032405400, guid: 958fcd1102179b544b2a75fddb604e14,

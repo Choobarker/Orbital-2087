@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     public Sprite shipShielded;
 
     private DisplayPlayerHealth healthDisplay;
+    private ShootProjectile playerWeapon;
 
     public Slider healthbar;
 
@@ -29,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health = STARTING_HEALTH;
         healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
+        playerWeapon = gameObject.GetComponent<ShootProjectile>();
         healthDisplay.UpdateText(health);
 
         healthbar.value = CalculateHealth();
@@ -81,7 +83,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayerHit(float damage)
     {
-        Debug.Log(damage);
         if(!shieldActive)
         {
             TakeDamage(damage);
@@ -122,6 +123,7 @@ public class PlayerHealth : MonoBehaviour
 
     void DestroyPlayer()
     {
+        playerWeapon.setWeaponActive(false);
         Destroy(Instantiate(explosion, transform.position, transform.rotation).gameObject, 2);
         gameObject.GetComponent<Renderer>().enabled = false;
     }

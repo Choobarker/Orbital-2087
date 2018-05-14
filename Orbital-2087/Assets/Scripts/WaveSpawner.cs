@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour
 	// also disables regular wave spawning
 	public bool testSpawns = false;
 
-	// Transform of the enenmy that will be spawned 
+	// Transform of the enemy that will be spawned 
 	public Transform testEnemy;
 
 	// ***** End Of Debugging Tools *****

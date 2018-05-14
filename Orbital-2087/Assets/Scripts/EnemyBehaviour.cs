@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     private const float BOOST_DROP_RATE = 20;
-
-    private float health = 2f;
+    
 	public float speed = 1;
 	public float playerViewDistance = 12;
+    private float health = 2f;
 	private float moveTime;
 	private float timeMoved = 0f;	
 	private float minMovePercent = 10;
