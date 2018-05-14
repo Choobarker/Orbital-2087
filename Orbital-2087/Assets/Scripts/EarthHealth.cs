@@ -54,6 +54,12 @@ public class EarthHealth : MonoBehaviour
     public void TakeDamage(float damage) 
     {
         health -= damage;
+
+        if(health < 0)
+        {
+            health = 0;
+        }
+
         healthDisplay.UpdateText(health);
         healthbar.value = CalculateHealth();
     }
