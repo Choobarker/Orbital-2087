@@ -7,8 +7,8 @@ public class EnemyBehaviour : MonoBehaviour
     private const float BOOST_DROP_RATE = 20;
 
     private float health = 2f;
-	private float speed;
-	private float playerViewDistance;
+	public float speed = 1;
+	public float playerViewDistance = 12;
 	private float moveTime;
 	private float timeMoved = 0f;	
 	private float minMovePercent = 10;
