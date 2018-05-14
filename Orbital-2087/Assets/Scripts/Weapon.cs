@@ -8,7 +8,6 @@ public class Weapon : MonoBehaviour
     public float fireRate = 1;
     public float damage = 10;
     private float delayBeforeFirstShot = 2.5f;
-    private float timeToFire = 0;
     private float nextFire = 0;
 
     public LayerMask whatToHit;
