@@ -6,13 +6,13 @@ public class Weapon : MonoBehaviour
 {
     
     public float fireRate = 1;
-    public float damage = 10;    
+    public float damage = 10;
     private float timeToFire = 0;
     private float timeToSpawnEffect = 0;
     public float effectSpawnRate = 10;
 
     public LayerMask whatToHit;
-    public Transform bullet;
+    public Transform projectile;
     public Transform earth;
     private Transform firepoint;
 	
@@ -41,13 +41,13 @@ public class Weapon : MonoBehaviour
         if (Time.time >= timeToSpawnEffect)
         {
             CreateBullet();
-            timeToSpawnEffect = Time.time + 1/effectSpawnRate;
+            timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
         }
     }
 
     void CreateBullet()
     {
-        Instantiate(bullet, firepoint.position, firepoint.rotation);
+        Instantiate(projectile, firepoint.position, firepoint.rotation).GetComponent<ProjectileInfo>().SetDamage(damage);       
     }
 
 }

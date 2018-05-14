@@ -8,7 +8,6 @@ public class EarthHealth : MonoBehaviour
 {
     private float STARTING_HEALTH = 500;
     private float health;
-    public float damageTaken = 10;
 
     public Transform Basic;
     public Transform earthExplosion;
@@ -39,7 +38,7 @@ public class EarthHealth : MonoBehaviour
     {        
         if(collider.tag == "Projectile")
         {
-            TakeDamage(collider);   
+            TakeDamage(collider.GetComponent<ProjectileInfo>().GetDamage());   
 
             if(!CheckHealth())
             {
@@ -52,9 +51,9 @@ public class EarthHealth : MonoBehaviour
         Destroy(collider.gameObject);        
     }
 
-    public void TakeDamage(Collider2D weaponType) 
+    public void TakeDamage(float damage) 
     {
-        health -= damageTaken;
+        health -= damage;
         healthDisplay.UpdateText(health);
         healthbar.value = CalculateHealth();
     }

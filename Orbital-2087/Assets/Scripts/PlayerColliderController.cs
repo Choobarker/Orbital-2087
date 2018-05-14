@@ -23,7 +23,7 @@ public class PlayerColliderController : MonoBehaviour
         {
             Destroy(Instantiate(hitSplash, collider.transform.position, collider.transform.rotation).gameObject, 2);
             
-            playerHealth.PlayerHit(collider.name);
+            playerHealth.PlayerHit(collider.GetComponent<ProjectileInfo>().GetDamage());
         }
         else if(collider.tag == fireRateBoost.tag)
         {

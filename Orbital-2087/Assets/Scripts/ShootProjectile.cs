@@ -8,6 +8,7 @@ public class ShootProjectile : MonoBehaviour
 
     public float fireRate;
     private float nextFire;
+    private float damage = 1;
     private float boostDurationLeft = 0;
     private float boostMultiplier = 0;    
 
@@ -36,7 +37,8 @@ public class ShootProjectile : MonoBehaviour
 
     public GameObject CreateShot()
     {
-        GameObject shot = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation) as GameObject;
+        GameObject shot = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+        shot.GetComponent<ProjectileInfo>().SetDamage(damage);
         return shot;
     }
 
@@ -53,5 +55,15 @@ public class ShootProjectile : MonoBehaviour
         {
             boostDurationLeft += duration;
         }
+    }
+
+    public void UpgradeDamege(float increase)
+    {
+        damage += increase;
+    }
+
+    public float GetDamage()
+    {
+        return damage;
     }
 }

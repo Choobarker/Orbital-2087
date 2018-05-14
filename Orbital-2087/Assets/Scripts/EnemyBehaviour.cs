@@ -6,9 +6,9 @@ public class EnemyBehaviour : MonoBehaviour
 {
     private const float BOOST_DROP_RATE = 20;
 
-    public float health = 2f;
-	public float speed;
-	public float playerViewDistance;
+    private float health = 2f;
+	private float speed;
+	private float playerViewDistance;
 	private float moveTime;
 	private float timeMoved = 0f;	
 	private float minMovePercent = 10;
@@ -17,7 +17,6 @@ public class EnemyBehaviour : MonoBehaviour
     private bool alive = false;
 	private bool inPosition = false;
 
-	public Transform bulletProjectile;
 	public Transform explosion;
 	public Transform hitSplash;
     public Transform fireRateBoost;
@@ -82,15 +81,15 @@ public class EnemyBehaviour : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider collider)
     {
         //checks if it is colliding with a shot from the player
-        if (other.tag.Equals("Shot") == true)
+        if (collider.tag.Equals("Shot"))
         {
-			Destroy(Instantiate(hitSplash, other.transform.position, other.transform.rotation).gameObject, 2);
-            Destroy(other.gameObject);
-            TakeDamage(1f);
-        }        
+			Destroy(Instantiate(hitSplash, collider.transform.position, collider.transform.rotation).gameObject, 2);
+            TakeDamage(collider.GetComponent<ProjectileInfo>().GetDamage());
+            Destroy(collider.gameObject);            
+        }
     }
 
 	void DestroyEnemy()

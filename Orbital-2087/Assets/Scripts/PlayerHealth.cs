@@ -11,7 +11,6 @@ public class PlayerHealth : MonoBehaviour
     private bool shieldActive = false;
 
     private float health;
-    private float damageTaken = 10;
     private float shieldDurationLeft = 0;    
 
     public Transform Basic;
@@ -80,11 +79,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void PlayerHit(string weaponName)
+    public void PlayerHit(float damage)
     {
+        Debug.Log(damage);
         if(!shieldActive)
         {
-            TakeDamage(weaponName);
+            TakeDamage(damage);
 
             if(!CheckHealth())
             {
@@ -94,9 +94,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void TakeDamage(string weaponName)
+    void TakeDamage(float damage)
 	{
-        health -= damageTaken;
+        health -= damage;
 
         if(health < 0)
         {
