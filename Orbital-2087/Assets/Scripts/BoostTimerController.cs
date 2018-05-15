@@ -13,6 +13,13 @@ public class BoostTimerController : MonoBehaviour
     private float shieldDuration = 0;    
     private float speedDuration = 0;
 
+    void Start()
+    {
+        fireRateTimer.gameObject.SetActive(false);
+        shieldTimer.gameObject.SetActive(false);
+        speedTimer.gameObject.SetActive(false);
+    }
+
     public void SetFireRateTimer(float duration)
     {
         fireRateDuration = duration;
