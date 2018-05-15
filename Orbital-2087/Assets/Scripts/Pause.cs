@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-    public Button PauseButton;
     private bool gamePaused = false;
 
     void Start()
     {
-        Button pb = PauseButton.GetComponent<Button>();
-        pb.onClick.AddListener(TaskOnClick);
+        gameObject.GetComponent<Button>().onClick.AddListener(TaskOnClick);
     }
 
     void TaskOnClick()
