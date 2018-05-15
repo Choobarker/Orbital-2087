@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3dc214c701582408949edbc1dd5a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoystickControl: 0
+  playerJoystickControl: 1
   speedBoostActive: 0
   speed: 4
   radius: 6.3
