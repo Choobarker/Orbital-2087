@@ -27,16 +27,21 @@ public class BoostTimerController : MonoBehaviour
 
     public void SetShieldTimer(float duration)
     {
-        shieldDuration += duration;
+        shieldDuration = duration;
     }
 
     public void SetSpeedDuration(float duration)
     {
-        speedDuration += duration;
+        speedDuration = duration;
     }
 
     public void UpdateFireRateTimer(float timeLeft)
     {
+        if(timeLeft > fireRateDuration)
+        {
+            fireRateDuration = timeLeft;
+        }
+
         fireRateTimer.value = timeLeft / fireRateDuration;
 
         if(timeLeft <= 0)
@@ -52,6 +57,11 @@ public class BoostTimerController : MonoBehaviour
 
     public void UpdateShieldTimer(float timeLeft)
     {
+        if(timeLeft > shieldDuration)
+        {
+            shieldDuration = timeLeft;
+        }
+
         shieldTimer.value = timeLeft / shieldDuration;
 
         if(timeLeft <= 0)
@@ -68,6 +78,11 @@ public class BoostTimerController : MonoBehaviour
 
     public void UpdateSpeedTimer(float timeLeft)
     {
+        if(timeLeft > speedDuration)
+        {
+            speedDuration = timeLeft;
+        }
+
         speedTimer.value = timeLeft / speedDuration;
 
         if(timeLeft <= 0)
