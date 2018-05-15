@@ -27,19 +27,19 @@ public class DisplayEarthHealth : MonoBehaviour
             Start();
         }
 
-        healthBox.text = "EARTH: " + health;
-        UpdateTextColour(health);
+        healthBox.text = health + "/500";
+        //UpdateTextColour(health);
     }
 
-    public void UpdateTextColour(float health)
-    {
-        if (health <= 250)
-        {
-            healthBox.color = Color.yellow;
-            if (health <= 50)
-            {
-                healthBox.color = Color.red;
-            }
-        }
-    }
+    //public void UpdateTextColour(float health)
+    //{
+    //    if (health <= 250)
+    //    {
+    //        healthBox.color = Color.yellow;
+    //        if (health <= 50)
+    //        {
+    //            healthBox.color = Color.red;
+    //        }
+    //    }
+    //}
 }
