@@ -17,6 +17,13 @@ public class ShootProjectile : MonoBehaviour
     public GameObject projectile;
     public Transform projectileSpawn;
 
+    private BoostTimerController btc;
+
+    void Start()
+    {
+        btc = gameObject.GetComponent<BoostTimerController>();
+    }
+
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire && weaponActive)
@@ -34,6 +41,8 @@ public class ShootProjectile : MonoBehaviour
                 fireRateBoostActive = false;
                 fireRate /= boostMultiplier;
             }
+
+            btc.UpdateFireRateTimer(boostDurationLeft);
         }
     }
 
@@ -57,6 +66,8 @@ public class ShootProjectile : MonoBehaviour
         {
             boostDurationLeft += duration;
         }
+
+        btc.SetFireRateTimer(boostDurationLeft);
     }
 
     public void UpgradeDamege(float increase)

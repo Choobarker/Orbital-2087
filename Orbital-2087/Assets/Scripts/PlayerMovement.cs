@@ -16,6 +16,13 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform earth;
 
+    private BoostTimerController btc;
+
+    void Start()
+    {
+        btc = gameObject.GetComponent<BoostTimerController>();
+    }
+
     public Vector3 getNextLocation(float moveVar)
     {
         float x = Mathf.Sin(moveVar) * radius; //Used to make player rotate on the circular axis
@@ -37,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
                 speedBoostActive = false;
                 speed /= boostMultiplier;
             }
+
+            btc.UpdateSpeedTimer(boostDurationLeft);
         }
         
         //Controls player movement
@@ -75,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             boostDurationLeft += duration;
-        }        
+        }
+
+        btc.SetSpeedDuration(boostDurationLeft);     
     }
 }

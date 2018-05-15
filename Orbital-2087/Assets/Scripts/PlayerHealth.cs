@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private bool shieldActive = false;
 
     private float health;
-    private float shieldDurationLeft = 0;    
+    private float shieldDurationLeft = 0;
 
     public Transform Basic;
     public Transform explosion;
@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
 
     private DisplayPlayerHealth healthDisplay;
     private ShootProjectile playerWeapon;
+    private BoostTimerController btc;
 
     public Slider healthbar;
 
@@ -31,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         health = STARTING_HEALTH;
         healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
         playerWeapon = gameObject.GetComponent<ShootProjectile>();
+        btc = gameObject.GetComponent<BoostTimerController>();
         healthDisplay.UpdateText(health);
 
         healthbar.value = CalculateHealth();
@@ -49,6 +51,8 @@ public class PlayerHealth : MonoBehaviour
                 shieldActive = false;
                 spriteRenderer.sprite = ship;
             }
+
+            btc.UpdateShieldTimer(shieldDurationLeft);
         }
     }
 
@@ -69,6 +73,8 @@ public class PlayerHealth : MonoBehaviour
         {
             shieldDurationLeft += duration;
         }
+
+        btc.SetShieldTimer(shieldDurationLeft);
     }
 
     public void HealPlayer(float amount)
