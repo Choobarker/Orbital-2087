@@ -50,7 +50,10 @@ public class WaveSpawner : MonoBehaviour
 	public int numberOfSpawns;
 	private float distanceBetweenSpawns;
 	private float angleBetweenSpawns;
-	private float angleOnPerimeter;	
+	private float angleOnPerimeter;
+
+    private TextFade fade;
+
 
 	void Start()
 	{
@@ -60,17 +63,26 @@ public class WaveSpawner : MonoBehaviour
 
 	void Update()
 	{
-		if(state == SpawnState.WAITING)
+        fade = gameObject.GetComponent<TextFade>();
+        if (state == SpawnState.WAITING)
 		{
-			if(!EnemyIsAlive())
+
+            if (!EnemyIsAlive())
 			{
 				WaveCompleted();
-			}
+                WaveNotifier.waveNum += 1;
+                fade.FadeIn();
+            }
 			else
 			{
-				return;
+                if (!fade.isFaded)
+                {
+                    fade.FadeOut();
+                }
+                return;
 			}
-		}
+            
+        }
 
 		if(waveCountDown <= 0)
 		{
@@ -86,11 +98,11 @@ public class WaveSpawner : MonoBehaviour
 		{
 			waveCountDown -= Time.deltaTime;
 		}
-	}
+    }
 
 	void WaveCompleted()
 	{
-		state = SpawnState.COUNTING;
+        state = SpawnState.COUNTING;
 		waveCountDown = secondsBetweenWaves;
 
 		nextWave++;
