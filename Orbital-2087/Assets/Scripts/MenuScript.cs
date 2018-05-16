@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayScript : MonoBehaviour 
-{
-    public void playButton() 
+public class MenuScript : MonoBehaviour {
+
+    public void playButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
