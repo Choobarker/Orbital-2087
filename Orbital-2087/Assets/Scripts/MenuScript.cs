@@ -5,13 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
 
-    public void playButton()
+    public void PlayButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void continueButton()
+    public void ContinueButton()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public bool gamePaused = false;
+
+    public void PauseGame()
+    {    
+        if (!gamePaused)
+        {
+            Time.timeScale = 0;
+            gamePaused = true;
+        }
+        else if (gamePaused)
+        {
+            Time.timeScale = 1;
+            gamePaused = false;
+        }
     }
 }
