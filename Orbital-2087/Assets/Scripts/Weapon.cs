@@ -34,7 +34,6 @@ public class Weapon : MonoBehaviour
         // Vector2 firePointPosition = new Vector2(firepoint.position.x, firepoint.position.y);
         // RaycastHit2D hit = Physics2D.Raycast(firePointPosition, earthPosition - firePointPosition, 100, whatToHit);
 
-        Debug.Log(damage);
         Instantiate(projectile, firepoint.position, firepoint.rotation).GetComponent<ProjectileInfo>().SetDamage(damage);
     }
 }
