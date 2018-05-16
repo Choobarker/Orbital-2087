@@ -5,7 +5,6 @@ using UnityEngine;
 public class MoveTrail : MonoBehaviour 
 {
     public int moveSpeed;
-    public float damage = 10;
 
     public Transform firePoint;
     public Transform earth;
