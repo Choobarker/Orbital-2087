@@ -35,7 +35,7 @@ public class PlayerMovementTest {
 
         for (int i = 0; i < testData.GetLength(0); ++i)
         {
-            Vector3 testAnswer = pm.getNextLocation(testPos[i]);
+            Vector3 testAnswer = pm.GetNextLocation(testPos[i]);
 
             Assert.AreEqual(testAnswer.x, testData[i].x, 0.06);
             Assert.AreEqual(testAnswer.y, testData[i].y, 0.06);
