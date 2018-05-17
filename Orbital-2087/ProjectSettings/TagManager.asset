@@ -13,6 +13,8 @@ TagManager:
   - FireRateBoost
   - SpeedBoost
   - ShieldBoost
+  - WaveCounter
+  - UpgradeMenu
   layers:
   - Default
   - TransparentFX
