@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 9966041}
   - component: {fileID: 9966040}
   - component: {fileID: 9966042}
+  - component: {fileID: 9966043}
   m_Layer: 5
   m_Name: UpgradeMenu
   m_TagString: UpgradeMenu
@@ -197,10 +198,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 9966038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d8a7cb67d0b79342b3be2c5872a64b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 9966038}
+--- !u!114 &9966043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 9966038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8a7cb67d0b79342b3be2c5872a64b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &15992110
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +978,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9966042}
+      - m_Target: {fileID: 871861308}
         m_MethodName: HealPlayer
         m_Mode: 4
         m_Arguments:
@@ -2288,7 +2300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1181c5d8b36224f47b4e3ce2b8f7621e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 2
   projectile: {fileID: 1298290165926048, guid: ea07ba8c75781054a8070cdf3cec9943, type: 2}
   projectileSpawn: {fileID: 1611069147}
 --- !u!114 &871861308
@@ -3012,8 +3023,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9966042}
-        m_MethodName: UpgradeDamage
+      - m_Target: {fileID: 9966038}
+        m_MethodName: 
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

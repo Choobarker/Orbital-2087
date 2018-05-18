@@ -22,7 +22,6 @@ public class UpgradeInterface : MonoBehaviour
     PlayerHealth playerHealth;
     ShootProjectile playerWeapon;
     ScoreKeeping scoreKeeping;
-    public GameObject menu;
 
     void Start()
     {
@@ -31,18 +30,6 @@ public class UpgradeInterface : MonoBehaviour
         playerWeapon = player.GetComponent<ShootProjectile>();
         scoreKeeping = player.GetComponent<ScoreKeeping>();
         CalculateLevels();
-    }
-
-    public void CloseMenu()
-    {
-        menu.SetActive(false);
-        Time.timeScale = 1.0f;
-    }
-
-    public void OpenMenu()
-    {
-        menu.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public float GetPlayerCurrency()
