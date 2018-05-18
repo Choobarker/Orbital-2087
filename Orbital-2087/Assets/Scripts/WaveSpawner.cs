@@ -75,19 +75,16 @@ public class WaveSpawner : MonoBehaviour
 			{
 				WaveCompleted();
                 WaveNotifier.waveNum += 1;
+            
                 fade.FadeIn();
-
-                upgradeMenu.OpenMenu();
             }
-			else
+            else
 			{
-                if (!fade.isFaded)
-                {
-                    fade.FadeOut();
-                }
                 return;
 			}
+
             
+
         }
 
 		if(waveCountDown <= 0)
@@ -136,6 +133,7 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave(Wave wave)
 	{
 		state = SpawnState.SPAWNING;
+        fade.FadeOut();
 
 		// spawnPoints list is an array of possible spawns based on
 		// the range of the wave

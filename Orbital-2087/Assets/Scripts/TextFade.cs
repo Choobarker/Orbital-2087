@@ -15,13 +15,13 @@ public class TextFade : MonoBehaviour {
 
     public void FadeIn()
     {
-        StartCoroutine(FadeCanvasGroup(uiElement, uiElement.alpha, 1));
         isFaded = false;
+        StartCoroutine(FadeCanvasGroup(uiElement, uiElement.alpha, 1));
     }
     public void FadeOut()
     {
-        StartCoroutine(FadeCanvasGroup(uiElement, uiElement.alpha, 0));
         isFaded = true;
+        StartCoroutine(FadeCanvasGroup(uiElement, uiElement.alpha, 0));
     }
 
     public IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float lerpTime = 1f)

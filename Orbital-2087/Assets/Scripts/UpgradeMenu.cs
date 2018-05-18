@@ -5,13 +5,15 @@ using UnityEngine;
 public class UpgradeMenu : MonoBehaviour
 {
     public GameObject menu;
+    private TextFade fade = new TextFade();
 
     public void CloseMenu()
     {
         menu.SetActive(false);
-
+        
         //resume gameplay after the upgrade menu has been closed        
         Time.timeScale = 1.0f;
+        
     }
 
     public void OpenMenu()
