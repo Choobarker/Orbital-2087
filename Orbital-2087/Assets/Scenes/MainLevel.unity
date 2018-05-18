@@ -2168,6 +2168,7 @@ GameObject:
   - component: {fileID: 871861308}
   - component: {fileID: 871861311}
   - component: {fileID: 871861312}
+  - component: {fileID: 871861313}
   - component: {fileID: 871861310}
   - component: {fileID: 871861309}
   m_Layer: 8
@@ -2599,6 +2600,18 @@ MonoBehaviour:
   fireRateTimer: {fileID: 632757779}
   shieldTimer: {fileID: 1606433611}
   speedTimer: {fileID: 1195482133}
+--- !u!114 &871861313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 871861303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cb7870f1a6fcd44be44d3275ca623f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 2116129844}
 --- !u!1 &998242085
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,7 +4580,6 @@ GameObject:
   - component: {fileID: 2116129842}
   - component: {fileID: 2116129845}
   - component: {fileID: 2116129844}
-  - component: {fileID: 2116129843}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -4593,17 +4605,6 @@ RectTransform:
   m_AnchoredPosition: {x: -32, y: -21.526978}
   m_SizeDelta: {x: 276.7, y: 42.1}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &2116129843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2116129841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0cb7870f1a6fcd44be44d3275ca623f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2116129844
 MonoBehaviour:
   m_ObjectHideFlags: 0
