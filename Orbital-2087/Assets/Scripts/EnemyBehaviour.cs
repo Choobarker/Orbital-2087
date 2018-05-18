@@ -10,9 +10,13 @@ public class EnemyBehaviour : MonoBehaviour
 	public float playerViewDistance = 12;
     private float health = 2f;
 	private float moveTime;
-	private float timeMoved = 0f;	
+	private float timeMoved = 0f;
 	private float minMovePercent = 10;
 	private float maxMovePercent = 50;
+    private float score = 15;
+    private float minScore = 10;
+    private float scoreTimer = 5;
+    private float timePassed = 0;
 
     private bool alive = false;
 	private bool inPosition = false;
@@ -24,13 +28,18 @@ public class EnemyBehaviour : MonoBehaviour
     public Transform speedBoost;
 
 	private Vector3 direction;
+
+    private ScoreKeeping scoreKeeping;
 	
 	void Start()
 	{
 		alive = true;
+        timePassed = Time.time;
 
 		SetDirection();
 		SetMovementTime();
+        scoreKeeping = GameObject.FindGameObjectWithTag("Player").GetComponent<ScoreKeeping>();
+        scoreTimer += Time.deltaTime;
 	}
 	
 	void Update ()
@@ -45,6 +54,16 @@ public class EnemyBehaviour : MonoBehaviour
 				inPosition = true;
 			}
 		}
+
+        if(score != minScore)
+        {
+            if(timePassed + 1 <= Time.time)
+            {
+                Debug.Log("lowing score");
+                score -= 1;
+                timePassed += 1;
+            }
+        }
 	}
 
 	// Sets the direction the alien will travel based on its location
@@ -76,7 +95,7 @@ public class EnemyBehaviour : MonoBehaviour
 	{
 		if(health <= 0)
 		{
-            ScoreKeeping.ScoreValue += 10;
+            scoreKeeping.AddScore(score);
 			DestroyEnemy();
 		}
 	}

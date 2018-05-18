@@ -7,11 +7,10 @@ public class FinalScore : MonoBehaviour
 {
     Text Score;
     
-    // Use this for initialization
     void Start () 
     {
         Score = GetComponent<Text>();
-        Score.text = "S C O R E :  " + ScoreKeeping.ScoreValue;
-        ScoreKeeping.ScoreValue = 0;
+        Score.text = "S C O R E :  " + ScoreKeeping.GetScore();
+        ScoreKeeping.ResetScore();
     }
 }

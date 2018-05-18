@@ -5,16 +5,42 @@ using UnityEngine.UI;
 
 public class ScoreKeeping : MonoBehaviour
 {
-    public static int ScoreValue = 0;
-    Text Score;
+    private static float score = 0;
+    private static float cash = 0;
+
+    public Text scoreText;
+
+    void Start()
+    {
+        UpdateScore();
+    }
     
-    // Use this for initialization
-	void Start () {
-        Score = GetComponent<Text>();
+	void UpdateScore()
+    {
+        scoreText.text = "S C O R E :  " + score;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        Score.text = "S C O R E :  " + ScoreValue;
-	}
+
+    public void AddScore(float addScore)
+    {
+        score += addScore;
+        cash += addScore / 2;
+
+        UpdateScore();
+    }
+
+    public static float GetScore()
+    {
+        return score;
+    }
+
+    public float GetCash()
+    {
+        return cash;
+    }
+
+    public static void ResetScore()
+    {
+        score = 0;
+        cash = 0;
+    }
 }
