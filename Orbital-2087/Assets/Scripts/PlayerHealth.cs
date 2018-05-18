@@ -77,14 +77,19 @@ public class PlayerHealth : MonoBehaviour
         btc.SetShieldTimer(shieldDurationLeft);
     }
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     public void HealPlayer(float amount)
     {
         health += amount;
+    }
 
-        if (health >= 100)
-        {
-            health = STARTING_HEALTH;
-        }
+    public void SetHealth(float health)
+    {
+        this.health = health;
     }
 
     public void PlayerHit(float damage)

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeInterface : MonoBehaviour 
 {
     PlayerHealth playerHealth;
     ShootProjectile playerWeapon;
+    public GameObject menu;
 
     void Start()
     {
@@ -14,15 +16,32 @@ public class UpgradeInterface : MonoBehaviour
         playerWeapon = player.GetComponent<ShootProjectile>();
     }
 
+    public void CloseMenu()
+    {
+        menu.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
+    public void OpenMenu()
+    {
+        menu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
     public float GetPlayerCurrency()
     {
         // TODO
         return 100;
     }
 
+    public void HealPlayer(float health)
+    {
+        playerHealth.HealPlayer(health); 
+    }
+
     public void UpgradeDamage(float increase)
     {
-        // TODO
+        playerWeapon.SetDamage(increase);
     }
 
     public void UpgradeFireRate(float increase)
@@ -32,6 +51,6 @@ public class UpgradeInterface : MonoBehaviour
 
     public void UpgradeHealth(float increase)
     {
-        // TODO
+        playerHealth.HealPlayer(increase);
     }
 }

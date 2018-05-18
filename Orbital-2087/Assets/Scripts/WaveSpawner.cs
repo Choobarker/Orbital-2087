@@ -53,12 +53,14 @@ public class WaveSpawner : MonoBehaviour
 	private float angleOnPerimeter;
 
     private TextFade fade;
-
+    private UpgradeInterface upgradeMenu;
 
 	void Start()
 	{
 		CreateSpawns();
 		waveCountDown = secondsBetweenWaves;
+        upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu").GetComponent<UpgradeInterface>();
+        upgradeMenu.CloseMenu();
 	}
 
 	void Update()
@@ -72,6 +74,7 @@ public class WaveSpawner : MonoBehaviour
 				WaveCompleted();
                 WaveNotifier.waveNum += 1;
                 fade.FadeIn();
+                upgradeMenu.OpenMenu();
             }
 			else
 			{
@@ -88,7 +91,7 @@ public class WaveSpawner : MonoBehaviour
 		{
 			if(state != SpawnState.SPAWNING)
 			{
-				if(!testSpawns)
+                if (!testSpawns)
 				{
 					StartCoroutine(SpawnWave(waves[nextWave]));
 				}

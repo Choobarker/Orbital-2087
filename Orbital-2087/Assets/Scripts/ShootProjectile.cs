@@ -70,7 +70,7 @@ public class ShootProjectile : MonoBehaviour
         btc.SetFireRateTimer(boostDurationLeft);
     }
 
-    public void UpgradeDamege(float increase)
+    public void SetDamage(float increase)
     {
         damage += increase;
     }
