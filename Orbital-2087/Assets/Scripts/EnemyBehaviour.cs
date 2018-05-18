@@ -59,7 +59,6 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if(timePassed + 1 <= Time.time)
             {
-                Debug.Log("lowing score");
                 score -= 1;
                 timePassed += 1;
             }
