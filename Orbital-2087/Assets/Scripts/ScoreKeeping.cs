@@ -38,6 +38,11 @@ public class ScoreKeeping : MonoBehaviour
         return cash;
     }
 
+    public void SetCash(float newCash)
+    {
+        cash = newCash;
+    }
+
     public static void ResetScore()
     {
         score = 0;

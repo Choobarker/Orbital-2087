@@ -6,7 +6,7 @@ public class ShootProjectile : MonoBehaviour
 {
     private bool fireRateBoostActive = false;
 
-    public float fireRate;
+    private float fireRate = 2;
     private float nextFire;
     private float damage = 1;
     private float boostDurationLeft = 0;
@@ -70,14 +70,24 @@ public class ShootProjectile : MonoBehaviour
         btc.SetFireRateTimer(boostDurationLeft);
     }
 
-    public void SetDamage(float increase)
+    public void SetDamage(float newDamage)
     {
-        damage += increase;
+        damage = newDamage;
+    }
+
+    public void SetFireRate(float newFireRate)
+    {
+        fireRate = newFireRate;
     }
 
     public float GetDamage()
     {
         return damage;
+    }
+
+    public float GetFireRate()
+    {
+        return fireRate;
     }
     
     public void setWeaponActive(bool active)

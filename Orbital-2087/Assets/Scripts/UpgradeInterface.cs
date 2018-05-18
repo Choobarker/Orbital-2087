@@ -5,8 +5,23 @@ using UnityEngine.UI;
 
 public class UpgradeInterface : MonoBehaviour 
 {
+    private int fireRateLevel;
+    private int damageLevel;
+    private int maxHealthLevel;
+
+    private float baseFireRate = 2;
+    private float baseDamage = 1;
+    private float baseHealth = 100;
+
+    private float fireRateLevelIncrease = 1.2f;
+    private float damageLevelIncrease = 1.2f;
+    private float maxHealthLevelIncrease = 15;
+
+    private float levelCostMultiplier = 1.4f;
+
     PlayerHealth playerHealth;
     ShootProjectile playerWeapon;
+    ScoreKeeping scoreKeeping;
     public GameObject menu;
 
     void Start()
@@ -14,6 +29,8 @@ public class UpgradeInterface : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         playerWeapon = player.GetComponent<ShootProjectile>();
+        scoreKeeping = player.GetComponent<ScoreKeeping>();
+        CalculateLevels();
     }
 
     public void CloseMenu()
@@ -30,8 +47,7 @@ public class UpgradeInterface : MonoBehaviour
 
     public float GetPlayerCurrency()
     {
-        // TODO
-        return 100;
+        return scoreKeeping.GetCash();
     }
 
     public void HealPlayer(float health)
@@ -39,18 +55,53 @@ public class UpgradeInterface : MonoBehaviour
         playerHealth.HealPlayer(health); 
     }
 
-    public void UpgradeDamage(float increase)
+    public void UpgradeDamage()
     {
-        playerWeapon.SetDamage(increase);
+        ++damageLevel;
+        playerWeapon.SetDamage(GetDamage() + damageLevelIncrease);
     }
 
-    public void UpgradeFireRate(float increase)
+    public void UpgradeFireRate()
     {
-        // TODO
+        ++fireRateLevel;
+        playerWeapon.SetFireRate(GetFireRate() + fireRateLevelIncrease);
     }
 
-    public void UpgradeHealth(float increase)
+    public void UpgradeHealth()
     {
-        playerHealth.HealPlayer(increase);
+        ++maxHealthLevel;
+        playerHealth.HealPlayer(GetMaxHealth() + maxHealthLevelIncrease);
+    }
+
+    void CalculateLevels()
+    {
+        fireRateLevel = (int)((GetFireRate() - baseFireRate) / fireRateLevelIncrease);
+        damageLevel = (int)((GetDamage() - baseDamage) / damageLevelIncrease);
+        maxHealthLevel = (int)((GetMaxHealth() - baseHealth) / maxHealthLevelIncrease);
+    }
+
+    public float GetFireRate()
+    {
+        return playerWeapon.GetFireRate();
+    }
+
+    public float GetDamage()
+    {
+        return playerWeapon.GetDamage();
+    }
+
+    public float GetMaxHealth()
+    {
+        return playerHealth.GetMaxHealth();
+    }
+
+    public float GetCost(int currentLevel)
+    {
+        return (currentLevel + 1) * levelCostMultiplier;
+    }
+
+    public void DeductCost(float cost)
+    {
+        scoreKeeping.SetCash(scoreKeeping.GetCash() - cost);
     }
 }

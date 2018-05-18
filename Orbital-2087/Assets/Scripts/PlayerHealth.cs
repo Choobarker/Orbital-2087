@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private bool shieldActive = false;
 
     private float health;
+    private float maxHealth;
     private float shieldDurationLeft = 0;
 
     public Transform Basic;
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         health = STARTING_HEALTH;
+        maxHealth = health;
         healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
         playerWeapon = gameObject.GetComponent<ShootProjectile>();
         btc = gameObject.GetComponent<BoostTimerController>();
@@ -82,14 +84,26 @@ public class PlayerHealth : MonoBehaviour
         return health;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void HealPlayer(float amount)
     {
-        health += amount;
+        if(health + amount > maxHealth)
+        {
+            health += amount;
+        }
+        else
+        {
+            health = maxHealth;
+        }
     }
 
     public void SetHealth(float health)
     {
-        this.health = health;
+        maxHealth = health;
     }
 
     public void PlayerHit(float damage)
