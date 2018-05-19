@@ -36,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
         playerWeapon = gameObject.GetComponent<ShootProjectile>();
         btc = gameObject.GetComponent<BoostTimerController>();
         healthDisplay.UpdateText(health);
-
         healthbar.value = CalculateHealth();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -89,9 +88,9 @@ public class PlayerHealth : MonoBehaviour
         return maxHealth;
     }
 
-    public void HealPlayer(float amount)
+    public void SetMaxHealth(float amount)
     {
-        if(health + amount > maxHealth)
+        if (health + amount > maxHealth)
         {
             health += amount;
         }
@@ -99,11 +98,24 @@ public class PlayerHealth : MonoBehaviour
         {
             health = maxHealth;
         }
+
+        healthDisplay.UpdateText(health);
+        healthbar.value = CalculateHealth();
     }
 
-    public void SetHealth(float health)
+    public void HealPlayer(float amount)
     {
-        maxHealth = health;
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        }
+        else
+        {
+            health += amount;
+        }
+
+        healthDisplay.UpdateText(health);
+        healthbar.value = CalculateHealth();
     }
 
     public void PlayerHit(float damage)

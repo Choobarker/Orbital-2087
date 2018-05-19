@@ -19,7 +19,6 @@ public class WaveNotifier : MonoBehaviour {
     void Update()
     {
         wave.text = "W A V E :  " + waveNum;
-
     }
 
 }
