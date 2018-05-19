@@ -88,34 +88,20 @@ public class PlayerHealth : MonoBehaviour
         return maxHealth;
     }
 
-    public void SetMaxHealth(float amount)
+    public void HealPlayer(float amount)
     {
         if (health + amount > maxHealth)
         {
             health += amount;
+            healthDisplay.UpdateText(health);
+            healthbar.value = CalculateHealth();
         }
         else
         {
             health = maxHealth;
+            healthDisplay.UpdateText(health);
+            healthbar.value = CalculateHealth();
         }
-
-        healthDisplay.UpdateText(health);
-        healthbar.value = CalculateHealth();
-    }
-
-    public void HealPlayer(float amount)
-    {
-        if (health >= maxHealth)
-        {
-            health = maxHealth;
-        }
-        else
-        {
-            health += amount;
-        }
-
-        healthDisplay.UpdateText(health);
-        healthbar.value = CalculateHealth();
     }
 
     public void PlayerHit(float damage)
