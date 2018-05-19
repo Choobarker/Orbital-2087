@@ -62,16 +62,7 @@ public class UpgradeInterface : MonoBehaviour
     {
         if (GetPlayerCurrency() >= upgradeCost)
         {
-            if (playerHealth.GetHealth() < GetMaxHealth())
-            {
-                playerHealth.HealPlayer(health);
-                DeductCost(upgradeCost);
-            }
-            else
-            {
-                Debug.Log("You are already at max health");
-            }
-            
+            playerHealth.HealPlayer(health);
         }
         else
         {
@@ -118,7 +109,7 @@ public class UpgradeInterface : MonoBehaviour
         if (GetPlayerCurrency() >= upgradeCost)
         {
             ++maxHealthLevel;
-            playerHealth.HealPlayer(GetMaxHealth() + maxHealthLevelIncrease);
+            playerHealth.SetMaxHealth(GetMaxHealth() + maxHealthLevelIncrease);
             DeductCost(upgradeCost);
         }
         else
