@@ -29,6 +29,21 @@ public class EarthHealth : MonoBehaviour
         return health / STARTING_HEALTH;
     }
 
+    public void HealEarth(float amount)
+    {
+        if ((health + amount) < STARTING_HEALTH)
+        {
+            health += amount;
+        }
+        else
+        {
+            health = STARTING_HEALTH;
+        }
+
+        healthDisplay.UpdateText(health);
+        healthbar.value = CalculateHealth();
+    }
+
     public float GetHealth()
     {
         return health;

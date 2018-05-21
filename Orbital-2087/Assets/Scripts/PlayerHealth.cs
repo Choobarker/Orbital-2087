@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
 
     public float CalculateHealth()
     {
-        return health / STARTING_HEALTH;
+        return health / maxHealth;
     }
 
     public void ActivateShield(float duration)
@@ -101,15 +101,13 @@ public class PlayerHealth : MonoBehaviour
         if (health + amount < maxHealth)
         {
             health += amount;
-            healthDisplay.UpdateText(health);
-            healthbar.value = CalculateHealth();
         }
         else
         {
             health = maxHealth;
-            healthDisplay.UpdateText(health);
-            healthbar.value = CalculateHealth();
         }
+        healthDisplay.UpdateText(health);
+        healthbar.value = CalculateHealth();
     }
 
     public void PlayerHit(float damage)

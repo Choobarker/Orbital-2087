@@ -11,6 +11,9 @@ public class UpgradeMenu : MonoBehaviour
     public Text fireRateText;
     public Text damageText;
     public Text maxHealthText;
+    public Text fireRatePrice;
+    public Text damagePrice;
+    public Text maxHealthPrice;
 
     void Start()
     {
@@ -18,6 +21,9 @@ public class UpgradeMenu : MonoBehaviour
         fireRateText = GetComponent<Text>();
         maxHealthText = GetComponent<Text>();
         damageText = GetComponent<Text>();
+        fireRatePrice = GetComponent<Text>();
+        maxHealthPrice = GetComponent<Text>();
+        damagePrice = GetComponent<Text>();
     }
 
     public void CloseMenu()
@@ -34,6 +40,36 @@ public class UpgradeMenu : MonoBehaviour
 
         //pause the game while the upgrade menu is open
         Time.timeScale = 0f;
+    }
+
+    public void UpdateDamagePrice(float price)
+    {
+        if (damagePrice == null)
+        {
+            Start();
+        }
+
+        damagePrice.text = "$" + price;
+    }
+
+    public void UpdateMaxHealthPrice(float price)
+    {
+        if (maxHealthPrice == null)
+        {
+            Start();
+        }
+
+        maxHealthPrice.text = "$" + price;
+    }
+
+    public void UpdateFireRatePrice(float price)
+    {
+        if (fireRatePrice == null)
+        {
+            Start();
+        }
+
+        fireRatePrice.text = "$" + price;
     }
 
     //methods for updating the players stats & cash on the screen

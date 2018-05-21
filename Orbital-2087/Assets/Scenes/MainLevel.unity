@@ -208,6 +208,9 @@ MonoBehaviour:
   fireRateText: {fileID: 0}
   damageText: {fileID: 0}
   maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!114 &9966043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,9 +232,10 @@ GameObject:
   - component: {fileID: 15992111}
   - component: {fileID: 15992113}
   - component: {fileID: 15992112}
+  - component: {fileID: 15992114}
   m_Layer: 5
-  m_Name: Price
-  m_TagString: Untagged
+  m_Name: FireRatePrice
+  m_TagString: FireRatePrice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,13 +290,32 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $ 5
+  m_Text: 
 --- !u!222 &15992113
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 15992110}
+--- !u!114 &15992114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 15992110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  cashText: {fileID: 0}
+  fireRateText: {fileID: 0}
+  damageText: {fileID: 0}
+  maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!1 &25674117
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +784,7 @@ GameObject:
   - component: {fileID: 405828317}
   m_Layer: 10
   m_Name: Earth
-  m_TagString: Untagged
+  m_TagString: Earth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1158,12 +1181,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 65
+    m_Font: {fileID: 12800000, guid: cc8aeada467888a4890c72a1515ad1bf, type: 3}
+    m_FontSize: 105
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 75
+    m_MaxSize: 110
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1268,6 +1291,9 @@ MonoBehaviour:
   fireRateText: {fileID: 0}
   damageText: {fileID: 0}
   maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!1 &539760196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1369,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 539760199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9966043}
+        m_MethodName: HealEarth
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 20
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &539760199
@@ -2101,9 +2138,10 @@ GameObject:
   - component: {fileID: 794972138}
   - component: {fileID: 794972140}
   - component: {fileID: 794972139}
+  - component: {fileID: 794972141}
   m_Layer: 5
-  m_Name: Price
-  m_TagString: Untagged
+  m_Name: DamagePrice
+  m_TagString: DamagePrice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2158,13 +2196,32 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $ 5
+  m_Text: 
 --- !u!222 &794972140
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 794972137}
+--- !u!114 &794972141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 794972137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  cashText: {fileID: 0}
+  fireRateText: {fileID: 0}
+  damageText: {fileID: 0}
+  maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!1 &823669296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3053,9 @@ MonoBehaviour:
   fireRateText: {fileID: 0}
   damageText: {fileID: 0}
   maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!1 &1056981228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,6 +3619,9 @@ MonoBehaviour:
   fireRateText: {fileID: 0}
   damageText: {fileID: 0}
   maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!1 &1313167425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4211,6 +4274,9 @@ MonoBehaviour:
   fireRateText: {fileID: 0}
   damageText: {fileID: 0}
   maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!1 &1606433609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4868,9 +4934,10 @@ GameObject:
   - component: {fileID: 1942927349}
   - component: {fileID: 1942927351}
   - component: {fileID: 1942927350}
+  - component: {fileID: 1942927352}
   m_Layer: 5
-  m_Name: Price
-  m_TagString: Untagged
+  m_Name: MaxHealthPrice
+  m_TagString: MaxHealthPrice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4925,13 +4992,32 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $ 5
+  m_Text: 
 --- !u!222 &1942927351
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1942927348}
+--- !u!114 &1942927352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1942927348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  cashText: {fileID: 0}
+  fireRateText: {fileID: 0}
+  damageText: {fileID: 0}
+  maxHealthText: {fileID: 0}
+  fireRatePrice: {fileID: 0}
+  damagePrice: {fileID: 0}
+  maxHealthPrice: {fileID: 0}
 --- !u!1 &2071164997
 GameObject:
   m_ObjectHideFlags: 0
