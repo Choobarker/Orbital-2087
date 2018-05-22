@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UpgradeMenu : MonoBehaviour
 {
     public GameObject menu;
-    private TextFade fade = new TextFade();
     public Text cashText;
     public Text fireRateText;
     public Text damageText;
