@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         btc = gameObject.GetComponent<BoostTimerController>();
         healthDisplay.UpdateText(health);
         healthbar.value = CalculateHealth();
+        healthbar.enabled = false;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 

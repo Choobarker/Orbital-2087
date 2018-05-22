@@ -22,6 +22,7 @@ public class EarthHealth : MonoBehaviour
         healthDisplay = GameObject.FindGameObjectWithTag("EarthHealthDisplay").GetComponent<DisplayEarthHealth>();
         healthDisplay.UpdateText(health);
         healthbar.value = CalculateHealth();
+        healthbar.enabled = false;
     }
 
     public float CalculateHealth()

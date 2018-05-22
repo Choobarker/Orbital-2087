@@ -16,8 +16,11 @@ public class BoostTimerController : MonoBehaviour
     void Start()
     {
         fireRateTimer.gameObject.SetActive(false);
+        fireRateTimer.enabled = false;
         shieldTimer.gameObject.SetActive(false);
+        shieldTimer.enabled = false;
         speedTimer.gameObject.SetActive(false);
+        speedTimer.enabled = false;
     }
 
     public void SetFireRateTimer(float duration)
