@@ -204,13 +204,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 9966038}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
+  cashText: {fileID: 1556780641}
+  fireRateText: {fileID: 1277275665}
+  damageText: {fileID: 1048439269}
+  maxHealthText: {fileID: 519172092}
+  fireRatePrice: {fileID: 15992112}
+  damagePrice: {fileID: 794972139}
+  maxHealthPrice: {fileID: 1942927350}
+  upgradeInterface: {fileID: 0}
 --- !u!114 &9966043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,6 @@ GameObject:
   - component: {fileID: 15992111}
   - component: {fileID: 15992113}
   - component: {fileID: 15992112}
-  - component: {fileID: 15992114}
   m_Layer: 5
   m_Name: FireRatePrice
   m_TagString: FireRatePrice
@@ -297,25 +297,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 15992110}
---- !u!114 &15992114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 15992110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
 --- !u!1 &25674117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,9 +1191,8 @@ GameObject:
   - component: {fileID: 519172091}
   - component: {fileID: 519172093}
   - component: {fileID: 519172092}
-  - component: {fileID: 519172094}
   m_Layer: 5
-  m_Name: MaxHealthLevel
+  m_Name: MaxHealthText
   m_TagString: MaxHealthLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1275,25 +1255,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519172090}
---- !u!114 &519172094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519172090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
 --- !u!1 &539760196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,7 +2099,6 @@ GameObject:
   - component: {fileID: 794972138}
   - component: {fileID: 794972140}
   - component: {fileID: 794972139}
-  - component: {fileID: 794972141}
   m_Layer: 5
   m_Name: DamagePrice
   m_TagString: DamagePrice
@@ -2203,25 +2163,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 794972137}
---- !u!114 &794972141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 794972137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
 --- !u!1 &823669296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,7 +2913,6 @@ GameObject:
   - component: {fileID: 1048439268}
   - component: {fileID: 1048439270}
   - component: {fileID: 1048439269}
-  - component: {fileID: 1048439271}
   m_Layer: 5
   m_Name: DamageText
   m_TagString: DamageLevel
@@ -3037,25 +2977,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1048439267}
---- !u!114 &1048439271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1048439267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
 --- !u!1 &1056981228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3538,7 +3459,6 @@ GameObject:
   - component: {fileID: 1277275664}
   - component: {fileID: 1277275666}
   - component: {fileID: 1277275665}
-  - component: {fileID: 1277275667}
   m_Layer: 5
   m_Name: FireRateText
   m_TagString: FireRateLevel
@@ -3603,25 +3523,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1277275663}
---- !u!114 &1277275667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1277275663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
 --- !u!1 &1313167425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,7 +4094,6 @@ GameObject:
   - component: {fileID: 1556780640}
   - component: {fileID: 1556780642}
   - component: {fileID: 1556780641}
-  - component: {fileID: 1556780643}
   m_Layer: 5
   m_Name: CashDisplay
   m_TagString: CashDisplay
@@ -4258,25 +4158,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556780639}
---- !u!114 &1556780643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1556780639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
 --- !u!1 &1606433609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4934,7 +4815,6 @@ GameObject:
   - component: {fileID: 1942927349}
   - component: {fileID: 1942927351}
   - component: {fileID: 1942927350}
-  - component: {fileID: 1942927352}
   m_Layer: 5
   m_Name: MaxHealthPrice
   m_TagString: MaxHealthPrice
@@ -4999,25 +4879,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1942927348}
---- !u!114 &1942927352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1942927348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e5537800d3d014283b8597e63f98f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  cashText: {fileID: 0}
-  fireRateText: {fileID: 0}
-  damageText: {fileID: 0}
-  maxHealthText: {fileID: 0}
-  fireRatePrice: {fileID: 0}
-  damagePrice: {fileID: 0}
-  maxHealthPrice: {fileID: 0}
 --- !u!1 &2071164997
 GameObject:
   m_ObjectHideFlags: 0
