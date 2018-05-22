@@ -35,6 +35,7 @@ public class UpgradeMenu : MonoBehaviour
     public void CloseMenu()
     {
         menu.SetActive(false);
+        DisableButton();
 
         //resume gameplay after the upgrade menu has been closed        
         Time.timeScale = 1.0f;      
