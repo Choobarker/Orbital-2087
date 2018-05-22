@@ -148,6 +148,7 @@ public class UpgradeInterface : MonoBehaviour
         if(GetPlayerCurrency() < cost)
         {
             canAfford = false;
+            //disable upgrade
         }
 
         return canAfford;

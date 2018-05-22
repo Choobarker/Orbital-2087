@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         playerWeapon = gameObject.GetComponent<ShootProjectile>();
         btc = gameObject.GetComponent<BoostTimerController>();
         healthDisplay.UpdateText(health);
-        healthbar.value = CalculateHealth();
+        CalculateHealth();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
 
     public float CalculateHealth()
     {
-        return health / maxHealth;
+        return healthbar.value = health / maxHealth;
     }
 
     public void ActivateShield(float duration)

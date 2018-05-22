@@ -19,6 +19,8 @@ public class ShootProjectile : MonoBehaviour
 
     private BoostTimerController btc;
 
+    private bool fireButtonPressed = false;
+
     void Start()
     {
         btc = gameObject.GetComponent<BoostTimerController>();
@@ -26,10 +28,9 @@ public class ShootProjectile : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire && weaponActive)
+        if(fireButtonPressed == true)
         {
-            nextFire = Time.time + 1 / fireRate;
-            CreateShot();
+            FireShot();
         }
 
         if(fireRateBoostActive)
@@ -44,6 +45,25 @@ public class ShootProjectile : MonoBehaviour
 
             btc.UpdateFireRateTimer(boostDurationLeft);
         }
+    }
+
+    public void FireShot()
+    {
+        if (Time.time > nextFire && weaponActive)
+        {
+            nextFire = Time.time + 1 / fireRate;
+            CreateShot();
+        }
+    }
+
+    public void OnPress()
+    {
+        fireButtonPressed = true;
+    }
+
+    public void OnRelease()
+    {
+        fireButtonPressed = false;
     }
 
     public GameObject CreateShot()
