@@ -60,9 +60,8 @@ public class WaveSpawner : MonoBehaviour
 		CreateSpawns();
 		waveCountDown = secondsBetweenWaves;
         upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu").GetComponent<UpgradeMenu>();
-
-        //deactivate the upgrade menu at the start of game
         upgradeMenu.CloseMenu();
+        upgradeMenu.DisableButton();
 	}
 
 	void Update()
@@ -75,16 +74,13 @@ public class WaveSpawner : MonoBehaviour
 			{
 				WaveCompleted();
                 WaveNotifier.waveNum += 1;
-            
+                upgradeMenu.EnableButton();
                 fade.FadeIn();
             }
             else
 			{
                 return;
 			}
-
-            
-
         }
 
 		if(waveCountDown <= 0)
@@ -133,6 +129,7 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave(Wave wave)
 	{
 		state = SpawnState.SPAWNING;
+        upgradeMenu.DisableButton();
         fade.FadeOut();
 
 		// spawnPoints list is an array of possible spawns based on

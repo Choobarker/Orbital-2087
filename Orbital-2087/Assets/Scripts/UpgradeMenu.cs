@@ -16,10 +16,21 @@ public class UpgradeMenu : MonoBehaviour
     public Text maxHealthPrice;
 
     public UpgradeInterface upgradeInterface;
+    public GameObject upgradeButton;
 
     void Start()
     {
         upgradeInterface = gameObject.GetComponent<UpgradeInterface>();
+    }
+
+    public void DisableButton()
+    {
+        upgradeButton.SetActive(false);
+    }
+
+    public void EnableButton()
+    {
+        upgradeButton.SetActive(true);
     }
 
     public void CloseMenu()

@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
 
     public float CalculateHealth()
     {
-        return health / maxHealth;
+        return healthbar.value = health / maxHealth;
     }
 
     public void ActivateShield(float duration)
