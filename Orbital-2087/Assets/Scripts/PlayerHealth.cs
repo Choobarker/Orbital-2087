@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         health = STARTING_HEALTH;
-        maxHealth = health;
+        maxHealth = STARTING_HEALTH;
         healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
         playerWeapon = gameObject.GetComponent<ShootProjectile>();
         btc = gameObject.GetComponent<BoostTimerController>();
@@ -39,6 +39,8 @@ public class PlayerHealth : MonoBehaviour
         healthbar.value = CalculateHealth();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        Debug.Log("Max Health: " + maxHealth);
     }
 
     void Update()
@@ -91,7 +93,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetMaxHealth(float newHealth)
     {
         maxHealth = newHealth;
-        health = maxHealth;
+        //health = maxHealth;
         healthDisplay.UpdateText(health);
         healthbar.value = CalculateHealth();
     }

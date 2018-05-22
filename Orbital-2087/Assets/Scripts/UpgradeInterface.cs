@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UpgradeInterface : MonoBehaviour 
 {
-    private int fireRateLevel;
-    private int damageLevel;
-    private int maxHealthLevel;
+    private int fireRateLevel = 0;
+    private int damageLevel = 0;
+    private int maxHealthLevel = 0;
 
     private float baseFireRate = 2;
     private float baseDamage = 1;
@@ -25,6 +25,7 @@ public class UpgradeInterface : MonoBehaviour
     EarthHealth earthHealth;
 
     UpgradeMenu cashText, fireRateLevelText, damageLevelText, healthLevelText, fireRateCostText, damageCostText, healthCostText;
+    UpgradeMenu upgradeMenu;
     private float fireRateUpgradeCost, damageUpgradeCost, healthUpgradeCost;
     private float healingCost = 5f; // default healing cost for the earth & player
 
@@ -32,42 +33,14 @@ public class UpgradeInterface : MonoBehaviour
     {
         GameObject earth = GameObject.FindGameObjectWithTag("Earth");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
         playerHealth = player.GetComponent<PlayerHealth>();
         playerWeapon = player.GetComponent<ShootProjectile>();
         scoreKeeping = player.GetComponent<ScoreKeeping>();
         earthHealth = earth.GetComponent<EarthHealth>();
+        upgradeMenu = gameObject.GetComponent<UpgradeMenu>();
 
-        //initializes all the text fields on the upgrade menu
-        cashText = GameObject.FindGameObjectWithTag("CashDisplay").GetComponent<UpgradeMenu>();
-        fireRateCostText = GameObject.FindGameObjectWithTag("FireRatePrice").GetComponent<UpgradeMenu>();
-        fireRateLevelText = GameObject.FindGameObjectWithTag("FireRateLevel").GetComponent<UpgradeMenu>();
-        damageLevelText = GameObject.FindGameObjectWithTag("DamageLevel").GetComponent<UpgradeMenu>();
-        damageCostText = GameObject.FindGameObjectWithTag("DamagePrice").GetComponent<UpgradeMenu>();
-        healthLevelText = GameObject.FindGameObjectWithTag("MaxHealthLevel").GetComponent<UpgradeMenu>();
-        healthCostText = GameObject.FindGameObjectWithTag("MaxHealthPrice").GetComponent<UpgradeMenu>();
-
-        CalculateLevels();
-    }
-
-    void Update()
-    {
-        fireRateUpgradeCost = GetCost(fireRateLevel);
-        damageUpgradeCost = GetCost(damageLevel);
-        healthUpgradeCost = GetCost(maxHealthLevel);
-
-        cashText.UpdateCashText(GetPlayerCurrency());
-
-        //updates the fire rate level and price once per frame
-        fireRateLevelText.UpdateFireRateLevel(fireRateLevel);
-        fireRateCostText.UpdateFireRatePrice(fireRateUpgradeCost);
-
-        //updates the damage level and the price once per frame
-        damageLevelText.UpdateDamageLevel(damageLevel);
-        damageCostText.UpdateDamagePrice(damageUpgradeCost);
-
-        //updates the health level and the price once per frame
-        healthLevelText.UpdateHealthLevel(maxHealthLevel);
-        healthCostText.UpdateMaxHealthPrice(healthUpgradeCost);
+        RefreshTexts();
     }
 
     public float GetPlayerCurrency()
@@ -77,12 +50,13 @@ public class UpgradeInterface : MonoBehaviour
 
     public void HealPlayer(float health)
     {
-        if (GetPlayerCurrency() >= healingCost)
+        if(CanAfford(healingCost))
         {
-            if (playerHealth.GetHealth() < GetMaxHealth())
+            if(playerHealth.GetHealth() < GetMaxHealth())
             {
                 playerHealth.HealPlayer(health);
                 DeductCost(healingCost);
+                UpdateCashText();
             }
             else
             {
@@ -97,12 +71,13 @@ public class UpgradeInterface : MonoBehaviour
 
     public void HealEarth(float health)
     {
-        if (GetPlayerCurrency() >= healingCost)
+        if(CanAfford(healingCost))
         {
-            if (earthHealth.GetHealth() < 500)
+            if(earthHealth.GetHealth() < 500)
             {
                 earthHealth.HealEarth(health);
                 DeductCost(healingCost);
+                UpdateCashText();
             }
             else
             {
@@ -117,12 +92,14 @@ public class UpgradeInterface : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        damageUpgradeCost = GetCost(damageLevel);
-        if (GetPlayerCurrency() >= damageUpgradeCost)
+        damageUpgradeCost = GetNextLevelCost(damageLevel);
+        if(CanAfford(damageUpgradeCost))
         {
             ++damageLevel;
             playerWeapon.SetDamage(GetDamage() + damageLevelIncrease);
             DeductCost(damageUpgradeCost);
+            UpdateDamageText();
+            UpdateCashText();
         }
         else
         {
@@ -132,29 +109,31 @@ public class UpgradeInterface : MonoBehaviour
 
     public void UpgradeFireRate()
     {
-        fireRateUpgradeCost = GetCost(fireRateLevel);
-        if (GetPlayerCurrency() >= fireRateUpgradeCost)
+        fireRateUpgradeCost = GetNextLevelCost(fireRateLevel);
+        if (CanAfford(fireRateUpgradeCost))
         {
             ++fireRateLevel;
             playerWeapon.SetFireRate(GetFireRate() + fireRateLevelIncrease);
             DeductCost(fireRateUpgradeCost);
+            UpdateFireRateText();
+            UpdateCashText();
         }
         else
         {
             Debug.Log("Not enough cash to purchase upgrade");
-
-            //error message for insufficient funds
         }
     }
 
     public void UpgradeHealth()
     {
-        healthUpgradeCost = GetCost(maxHealthLevel);
-        if (GetPlayerCurrency() >= healthUpgradeCost)
+        healthUpgradeCost = GetNextLevelCost(maxHealthLevel);
+        if(CanAfford(healthUpgradeCost))
         {
             ++maxHealthLevel;
             playerHealth.SetMaxHealth(GetMaxHealth() + maxHealthLevelIncrease);
             DeductCost(healthUpgradeCost);
+            UpdateHealText();
+            UpdateCashText();
         }
         else
         {
@@ -162,11 +141,61 @@ public class UpgradeInterface : MonoBehaviour
         }
     }
 
+    private bool CanAfford(float cost)
+    {
+        bool canAfford = true;
+
+        if(GetPlayerCurrency() < cost)
+        {
+            canAfford = false;
+        }
+
+        return canAfford;
+    }
+
+    // can avoid this method if you just start all levels at 0
     void CalculateLevels()
     {
         fireRateLevel = (int)((GetFireRate() - baseFireRate) / fireRateLevelIncrease);
         damageLevel = (int)((GetDamage() - baseDamage) / damageLevelIncrease);
         maxHealthLevel = (int)((GetMaxHealth() - baseHealth) / maxHealthLevelIncrease);
+        Debug.Log(GetMaxHealth());
+        Debug.Log(baseHealth);
+        Debug.Log(maxHealthLevelIncrease);
+    }
+    
+    void UpdateHealText()
+    {
+        healthUpgradeCost = GetNextLevelCost(maxHealthLevel);
+        upgradeMenu.UpdateHealthLevel(maxHealthLevel);
+        upgradeMenu.UpdateMaxHealthPrice(healthUpgradeCost);
+    }
+
+    void UpdateDamageText()
+    {
+        damageUpgradeCost = GetNextLevelCost(damageLevel);
+        upgradeMenu.UpdateDamageLevel(damageLevel);
+        upgradeMenu.UpdateDamagePrice(damageUpgradeCost);
+    }
+
+    void UpdateFireRateText()
+    {
+        fireRateUpgradeCost = GetNextLevelCost(fireRateLevel);
+        upgradeMenu.UpdateFireRateLevel(fireRateLevel);
+        upgradeMenu.UpdateFireRatePrice(fireRateUpgradeCost);
+    }
+
+    public void RefreshTexts()
+    {
+        UpdateCashText();
+        UpdateDamageText();
+        UpdateFireRateText();
+        UpdateHealText();
+    }
+
+    void UpdateCashText()
+    {
+        upgradeMenu.UpdateCashText(GetPlayerCurrency());
     }
 
     public float GetFireRate()
@@ -184,9 +213,8 @@ public class UpgradeInterface : MonoBehaviour
         return playerHealth.GetMaxHealth();
     }
 
-    public float GetCost(int currentLevel)
+    public float GetNextLevelCost(int currentLevel)
     {
-        CalculateLevels();
         return (currentLevel + 1) * levelCostMultiplier;
     }
 

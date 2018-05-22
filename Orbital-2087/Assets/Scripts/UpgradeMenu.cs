@@ -15,15 +15,11 @@ public class UpgradeMenu : MonoBehaviour
     public Text damagePrice;
     public Text maxHealthPrice;
 
+    public UpgradeInterface upgradeInterface;
+
     void Start()
     {
-        cashText = GetComponent<Text>();
-        fireRateText = GetComponent<Text>();
-        maxHealthText = GetComponent<Text>();
-        damageText = GetComponent<Text>();
-        fireRatePrice = GetComponent<Text>();
-        maxHealthPrice = GetComponent<Text>();
-        damagePrice = GetComponent<Text>();
+        upgradeInterface = gameObject.GetComponent<UpgradeInterface>();
     }
 
     public void CloseMenu()
@@ -37,6 +33,13 @@ public class UpgradeMenu : MonoBehaviour
     public void OpenMenu()
     {
         menu.SetActive(true);
+        
+        if(upgradeInterface == null)
+        {
+            Start();
+        }
+
+        upgradeInterface.RefreshTexts();
 
         //pause the game while the upgrade menu is open
         Time.timeScale = 0f;
