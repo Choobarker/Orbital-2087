@@ -323,15 +323,13 @@ public class WaveSpawner : MonoBehaviour
 	// Checkes if the point is on the circle of the players view distance
 	bool OnArch(Vector3 nextPoint)
 	{
-        bool onArch = false;
-        
 		float h = System.Math.Abs((nextPoint.x * nextPoint.x) + (System.Math.Abs(nextPoint.y * nextPoint.y)));
 		h = (float)System.Math.Round(h);
 		if(System.Math.Sqrt(h) != playerViewDistance)
 		{
-			onArch = false;
+			return false;
 		}
 
-		return onArch;
+		return true;
 	}
 }
