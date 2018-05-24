@@ -24,7 +24,6 @@ public class UpgradeInterface : MonoBehaviour
     ScoreKeeping scoreKeeping;
     EarthHealth earthHealth;
 
-    UpgradeMenu cashText, fireRateLevelText, damageLevelText, healthLevelText, fireRateCostText, damageCostText, healthCostText;
     UpgradeMenu upgradeMenu;
     private float fireRateUpgradeCost, damageUpgradeCost, healthUpgradeCost;
     private float healingCost = 5f; // default healing cost for the earth & player
@@ -67,6 +66,7 @@ public class UpgradeInterface : MonoBehaviour
         {
             Debug.Log("Not enough cash to purchase upgrade");
         }
+        UpdateCurrentHealthText();
     }
 
     public void HealEarth(float health)
@@ -88,6 +88,7 @@ public class UpgradeInterface : MonoBehaviour
         {
             Debug.Log("Not enough cash to purchase this");
         }
+        UpdateCurrentHealthText();
     }
 
     public void UpgradeDamage()
@@ -168,22 +169,33 @@ public class UpgradeInterface : MonoBehaviour
     void UpdateHealText()
     {
         healthUpgradeCost = GetNextLevelCost(maxHealthLevel);
-        upgradeMenu.UpdateHealthLevel(maxHealthLevel);
         upgradeMenu.UpdateMaxHealthPrice(healthUpgradeCost, CanAfford(healthUpgradeCost));
+        upgradeMenu.UpdateHealthLevel(maxHealthLevel, GetMaxHealth());
+        UpdateCurrentHealthText();
     }
 
     void UpdateDamageText()
     {
         damageUpgradeCost = GetNextLevelCost(damageLevel);
-        upgradeMenu.UpdateDamageLevel(damageLevel);
         upgradeMenu.UpdateDamagePrice(damageUpgradeCost, CanAfford(damageUpgradeCost));
+        upgradeMenu.UpdateDamageLevel(damageLevel, GetDamage());
     }
 
     void UpdateFireRateText()
     {
         fireRateUpgradeCost = GetNextLevelCost(fireRateLevel);
-        upgradeMenu.UpdateFireRateLevel(fireRateLevel);
         upgradeMenu.UpdateFireRatePrice(fireRateUpgradeCost, CanAfford(fireRateUpgradeCost));
+        upgradeMenu.UpdateFireRateLevel(fireRateLevel, GetFireRate());
+    }
+
+    void UpdateCurrentHealthText()
+    {
+        float playerCurHealth = playerHealth.GetHealth();
+        float playerMaxHealth = playerHealth.GetMaxHealth();
+        float earthCurHealth = earthHealth.GetHealth();
+        float earthMaxHealth = earthHealth.GetStartingHealth();
+
+        upgradeMenu.UpdateHealthText(playerCurHealth, playerMaxHealth, earthCurHealth, earthMaxHealth);
     }
 
     public void RefreshTexts()
@@ -192,6 +204,7 @@ public class UpgradeInterface : MonoBehaviour
         UpdateDamageText();
         UpdateFireRateText();
         UpdateHealText();
+        UpdateCurrentHealthText();
     }
 
     void UpdateCashText()
