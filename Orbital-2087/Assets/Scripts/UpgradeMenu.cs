@@ -55,7 +55,7 @@ public class UpgradeMenu : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void UpdateDamagePrice(float price)
+    public void UpdateDamagePrice(float price, bool canAfford)
     {
         if (damagePrice == null)
         {
@@ -65,7 +65,7 @@ public class UpgradeMenu : MonoBehaviour
         damagePrice.text = "$" + price;
     }
 
-    public void UpdateMaxHealthPrice(float price)
+    public void UpdateMaxHealthPrice(float price, bool canAfford)
     {
         if (maxHealthPrice == null)
         {
@@ -75,7 +75,7 @@ public class UpgradeMenu : MonoBehaviour
         maxHealthPrice.text = "$" + price;
     }
 
-    public void UpdateFireRatePrice(float price)
+    public void UpdateFireRatePrice(float price, bool canAfford)
     {
         if (fireRatePrice == null)
         {
