@@ -50,11 +50,6 @@ public class EarthHealth : MonoBehaviour
         return health;
     }
 
-    public float GetStartingHealth()
-    {
-        return STARTING_HEALTH;
-    }
-
     void OnTriggerEnter2D(Collider2D collider)
     {        
         if(collider.tag == "Projectile")

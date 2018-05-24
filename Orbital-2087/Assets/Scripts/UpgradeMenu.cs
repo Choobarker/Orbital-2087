@@ -13,7 +13,6 @@ public class UpgradeMenu : MonoBehaviour
     public Text fireRatePrice;
     public Text damagePrice;
     public Text maxHealthPrice;
-    public Text currentHealthText;
 
     public UpgradeInterface upgradeInterface;
     public GameObject upgradeButton;
@@ -36,7 +35,6 @@ public class UpgradeMenu : MonoBehaviour
     public void CloseMenu()
     {
         menu.SetActive(false);
-        DisableButton();
 
         //resume gameplay after the upgrade menu has been closed        
         Time.timeScale = 1.0f;      
@@ -98,40 +96,34 @@ public class UpgradeMenu : MonoBehaviour
         cashText.text = "CASH: $" + cash;
     }
 
-    //displays and updates the current health for the player and earth
-    public void UpdateHealthText(float player, float playerMax, float earth, float earthMax)
-    {
-        currentHealthText.text = "Player: " + player + "/" + playerMax + "             Earth: " + earth + "/" + earthMax;
-    }
-
-    public void UpdateFireRateLevel(float level, float fireRate)
+    public void UpdateFireRateLevel(float level)
     {
         if (fireRateText == null)
         {
             Start();
         }
 
-        fireRateText.text = "FIRERATE: (LEVEL " + level + ") - " + fireRate + " shots per second";
+        fireRateText.text = "FIRERATE: (LEVEL " + level + ")";
     }
 
-    public void UpdateHealthLevel(float level, float health)
+    public void UpdateHealthLevel(float level)
     {
         if (maxHealthText == null)
         {
             Start();
         }
 
-        maxHealthText.text = "HEALTH: (LEVEL " + level + ") - " + health + " HP";
+        maxHealthText.text = "HEALTH: (LEVEL " + level + ")";
     }
 
-    public void UpdateDamageLevel(float level, float damage)
+    public void UpdateDamageLevel(float level)
     {
         if (damageText == null)
         {
             Start();
         }
 
-        damageText.text = "DAMAGE: (LEVEL " + level + ") - " + damage + " damage";
+        damageText.text = "DAMAGE: (LEVEL " + level + ")";
     }
 
 }

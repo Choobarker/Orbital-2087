@@ -61,6 +61,7 @@ public class WaveSpawner : MonoBehaviour
 		waveCountDown = secondsBetweenWaves;
         upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu").GetComponent<UpgradeMenu>();
         upgradeMenu.CloseMenu();
+        upgradeMenu.DisableButton();
 	}
 
 	void Update()
