@@ -6,7 +6,7 @@ public class FireRateBoost : MonoBehaviour
 {
     private const float DURATION = 10f;
     private const float MULTIPLIER = 2;
-    private const float MOVE_SPEED = 30;
+    private const float MOVE_SPEED = 20;
 
     ShootProjectile playerWeapon;
 

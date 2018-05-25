@@ -1002,53 +1002,8 @@ MonoBehaviour:
   - name: 1st Wave
     enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
     count: 4
-    delay: 1.5
-    range: 2
-  - name: 2nd Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 5
-    delay: 1
-    range: 4
-  - name: 3rd Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 6
-    delay: 1
-    range: 10
-  - name: 4th Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 7
-    delay: 1
-    range: 10
-  - name: 5th Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 15
     delay: 2
-    range: 10
-  - name: 6th Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 8
-    delay: 1
-    range: 10
-  - name: 7th Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 9
-    delay: 1
-    range: 10
-  - name: 8th Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 10
-    delay: 1
-    range: 10
-  - name: 9th Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 11
-    delay: 1
-    range: 10
-  - name: 10th Wave
-    enemy: {fileID: 4995424439321658, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
-    count: 20
-    delay: 2.5
-    range: 10
+    range: 2
   enemySpawnPoint: {fileID: 4952248789202910, guid: f879df7a3aaf1eb438e7c1b9f5cd99ae,
     type: 2}
   playerViewDistance: 17

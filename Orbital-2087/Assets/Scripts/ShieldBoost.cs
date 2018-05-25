@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShieldBoost : MonoBehaviour 
 {
     private const float DURATION = 10;
-    private const float MOVE_SPEED = 30;
+    private const float MOVE_SPEED = 20;
 
     private PlayerHealth playerHealth;
 

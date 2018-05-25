@@ -36,11 +36,11 @@ public class WaveSpawner : MonoBehaviour
 		// Number of spawns on either side of the center 
 		// e.g. 'range = 2' means enemies can spawn 2 locations to the left or right of the center spawn
 		// for a total of 5 possible locations
-		public int range;		
+		public int range;
 	}
 
-	public Wave[] waves;
-	private int nextWave = 0;
+	public List<Wave> waves;
+	private int nextWaveIndex = 0;
 
 	// Transform object that will be cloned for spawn locations
 	public Transform enemySpawnPoint;
@@ -52,6 +52,10 @@ public class WaveSpawner : MonoBehaviour
 	private float angleBetweenSpawns;
 	private float angleOnPerimeter;
 
+    private float damageBuff = 0;
+    private float healthBuff = 0;
+    private float scoreBuff = 0;
+
     private TextFade fade;
     private UpgradeMenu upgradeMenu;
 
@@ -61,14 +65,13 @@ public class WaveSpawner : MonoBehaviour
 		waveCountDown = secondsBetweenWaves;
         upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu").GetComponent<UpgradeMenu>();
         upgradeMenu.CloseMenu();
+        fade = gameObject.GetComponent<TextFade>();
 	}
 
 	void Update()
-	{
-        fade = gameObject.GetComponent<TextFade>();
+	{        
         if (state == SpawnState.WAITING)
 		{
-
             if (!EnemyIsAlive())
 			{
 				WaveCompleted();
@@ -88,7 +91,7 @@ public class WaveSpawner : MonoBehaviour
 			{
                 if (!testSpawns)
 				{
-					StartCoroutine(SpawnWave(waves[nextWave]));
+					StartCoroutine(SpawnWave(waves[nextWaveIndex]));
 				}
 			}
 		}
@@ -103,10 +106,10 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.COUNTING;
 		waveCountDown = secondsBetweenWaves;
 
-		nextWave++;
-		if(nextWave >= waves.Length)
+		nextWaveIndex++;
+		if(nextWaveIndex >= waves.Count)
 		{
-			nextWave = 0;
+            CreateNextWave();
 		}
 	}
 
@@ -130,6 +133,9 @@ public class WaveSpawner : MonoBehaviour
 		state = SpawnState.SPAWNING;
         upgradeMenu.DisableButton();
         fade.FadeOut();
+        CalculateBuffs();
+
+        Debug.Log("Buffs: Health: " + healthBuff + ". Damage: " + damageBuff + ". Score: " + scoreBuff);
 
 		// spawnPoints list is an array of possible spawns based on
 		// the range of the wave
@@ -165,7 +171,13 @@ public class WaveSpawner : MonoBehaviour
 	void SpawnEnemy(Transform enemy, List<Transform> spawnPoints)
 	{
 		Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+		enemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+
+        EnemyBehaviour enemyBehaviour = enemy.gameObject.GetComponent<EnemyBehaviour>();
+
+        enemyBehaviour.BuffHealth(healthBuff);
+        enemyBehaviour.BuffScore(scoreBuff);
+        enemy.gameObject.GetComponent<Weapon>().BuffDamage(damageBuff);
 	}
 	
 	void CreateSpawns()
@@ -196,6 +208,35 @@ public class WaveSpawner : MonoBehaviour
 			}		
 		}
 	}
+
+    void CreateNextWave()
+    {
+        Wave nextWave = new Wave();
+        Wave prevWave = waves[nextWaveIndex - 1];
+        nextWave.count = prevWave.count + 1;
+        nextWave.enemy = prevWave.enemy;
+        nextWave.delay = prevWave.delay;
+        nextWave.range = prevWave.range + 1;
+        
+        waves.Add(nextWave);
+    }
+
+    void CalculateBuffs()
+    {
+        Debug.Log("Wave index: " + nextWaveIndex);
+        // Buff enemy health after every 5th wave, and damage after every 10th wave
+        if(nextWaveIndex % 5 == 0 && nextWaveIndex != 0)
+        {
+            healthBuff += 10;
+
+            if(nextWaveIndex % 10 == 0)
+            {
+                damageBuff += 5;
+            }
+
+            scoreBuff += 5;
+        }
+    }
 
 	Vector3 GetNextPoint(Vector3 startPoint, float totalAngle, float nextAngle)
 	{

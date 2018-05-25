@@ -142,4 +142,15 @@ public class EnemyBehaviour : MonoBehaviour
             Instantiate(drop, transform.position, transform.rotation);
         }
     }
+
+    public void BuffHealth(float buff)
+    {
+        health += buff;
+    }
+
+    public void BuffScore(float buff)
+    {
+        minScore += buff;
+        score += buff;
+    }
 }

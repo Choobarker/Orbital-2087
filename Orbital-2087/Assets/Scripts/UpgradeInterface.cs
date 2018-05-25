@@ -13,11 +13,11 @@ public class UpgradeInterface : MonoBehaviour
     private float baseDamage = 1;
     private float baseHealth = 100;
 
-    private float fireRateLevelIncrease = .2f;
-    private float damageLevelIncrease = .2f;
+    private float fireRateLevelIncrease = .15f;
+    private float damageLevelIncrease = .6f;
     private float maxHealthLevelIncrease = 15;
 
-    private float levelCostMultiplier = 1.4f;
+    private float levelCostMultiplier = 2f;
 
     PlayerHealth playerHealth;
     ShootProjectile playerWeapon;
@@ -73,7 +73,7 @@ public class UpgradeInterface : MonoBehaviour
     {
         if(CanAfford(healingCost))
         {
-            if(earthHealth.GetHealth() < 500)
+            if(earthHealth.GetHealth() < earthHealth.GetStartingHealth())
             {
                 earthHealth.HealEarth(health);
                 DeductCost(healingCost);

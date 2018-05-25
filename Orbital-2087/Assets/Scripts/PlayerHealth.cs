@@ -40,8 +40,6 @@ public class PlayerHealth : MonoBehaviour
         healthbar.enabled = false;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        Debug.Log("Max Health: " + maxHealth);
     }
 
     void Update()

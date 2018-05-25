@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {    
     public float fireRate = 1;
-    private float damage = 10;
+    private float damage = 5;
     private float delayBeforeFirstShot = 2.5f;
     private float nextFire = 0;
 
@@ -35,5 +35,10 @@ public class Weapon : MonoBehaviour
         // RaycastHit2D hit = Physics2D.Raycast(firePointPosition, earthPosition - firePointPosition, 100, whatToHit);
 
         Instantiate(projectile, firepoint.position, firepoint.rotation).GetComponent<ProjectileInfo>().SetDamage(damage);
+    }
+
+    public void BuffDamage(float buff)
+    {
+        damage += buff;
     }
 }
