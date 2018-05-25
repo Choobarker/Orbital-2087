@@ -150,6 +150,7 @@ public class UpgradeInterface : MonoBehaviour
         {
             canAfford = false;
             //disable upgrade
+
         }
 
         return canAfford;

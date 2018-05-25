@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class DisplayPlayerHealth : MonoBehaviour
 {
     public Text healthBox; // textbox to display the players health
-    PlayerHealth maxHealth;
+    PlayerHealth playerHealth;
 
     void Start()
     {
         healthBox = GetComponent<Text>();
-        maxHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     public void UpdateText(float health)
@@ -21,7 +21,7 @@ public class DisplayPlayerHealth : MonoBehaviour
             Start();
         }
 
-        healthBox.text = health + "/" + maxHealth.GetMaxHealth();
+        healthBox.text = health + "/" + playerHealth.GetMaxHealth();
     }
 
 }
