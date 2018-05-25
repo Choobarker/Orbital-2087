@@ -135,8 +135,6 @@ public class WaveSpawner : MonoBehaviour
         fade.FadeOut();
         CalculateBuffs();
 
-        Debug.Log("Buffs: Health: " + healthBuff + ". Damage: " + damageBuff + ". Score: " + scoreBuff);
-
 		// spawnPoints list is an array of possible spawns based on
 		// the range of the wave
 		List<Transform> spawnPoints = new List<Transform>();
@@ -223,7 +221,6 @@ public class WaveSpawner : MonoBehaviour
 
     void CalculateBuffs()
     {
-        Debug.Log("Wave index: " + nextWaveIndex);
         // Buff enemy health after every 5th wave, and damage after every 10th wave
         if(nextWaveIndex % 5 == 0 && nextWaveIndex != 0)
         {
