@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class EarthHealth : MonoBehaviour 
 {
-    private float STARTING_HEALTH = 500;
+    private float STARTING_HEALTH = 1000;
     private float health;
 
     public Transform Basic;

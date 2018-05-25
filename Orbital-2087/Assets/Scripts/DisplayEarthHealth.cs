@@ -6,40 +6,21 @@ using UnityEngine.UI;
 public class DisplayEarthHealth : MonoBehaviour
 {
     public Text healthBox; // textbox to display the earths health
+    public EarthHealth earthHealth;
 
     private void Start()
     {
         healthBox = GetComponent<Text>();
+        earthHealth = GameObject.FindGameObjectWithTag("Earth").GetComponent<EarthHealth>();
     }
-
-/*
-    private void Update()
-    {
-        healthBox.text = "EARTH: " + EarthHealth.health;
-        UpdateTextColour(3);
-    }
-*/
 
     public void UpdateText(float health)
     {
-        if(healthBox == null)
+        if (healthBox == null)
         {
             Start();
         }
 
-        healthBox.text = health + "/500";
-        //UpdateTextColour(health);
+        healthBox.text = health + "/" + earthHealth.GetStartingHealth();
     }
-
-    //public void UpdateTextColour(float health)
-    //{
-    //    if (health <= 250)
-    //    {
-    //        healthBox.color = Color.yellow;
-    //        if (health <= 50)
-    //        {
-    //            healthBox.color = Color.red;
-    //        }
-    //    }
-    //}
 }
