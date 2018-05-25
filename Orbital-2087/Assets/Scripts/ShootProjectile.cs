@@ -8,7 +8,7 @@ public class ShootProjectile : MonoBehaviour
 
     private float fireRate = 2;
     private float nextFire;
-    private float damage = 1;
+    private float damage = 10;
     private float boostDurationLeft = 0;
     private float boostMultiplier = 0;
 
