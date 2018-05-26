@@ -107,7 +107,14 @@ public class ShootProjectile : MonoBehaviour
 
     public float GetFireRate()
     {
-        return fireRate;
+        float currentFireRate = fireRate;
+
+        if(fireRateBoostActive)
+        {
+            currentFireRate /= boostMultiplier;
+        }
+
+        return currentFireRate;
     }
     
     public void setWeaponActive(bool active)
