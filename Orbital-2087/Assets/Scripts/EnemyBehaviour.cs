@@ -7,7 +7,6 @@ public class EnemyBehaviour : MonoBehaviour
     private const float BOOST_DROP_RATE = 20;
     
 	public float speed = 1;
-	public float playerViewDistance = 12;
     private float health = 35f;
 	private float moveTime;
 	private float timeMoved = 0f;
@@ -120,6 +119,7 @@ public class EnemyBehaviour : MonoBehaviour
     void DropBoost()
     {
         float result = Random.Range(1, 100);
+
         if(result <= BOOST_DROP_RATE)
         {
             Transform drop = null;

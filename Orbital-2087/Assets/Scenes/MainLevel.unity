@@ -1006,7 +1006,7 @@ MonoBehaviour:
     range: 2
   enemySpawnPoint: {fileID: 4952248789202910, guid: f879df7a3aaf1eb438e7c1b9f5cd99ae,
     type: 2}
-  playerViewDistance: 17
+  spawnRadius: 17
   numberOfSpawns: 20
 --- !u!212 &405828320
 SpriteRenderer:

@@ -8,17 +8,20 @@ public class WaveSpawner : MonoBehaviour
 
 	// Spawn an alien at each spawn point on creation
 	// also disables regular wave spawning
-	public bool testSpawns = false;
-
-	// Transform of the enemy that will be spawned 
+	public bool testSpawns = false; 
 	public Transform testEnemy;
 
 	// ***** End Of Debugging Tools *****
 
+    private const float HEALTH_BUFF_INCREASE = 10f;
+    private const float DAMAGE_BUFF_INCREASE = 5f;
+    private const float SCORE_BUFF_INCREASE = 5f;
+    private const int HEALTH_BUFF_INTERVAL = 5;
+    private const int DAMAGE_BUFF_INTERVAL = 10;
+
 	public enum SpawnState{SPAWNING, WAITING, COUNTING};	
 	private SpawnState state = SpawnState.COUNTING;
 
-	// Time after previous wave until the next wave starts spawning
 	public float secondsBetweenWaves = 5f;
 	private float waveCountDown = 0;	
 	// Number of seconds between each search for enemies still alive
@@ -42,11 +45,10 @@ public class WaveSpawner : MonoBehaviour
 	public List<Wave> waves;
 	private int nextWaveIndex = 0;
 
-	// Transform object that will be cloned for spawn locations
 	public Transform enemySpawnPoint;
 	private List<Transform> spawns = new List<Transform>();	
 
-	public float playerViewDistance;
+	public float spawnRadius;
 	public int numberOfSpawns;
 	private float distanceBetweenSpawns;
 	private float angleBetweenSpawns;
@@ -64,7 +66,7 @@ public class WaveSpawner : MonoBehaviour
 		CreateSpawns();
 		waveCountDown = secondsBetweenWaves;
         upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu").GetComponent<UpgradeMenu>();
-        upgradeMenu.CloseMenu();
+        upgradeMenu.CloseMenu(); // TODO should look at making the upgrade menu start closed
         fade = gameObject.GetComponent<TextFade>();
 	}
 
@@ -75,12 +77,13 @@ public class WaveSpawner : MonoBehaviour
             if (!EnemyIsAlive())
 			{
 				WaveCompleted();
-                WaveNotifier.waveNum += 1;
+                WaveNotifier.waveNum += 1; // TODO should make a method to increment the waveNum variable, rather than access directly
                 upgradeMenu.EnableButton();
-                fade.FadeIn();
+                fade.FadeIn(); // TODO should look at controlling timed fade in/out inside TextFade, and have a call to start it
             }
             else
 			{
+                // If there are enemies alive, no need to run the rest of the Update() code
                 return;
 			}
         }
@@ -115,29 +118,31 @@ public class WaveSpawner : MonoBehaviour
 
 	bool EnemyIsAlive()
 	{
+        bool isAlive = true;
 		searchCountDown -= Time.deltaTime;
+
 		if(searchCountDown >= 0)
 		{
 			searchCountDown = 1f;
+
 			if(GameObject.FindGameObjectWithTag("Enemy") == null)
 			{
-				return false;
+				isAlive =  false;
 			}
-		}		
+		}
 
-		return true;
+		return isAlive;
 	}
 
 	IEnumerator SpawnWave(Wave wave)
 	{
 		state = SpawnState.SPAWNING;
         upgradeMenu.DisableButton();
-        fade.FadeOut();
+        fade.FadeOut(); // TODO as described above for fade.FadeIn()
         CalculateBuffs();
-
-		// spawnPoints list is an array of possible spawns based on
-		// the range of the wave
+        
 		List<Transform> spawnPoints = new List<Transform>();
+
 		if((wave.range * 2 + 1) > spawns.Count)
 		{
 			spawnPoints = spawns;
@@ -157,7 +162,7 @@ public class WaveSpawner : MonoBehaviour
 
 		for(int i = 0; i < wave.count; i++)
 		{			
-			SpawnEnemy(wave.enemy, spawnPoints);
+			SpawnEnemies(wave.enemy, spawnPoints);
 			yield return new WaitForSeconds(wave.delay);
 		}
 
@@ -166,7 +171,7 @@ public class WaveSpawner : MonoBehaviour
 		yield break;
 	}
 
-	void SpawnEnemy(Transform enemy, List<Transform> spawnPoints)
+	void SpawnEnemies(Transform enemy, List<Transform> spawnPoints)
 	{
 		Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 		enemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
@@ -180,10 +185,10 @@ public class WaveSpawner : MonoBehaviour
 	
 	void CreateSpawns()
 	{
-		distanceBetweenSpawns = (float)(2 * System.Math.PI * playerViewDistance) / numberOfSpawns;
-		angleBetweenSpawns = (float)(distanceBetweenSpawns / (2 * System.Math.PI * playerViewDistance)) * 360;		
+		distanceBetweenSpawns = (float)(2 * System.Math.PI * spawnRadius) / numberOfSpawns;
+		angleBetweenSpawns = (float)(distanceBetweenSpawns / (2 * System.Math.PI * spawnRadius)) * 360;		
 
-		Vector3 startPoint = new Vector3(0, playerViewDistance, 0);
+		Vector3 startPoint = new Vector3(0, spawnRadius, 0);
 		Vector3 nextPoint;
 
 		float totalAngle = 0;
@@ -221,17 +226,18 @@ public class WaveSpawner : MonoBehaviour
 
     void CalculateBuffs()
     {
-        // Buff enemy health after every 5th wave, and damage after every 10th wave
-        if(nextWaveIndex % 5 == 0 && nextWaveIndex != 0)
+        // Buff enemy health after every HEALTH_BUFF_INTERVAL'th wave, and damage after
+        // every DAMAGE_BUFF_INTERVAL'th wave
+        if(nextWaveIndex % HEALTH_BUFF_INTERVAL == 0 && nextWaveIndex != 0)
         {
-            healthBuff += 10;
+            healthBuff += HEALTH_BUFF_INCREASE;
 
-            if(nextWaveIndex % 10 == 0)
+            if(nextWaveIndex % DAMAGE_BUFF_INTERVAL == 0)
             {
-                damageBuff += 5;
+                damageBuff += DAMAGE_BUFF_INCREASE;
             }
 
-            scoreBuff += 5;
+            scoreBuff += SCORE_BUFF_INCREASE;
         }
     }
 
@@ -241,7 +247,7 @@ public class WaveSpawner : MonoBehaviour
 
 		if(nextAngle == 180)
 		{
-			nextPoint.y = -playerViewDistance;
+			nextPoint.y = -spawnRadius;
 		}
 		else if(nextAngle != 0)
 		{
@@ -253,7 +259,7 @@ public class WaveSpawner : MonoBehaviour
 			angleOnPerimeter = (180 - nextAngle) / 2;
 
 			float C = 90f;
-			float c = playerViewDistance / Sin(angleOnPerimeter) * Sin(nextAngle);
+			float c = spawnRadius / Sin(angleOnPerimeter) * Sin(nextAngle);
 			float Y = 90 - angleOnPerimeter;
 			float y = (c / Sin(C) * Sin(Y));
 			float x = (float)(System.Math.Sqrt(c * c - y * y));
@@ -293,7 +299,7 @@ public class WaveSpawner : MonoBehaviour
 
 				if(count > 2)
 				{
-					Debug.Log("infinite loop..... aborting");
+					Debug.LogError("Infinite loop..... aborting");
 					good = true;
 				}
 			}
@@ -305,7 +311,7 @@ public class WaveSpawner : MonoBehaviour
 		return nextPoint;
 	}
 
-	// Checks if the location at point + (x, y, 0) is on the arch of the player view distance
+	// Checks if the location at point + (x, y, 0) is on the arch of the spawn circle
 	// and isn't already a spawn point, using OnArch() and PointExists()
 	bool GoodPoint(Vector3 point, float x, float y)
 	{
@@ -357,13 +363,13 @@ public class WaveSpawner : MonoBehaviour
 		return exists;
 	}
 
-	// Checkes if the point is on the circle of the players view distance
+	// Checkes if the point is on the circle of the spawn radius
 	bool OnArch(Vector3 nextPoint)
 	{
         bool onArch = true;
 		float h = System.Math.Abs((nextPoint.x * nextPoint.x) + (System.Math.Abs(nextPoint.y * nextPoint.y)));
 		h = (float)System.Math.Round(h);
-		if(System.Math.Sqrt(h) != playerViewDistance)
+		if(System.Math.Sqrt(h) != spawnRadius)
 		{
 			onArch = false;
 		}
