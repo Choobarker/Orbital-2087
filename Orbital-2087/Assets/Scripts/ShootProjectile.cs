@@ -98,6 +98,11 @@ public class ShootProjectile : MonoBehaviour
     public void SetFireRate(float newFireRate)
     {
         fireRate = newFireRate;
+
+        if(fireRateBoostActive)
+        {
+            fireRate *= boostMultiplier;
+        }
     }
 
     public float GetDamage()
