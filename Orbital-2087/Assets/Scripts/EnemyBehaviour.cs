@@ -108,7 +108,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             if(collider.GetComponent<AudioSource>().isPlaying)
             {
-                collider.GetComponent<SpriteRenderer>().enabled = false;
+                collider.GetComponent<MeshRenderer>().enabled = false;
                 collider.enabled = false;
 
                 Destroy(collider.gameObject, 3); 
