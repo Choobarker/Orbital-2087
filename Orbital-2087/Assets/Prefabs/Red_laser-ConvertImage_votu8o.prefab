@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212813452617452118}
   - component: {fileID: 114220861193281202}
   - component: {fileID: 114128097046419238}
-  - component: {fileID: 50111843368527542}
   - component: {fileID: 70741588747295816}
   - component: {fileID: 82836971262518972}
   m_Layer: 9
@@ -45,26 +44,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50111843368527542
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198857516606102}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!70 &70741588747295816
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -74,7 +53,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -183,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  firePoint: {fileID: 4105477013590054, guid: 3dea9e3e19b9dc445bee7d3fef288df8, type: 2}
+  firePoint: {fileID: 0}
   earth: {fileID: 4376929303876616, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
   whatToHit:
     serializedVersion: 2
