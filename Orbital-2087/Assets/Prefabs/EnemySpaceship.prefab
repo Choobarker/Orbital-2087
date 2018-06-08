@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  playerViewDistance: 17
   explosion: {fileID: 4538704813663956, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
   hitSplash: {fileID: 4526292040355790, guid: 644d1a1d2342a16449fa39b9a72014d3, type: 2}
   fireRateBoost: {fileID: 4072508032405400, guid: 958fcd1102179b544b2a75fddb604e14,

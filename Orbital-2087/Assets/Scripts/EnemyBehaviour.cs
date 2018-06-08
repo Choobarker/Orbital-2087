@@ -105,7 +105,18 @@ public class EnemyBehaviour : MonoBehaviour
         {
 			Destroy(Instantiate(hitSplash, collider.transform.position, collider.transform.rotation).gameObject, 2);
             TakeDamage(collider.GetComponent<ProjectileInfo>().GetDamage());
-            Destroy(collider.gameObject);            
+
+            if(collider.GetComponent<AudioSource>().isPlaying)
+            {
+                collider.GetComponent<SpriteRenderer>().enabled = false;
+                collider.enabled = false;
+
+                Destroy(collider.gameObject, 3); 
+            }
+            else
+            {
+                Destroy(collider.gameObject);
+            }                       
         }
     }
 
