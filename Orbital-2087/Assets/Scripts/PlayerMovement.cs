@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform earth;
     public Transform midSpace;
 
+    public GameObject joystickButton, movementArrows;
+
     private Vector3 lastPos;
 
     private BoostTimerController btc;
@@ -56,12 +58,17 @@ public class PlayerMovement : MonoBehaviour
         //Controls player movement
         if (playerJoystickControl)
         {
+            joystickButton.SetActive(true);
+            movementArrows.SetActive(false);
+
             moveVar += CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * speed; //Joystick controller
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller. TEMPORARY
-
         }
         else if (!playerJoystickControl)
         {
+            movementArrows.SetActive(true);
+            joystickButton.SetActive(false);
+
             //moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
             moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed/3.0f; //RA Remove inputgetaxis when building final android ver.
 
