@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveVar;
     private float boostDurationLeft = 0;
     private float boostMultiplier = 0;
+    private bool isMoveLeft, isMoveRight = false;
 
     public Transform earth;
     public Transform midSpace;
@@ -63,6 +64,15 @@ public class PlayerMovement : MonoBehaviour
         {
             //moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
             moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed/3.0f; //RA Remove inputgetaxis when building final android ver.
+
+            if(isMoveLeft)
+            {
+                moveVar -= 0.35f * Time.deltaTime * speed;
+            }
+            if(isMoveRight)
+            {
+                moveVar += 0.35f * Time.deltaTime * speed;
+            }
         }
 
         transform.position = GetNextLocation(moveVar);
@@ -75,6 +85,23 @@ public class PlayerMovement : MonoBehaviour
             float rotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 90; //+90 or the sprite doesn't face outwards
             this.transform.eulerAngles = new Vector3(0, 0, rotation);
         }
+    }
+
+    public void OnPressLeft()
+    {
+        isMoveLeft = true;
+    }
+    public void OnReleaseLeft()
+    {
+        isMoveLeft = false;
+    }
+    public void OnPressRight()
+    {
+        isMoveRight = true;
+    }
+    public void OnReleaseRight()
+    {
+        isMoveRight = false;
     }
 
     public void ActivateSpeedBoost(float duration, float boostMultiplier)
