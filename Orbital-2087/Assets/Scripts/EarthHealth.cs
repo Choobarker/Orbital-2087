@@ -6,27 +6,54 @@ using UnityEngine.SceneManagement;
 
 public class EarthHealth : MonoBehaviour 
 {
-    private float STARTING_HEALTH = 1000;
+    private const float STARTING_HEALTH = 1000;
     private float health;
 
     public Transform Basic;
     public Transform earthExplosion;
     public Transform hitSplash;
 
-    private DisplayEarthHealth healthDisplay;
     public Slider healthbar;
+    public Image healthFill;
+    public Text healthText;
 
     private void Start()
     {
         health = STARTING_HEALTH;
-        healthDisplay = GameObject.FindGameObjectWithTag("EarthHealthDisplay").GetComponent<DisplayEarthHealth>();
-        healthDisplay.UpdateText(health);
+        UpdateHealthText();
         healthbar.value = CalculateHealth();
         healthbar.enabled = false;
     }
 
+    public void UpdateHealthText()
+    {
+        healthText.text = health + "/" + STARTING_HEALTH;
+    }
+
+    public void UpdateFillColour()
+    {
+        float halfHealth = (STARTING_HEALTH / 2);
+        float quarterHealth = (STARTING_HEALTH / 4);
+
+        if (health <= STARTING_HEALTH && health > halfHealth)
+        {
+            healthFill.color = Color.green;
+        }
+
+        if (health <= halfHealth && health > quarterHealth)
+        {
+            healthFill.color = Color.yellow;
+        }
+
+        if (health <= quarterHealth)
+        {
+            healthFill.color = Color.red;
+        }
+    }
+
     public float CalculateHealth()
     {
+        UpdateFillColour();
         return health / STARTING_HEALTH;
     }
 
@@ -41,7 +68,7 @@ public class EarthHealth : MonoBehaviour
             health = STARTING_HEALTH;
         }
 
-        healthDisplay.UpdateText(health);
+        UpdateHealthText();
         healthbar.value = CalculateHealth();
     }
 
@@ -81,7 +108,7 @@ public class EarthHealth : MonoBehaviour
             health = 0;
         }
 
-        healthDisplay.UpdateText(health);
+        UpdateHealthText();
         healthbar.value = CalculateHealth();
     }
 

@@ -170,7 +170,7 @@ public class UpgradeInterface : MonoBehaviour
     void UpdateHealText()
     {
         healthUpgradeCost = GetNextLevelCost(maxHealthLevel);
-        upgradeMenu.UpdateMaxHealthPrice(healthUpgradeCost, CanAfford(healthUpgradeCost));
+        upgradeMenu.UpdateMaxHealthPrice(healthUpgradeCost);
         upgradeMenu.UpdateHealthLevel(maxHealthLevel, GetMaxHealth());
         UpdateCurrentHealthText();
     }
@@ -178,14 +178,14 @@ public class UpgradeInterface : MonoBehaviour
     void UpdateDamageText()
     {
         damageUpgradeCost = GetNextLevelCost(damageLevel);
-        upgradeMenu.UpdateDamagePrice(damageUpgradeCost, CanAfford(damageUpgradeCost));
+        upgradeMenu.UpdateDamagePrice(damageUpgradeCost);
         upgradeMenu.UpdateDamageLevel(damageLevel, GetDamage());
     }
 
     void UpdateFireRateText()
     {
         fireRateUpgradeCost = GetNextLevelCost(fireRateLevel);
-        upgradeMenu.UpdateFireRatePrice(fireRateUpgradeCost, CanAfford(fireRateUpgradeCost));
+        upgradeMenu.UpdateFireRatePrice(fireRateUpgradeCost);
         upgradeMenu.UpdateFireRateLevel(fireRateLevel, GetFireRate());
     }
 

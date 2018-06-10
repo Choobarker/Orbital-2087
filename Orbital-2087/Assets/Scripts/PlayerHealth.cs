@@ -22,23 +22,23 @@ public class PlayerHealth : MonoBehaviour
     public Sprite ship;
     public Sprite shipShielded;
 
-    private DisplayPlayerHealth healthDisplay;
     private ShootProjectile playerWeapon;
     private BoostTimerController btc;
 
     public Slider healthbar;
+    public Image healthFill;
+    public Text healthText;
 
     void Start()
     {
         health = STARTING_HEALTH;
         maxHealth = STARTING_HEALTH;
-        healthDisplay = GameObject.FindGameObjectWithTag("PlayerHealthDisplay").GetComponent<DisplayPlayerHealth>();
         playerWeapon = gameObject.GetComponent<ShootProjectile>();
         btc = gameObject.GetComponent<BoostTimerController>();
-        healthDisplay.UpdateText(health);
+
         healthbar.value = CalculateHealth();
         healthbar.enabled = false;
-
+        UpdateHealthText();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -58,8 +58,35 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void UpdateHealthText()
+    {
+        healthText.text = health + "/" + maxHealth;
+    }
+
+    public void UpdateFillColour()
+    {
+        float halfHealth = (maxHealth / 2);
+        float quarterHealth = (maxHealth / 4);
+
+        if (health <= maxHealth && health > halfHealth)
+        {
+            healthFill.color = Color.green;
+        }
+        
+        if(health <= halfHealth && health > quarterHealth)
+        {
+            healthFill.color = Color.yellow;
+        }
+        
+        if(health <= quarterHealth)
+        {
+            healthFill.color = Color.red;
+        }
+    }
+
     public float CalculateHealth()
     {
+        UpdateFillColour();
         return healthbar.value = health / maxHealth;
     }
 
@@ -92,8 +119,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetMaxHealth(float newHealth)
     {
         maxHealth = newHealth;
-        //health = maxHealth;
-        healthDisplay.UpdateText(health);
+        UpdateHealthText();
         healthbar.value = CalculateHealth();
     }
 
@@ -107,7 +133,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = maxHealth;
         }
-        healthDisplay.UpdateText(health);
+        UpdateHealthText();
         healthbar.value = CalculateHealth();
     }
 
@@ -134,7 +160,7 @@ public class PlayerHealth : MonoBehaviour
             health = 0;
         }
 
-        healthDisplay.UpdateText(health);
+        UpdateHealthText();
         healthbar.value = CalculateHealth();
     }
 
