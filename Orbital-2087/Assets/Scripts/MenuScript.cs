@@ -9,6 +9,10 @@ public class MenuScript : MonoBehaviour
     public Sprite pauseSprite;
     public Sprite playSprite;
     public AudioSource Audio;
+    public AudioSource AlienBullets;
+    public AudioSource playerBullets;
+    public AudioSource Earth;
+    public AudioSource Player;
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     public bool gamePaused = false;
@@ -20,6 +24,10 @@ public class MenuScript : MonoBehaviour
         pauseButtonImage = gameObject.GetComponent<Image>();
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        AlienBullets.mute = !AlienBullets.mute;
+        playerBullets.mute = !playerBullets.mute;
+        Earth.mute = !Earth.mute;
+        Player.mute = !Player.mute;
     }
 
     public void PlayButton()
@@ -76,12 +84,6 @@ public class MenuScript : MonoBehaviour
         pauseMenu.SetActive(true);
 
     }
-
-    public AudioSource AlienBullets;
-    public AudioSource playerBullets;
-    public AudioSource Earth;
-    public AudioSource Player;
-
 
     public void MusicToggle()
     {
