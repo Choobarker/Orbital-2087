@@ -1962,7 +1962,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.101
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2243,6 +2243,9 @@ MonoBehaviour:
     type: 2}
   earthExplosion: {fileID: 0}
   shipExplosion: {fileID: 0}
+  fireRateBoost: {fileID: 0}
+  shieldBoost: {fileID: 0}
+  speedBoost: {fileID: 0}
   pauseMenu: {fileID: 1672388856}
   settingsMenu: {fileID: 739300984}
   soundEffectsToggle: {fileID: 0}
@@ -2995,6 +2998,12 @@ MonoBehaviour:
   earthExplosion: {fileID: 82745466913365214, guid: f5205bdbeab7c44b38c7d14af2760bac,
     type: 2}
   shipExplosion: {fileID: 82584942231958384, guid: b9b00707df8652847b3b2de7165cc7cc,
+    type: 2}
+  fireRateBoost: {fileID: 82911500473765852, guid: 958fcd1102179b544b2a75fddb604e14,
+    type: 2}
+  shieldBoost: {fileID: 82188740612686998, guid: edc08f9259733454297482885bf4144b,
+    type: 2}
+  speedBoost: {fileID: 82511586680258718, guid: a3ee0312f5425034b98481952e8f4761,
     type: 2}
   pauseMenu: {fileID: 1672388856}
   settingsMenu: {fileID: 739300984}
