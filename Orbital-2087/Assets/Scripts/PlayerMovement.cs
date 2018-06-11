@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool playerJoystickControl;
+    public bool playerAcceloToggle;
     private bool speedBoostActive = false;
 
     public float speed;
@@ -56,22 +56,16 @@ public class PlayerMovement : MonoBehaviour
         }
         
         //Controls player movement
-        if (playerJoystickControl)
+        if (playerAcceloToggle)
         {
-            joystickButton.SetActive(true);
             movementArrows.SetActive(false);
-
-            moveVar += CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * speed; //Joystick controller
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller. TEMPORARY
+            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed / 3.0f; //RA Remove inputgetaxis when building final android ver.
         }
-        else if (!playerJoystickControl)
+        if (!playerAcceloToggle)
         {
             movementArrows.SetActive(true);
-            joystickButton.SetActive(false);
-
-            //moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller
-            moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed/3.0f; //RA Remove inputgetaxis when building final android ver.
-
+            
             if(isMoveLeft)
             {
                 moveVar -= 0.35f * Time.deltaTime * speed;
@@ -112,6 +106,21 @@ public class PlayerMovement : MonoBehaviour
     public void OnReleaseRight()
     {
         isMoveRight = false;
+    }
+
+    public void TogglePlayerAccelorometer()
+    {
+        if(playerAcceloToggle)
+        {
+            playerAcceloToggle = false;
+            Debug.Log("accelo disabled");
+        }
+
+        else if(!playerAcceloToggle)
+        {
+            playerAcceloToggle = true;
+            Debug.Log("accelo enabled");
+        }
     }
 
     public void ActivateSpeedBoost(float duration, float boostMultiplier)
