@@ -39,8 +39,7 @@ public class UpgradeInterface : MonoBehaviour
         {
             RefreshTexts();
             ToggleUpgradeButtons();
-        }
-        
+        }        
     }
 
     public float GetPlayerCurrency()
