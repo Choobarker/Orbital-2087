@@ -1070,18 +1070,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 356435812}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 595010428}
-        m_MethodName: CloseSettingsMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &356435812
@@ -1214,8 +1203,8 @@ RectTransform:
   - {fileID: 1372522031}
   - {fileID: 217278067}
   - {fileID: 9966039}
-  - {fileID: 1672388857}
   - {fileID: 739300985}
+  - {fileID: 1672388857}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1635,18 +1624,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 451507494}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 595010428}
-        m_MethodName: MusicToggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &451507494
@@ -1962,6 +1940,8 @@ GameObject:
   - component: {fileID: 561205392}
   - component: {fileID: 561205391}
   - component: {fileID: 561205390}
+  - component: {fileID: 561205393}
+  - component: {fileID: 561205389}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1969,6 +1949,86 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &561205389
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 561205388}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cd9df0d18e73bcb46a1bbf8d1ab71755, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.101
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!124 &561205390
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2025,6 +2085,13 @@ Transform:
   m_Father: {fileID: 871861305}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &561205393
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 561205388}
+  m_Enabled: 1
 --- !u!1 &595010422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,6 +2103,7 @@ GameObject:
   - component: {fileID: 595010426}
   - component: {fileID: 595010425}
   - component: {fileID: 595010424}
+  - component: {fileID: 595010427}
   - component: {fileID: 595010428}
   m_Layer: 5
   m_Name: Pause Button
@@ -2101,7 +2169,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 595010428}
+      - m_Target: {fileID: 1672388860}
         m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
@@ -2147,7 +2215,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 595010422}
---- !u!114 &595010428
+--- !u!114 &595010427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2155,19 +2223,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 595010422}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2efdabbf183a954bb5ef5f67c485141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &595010428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595010422}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseSprite: {fileID: 21300000, guid: e976ea749d8d26146ae17b81e7bdb2d2, type: 3}
-  playSprite: {fileID: 21300000, guid: c5aa174bc2671814ea8b64020bff8de3, type: 3}
-  Audio: {fileID: 82735058794657922, guid: 5e539ab82ce8a1440a4cb284c968a5a7, type: 2}
+  bgMusic: {fileID: 0}
+  alienBullets: {fileID: 0}
+  playerBullets: {fileID: 82692993922016974, guid: ea07ba8c75781054a8070cdf3cec9943,
+    type: 2}
+  earthExplosion: {fileID: 0}
+  shipExplosion: {fileID: 0}
   pauseMenu: {fileID: 1672388856}
   settingsMenu: {fileID: 739300984}
-  gamePaused: 0
-  AlienBullets: {fileID: 0}
-  playerBullets: {fileID: 0}
-  Earth: {fileID: 0}
-  Player: {fileID: 0}
+  soundEffectsToggle: {fileID: 0}
+  musicToggle: {fileID: 0}
+  back: {fileID: 0}
 --- !u!1 &632757777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,6 +2913,7 @@ GameObject:
   - component: {fileID: 739300985}
   - component: {fileID: 739300987}
   - component: {fileID: 739300986}
+  - component: {fileID: 739300988}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -2846,7 +2927,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739300984}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2855,12 +2936,12 @@ RectTransform:
   - {fileID: 356435810}
   - {fileID: 451507492}
   m_Father: {fileID: 396899409}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0024795881, y: -0.012558371}
-  m_SizeDelta: {x: -959.59, y: -1949.7}
+  m_AnchoredPosition: {x: -0.0025213663, y: -0.012558371}
+  m_SizeDelta: {x: -959.5901, y: -1949.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739300986
 MonoBehaviour:
@@ -2895,6 +2976,31 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739300984}
+--- !u!114 &739300988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739300984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgMusic: {fileID: 561205389}
+  alienBullets: {fileID: 82836971262518972, guid: 94f6d3e68e4726c408cc91bbfdae03a9,
+    type: 2}
+  playerBullets: {fileID: 82692993922016974, guid: ea07ba8c75781054a8070cdf3cec9943,
+    type: 2}
+  earthExplosion: {fileID: 82745466913365214, guid: f5205bdbeab7c44b38c7d14af2760bac,
+    type: 2}
+  shipExplosion: {fileID: 82584942231958384, guid: b9b00707df8652847b3b2de7165cc7cc,
+    type: 2}
+  pauseMenu: {fileID: 1672388856}
+  settingsMenu: {fileID: 739300984}
+  soundEffectsToggle: {fileID: 1785386154}
+  musicToggle: {fileID: 451507493}
+  back: {fileID: 356435811}
 --- !u!1 &790565093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4569,18 +4675,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1204662079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 595010428}
-        m_MethodName: OpenSettingsMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1204662079
@@ -6129,18 +6224,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1667671065}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 595010428}
-        m_MethodName: ResumeGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1667671065
@@ -6186,6 +6270,7 @@ GameObject:
   - component: {fileID: 1672388857}
   - component: {fileID: 1672388859}
   - component: {fileID: 1672388858}
+  - component: {fileID: 1672388860}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -6206,7 +6291,7 @@ RectTransform:
   - {fileID: 1204662077}
   - {fileID: 1667671063}
   m_Father: {fileID: 396899409}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6246,6 +6331,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1672388856}
+--- !u!114 &1672388860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672388856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107b4a5cd3fca9c45b3df5f90a56ea29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsMenu: {fileID: 739300984}
+  pauseMenu: {fileID: 1672388856}
+  settings: {fileID: 1204662078}
+  resume: {fileID: 1667671064}
+  pause: {fileID: 595010424}
+  pauseSprite: {fileID: 21300000, guid: e976ea749d8d26146ae17b81e7bdb2d2, type: 3}
+  playSprite: {fileID: 21300000, guid: c5aa174bc2671814ea8b64020bff8de3, type: 3}
 --- !u!1 &1678470463
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,18 +6813,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1785386155}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 595010428}
-        m_MethodName: AudioToggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1785386155
