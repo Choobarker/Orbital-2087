@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
         settingsMenu.SetActive(false);
 
         settings.onClick.AddListener(OpenSettingsMenu);
-        resume.onClick.AddListener(ResumeGame);
+        resume.onClick.AddListener(PauseGame);
 	}
 
     public void OpenSettingsMenu()
@@ -49,20 +49,20 @@ public class PauseMenu : MonoBehaviour
             Start();
         }
 
-        if (!gamePaused)
+        if(!gamePaused)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             gamePaused = true;
             pauseButtonImage.sprite = playSprite;
         }
-    }
-
-    private void ResumeGame()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
-        gamePaused = false;
-        pauseButtonImage.sprite = pauseSprite;
+        else
+        {
+            pauseMenu.SetActive(false);
+            settingsMenu.SetActive(false);
+            Time.timeScale = 1;
+            gamePaused = false;
+            pauseButtonImage.sprite = pauseSprite;
+        }
     }
 }
