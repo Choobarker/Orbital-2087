@@ -69,11 +69,11 @@ public class UpgradeMenu : MonoBehaviour
 
     public void ToggleFireRateButton(bool canAfford)
     {
-        if (canAfford == true)
+        if (canAfford)
         {
             fireRateButton.color = Color.green;
         }
-        else if (canAfford == false)
+        else if (!canAfford)
         {
             fireRateButton.color = Color.red;
         }
@@ -81,11 +81,11 @@ public class UpgradeMenu : MonoBehaviour
 
     public void ToggleDamageButton(bool canAfford)
     {
-        if (canAfford == true)
+        if (canAfford)
         {
             damageButton.color = Color.green;
         }
-        else if (canAfford == false)
+        else if (!canAfford)
         {
             damageButton.color = Color.red;
         }
@@ -93,11 +93,11 @@ public class UpgradeMenu : MonoBehaviour
 
     public void ToggleHealthButton(bool canAfford)
     {
-        if (canAfford == true)
+        if (canAfford)
         {
             maxHealthButton.color = Color.green;
         }
-        else if (canAfford == false)
+        else if (!canAfford)
         {
             maxHealthButton.color = Color.red;
         }
@@ -105,12 +105,12 @@ public class UpgradeMenu : MonoBehaviour
 
     public void ToggleHealingButtons(bool canAfford)
     {
-        if (canAfford == true)
+        if (canAfford)
         {
             healPlayerButton.color = Color.green;
             healEarthButton.color = Color.green;
         }
-        else if (canAfford == false)
+        else if (!canAfford)
         {
             healPlayerButton.color = Color.red;
             healEarthButton.color = Color.red;
