@@ -49,6 +49,7 @@ public class UpgradeMenu : MonoBehaviour
     {
         menu.SetActive(true);
         upgradeInterface.RefreshTexts();
+        upgradeInterface.ToggleUpgradeButtons();
         Time.timeScale = 0f;
     }
 
