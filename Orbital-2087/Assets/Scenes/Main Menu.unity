@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 1039018214}
   - component: {fileID: 1039018216}
   - component: {fileID: 1039018215}
+  - component: {fileID: 1039018217}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -941,6 +942,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1039018213}
+--- !u!114 &1039018217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1039018213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 82735058794657922, guid: 5e539ab82ce8a1440a4cb284c968a5a7, type: 2}
+  AlienBullets: {fileID: 82836971262518972, guid: 94f6d3e68e4726c408cc91bbfdae03a9,
+    type: 2}
+  playerBullets: {fileID: 82692993922016974, guid: ea07ba8c75781054a8070cdf3cec9943,
+    type: 2}
+  Earth: {fileID: 82745466913365214, guid: f5205bdbeab7c44b38c7d14af2760bac, type: 2}
+  Player: {fileID: 82584942231958384, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
 --- !u!1 &1178990499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,12 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseSprite: {fileID: 0}
-  playSprite: {fileID: 0}
   Audio: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
-  gamePaused: 0
   AlienBullets: {fileID: 0}
   playerBullets: {fileID: 0}
   Earth: {fileID: 0}
@@ -1301,11 +1315,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1419665067}
---- !u!82 &1468169195 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82735058794657922, guid: 5e539ab82ce8a1440a4cb284c968a5a7,
-    type: 2}
-  m_PrefabInternal: {fileID: 845938724}
 --- !u!1 &1558796679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1581,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1722318104}
-  - component: {fileID: 1722318106}
   - component: {fileID: 1722318105}
   m_Layer: 5
   m_Name: MusicToggle
@@ -1643,7 +1651,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722318106}
+      - m_Target: {fileID: 1039018217}
         m_MethodName: MusicToggle
         m_Mode: 1
         m_Arguments:
@@ -1657,27 +1665,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
---- !u!114 &1722318106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1722318103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseSprite: {fileID: 0}
-  playSprite: {fileID: 0}
-  Audio: {fileID: 1468169195}
-  pauseMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
-  gamePaused: 0
-  AlienBullets: {fileID: 0}
-  playerBullets: {fileID: 0}
-  Earth: {fileID: 0}
-  Player: {fileID: 0}
 --- !u!1 &1856739797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,7 +1747,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2071992182}
-  - component: {fileID: 2071992184}
   - component: {fileID: 2071992183}
   m_Layer: 5
   m_Name: SoundToggle
@@ -1831,7 +1817,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2071992184}
+      - m_Target: {fileID: 1039018217}
         m_MethodName: AudioToggle
         m_Mode: 1
         m_Arguments:
@@ -1845,26 +1831,3 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
---- !u!114 &2071992184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2071992181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseSprite: {fileID: 0}
-  playSprite: {fileID: 0}
-  Audio: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
-  gamePaused: 0
-  AlienBullets: {fileID: 82836971262518972, guid: 94f6d3e68e4726c408cc91bbfdae03a9,
-    type: 2}
-  playerBullets: {fileID: 82692993922016974, guid: ea07ba8c75781054a8070cdf3cec9943,
-    type: 2}
-  Earth: {fileID: 82745466913365214, guid: f5205bdbeab7c44b38c7d14af2760bac, type: 2}
-  Player: {fileID: 82584942231958384, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
