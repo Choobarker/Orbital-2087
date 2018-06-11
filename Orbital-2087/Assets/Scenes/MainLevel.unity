@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 9966038}
+  upgradeButton: {fileID: 315058266}
   cashText: {fileID: 1556780641}
   fireRateText: {fileID: 1277275665}
   damageText: {fileID: 1048439269}
@@ -212,8 +213,6 @@ MonoBehaviour:
   damagePrice: {fileID: 794972139}
   maxHealthPrice: {fileID: 1942927350}
   currentHealthText: {fileID: 28497604}
-  upgradeInterface: {fileID: 0}
-  upgradeButton: {fileID: 315058266}
   fireRateButton: {fileID: 790565096}
   damageButton: {fileID: 697642217}
   maxHealthButton: {fileID: 1208271117}
@@ -1454,8 +1453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6902fb03691890649922c780e3e608b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 823669298}
   isFaded: 0
+  uiElement: {fileID: 823669298}
 --- !u!50 &405828322
 Rigidbody2D:
   serializedVersion: 4
@@ -2103,8 +2102,6 @@ GameObject:
   - component: {fileID: 595010426}
   - component: {fileID: 595010425}
   - component: {fileID: 595010424}
-  - component: {fileID: 595010427}
-  - component: {fileID: 595010428}
   m_Layer: 5
   m_Name: Pause Button
   m_TagString: Untagged
@@ -2215,42 +2212,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 595010422}
---- !u!114 &595010427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 595010422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2efdabbf183a954bb5ef5f67c485141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &595010428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 595010422}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgMusic: {fileID: 0}
-  alienBullets: {fileID: 0}
-  playerBullets: {fileID: 82692993922016974, guid: ea07ba8c75781054a8070cdf3cec9943,
-    type: 2}
-  earthExplosion: {fileID: 0}
-  shipExplosion: {fileID: 0}
-  fireRateBoost: {fileID: 0}
-  shieldBoost: {fileID: 0}
-  speedBoost: {fileID: 0}
-  pauseMenu: {fileID: 1672388856}
-  settingsMenu: {fileID: 739300984}
-  soundEffectsToggle: {fileID: 0}
-  musicToggle: {fileID: 0}
-  back: {fileID: 0}
 --- !u!1 &632757777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3414,7 +3375,6 @@ MonoBehaviour:
   radius: 6.3
   earth: {fileID: 1877509434}
   midSpace: {fileID: 1684949273}
-  joystickButton: {fileID: 0}
   movementArrows: {fileID: 217278066}
 --- !u!114 &871861307
 MonoBehaviour:
@@ -3427,8 +3387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1181c5d8b36224f47b4e3ce2b8f7621e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1298290165926048, guid: ea07ba8c75781054a8070cdf3cec9943, type: 2}
-  projectileSpawn: {fileID: 1611069147}
+  projectile: {fileID: 0}
+  projectileSpawn: {fileID: 0}
 --- !u!114 &871861308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3440,7 +3400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ed798884b380e468496b10147914d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Basic: {fileID: 4536866802408816, guid: 94f6d3e68e4726c408cc91bbfdae03a9, type: 2}
   explosion: {fileID: 4538704813663956, guid: b9b00707df8652847b3b2de7165cc7cc, type: 2}
   hitSplash: {fileID: 4526292040355790, guid: 644d1a1d2342a16449fa39b9a72014d3, type: 2}
   ship: {fileID: 21300000, guid: 969b7d2c37ace5e40a6ada2fb63c4c3e, type: 3}
@@ -5419,12 +5378,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 871861307}
-          m_MethodName: OnPress
+        - m_Target: {fileID: 11500000, guid: 1181c5d8b36224f47b4e3ce2b8f7621e, type: 3}
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -5436,15 +5395,15 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 871861307}
-          m_MethodName: OnRelease
-          m_Mode: 1
+        - m_Target: {fileID: 11500000, guid: 1181c5d8b36224f47b4e3ce2b8f7621e, type: 3}
+          m_MethodName: set_name
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: OnRelease()
             m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,

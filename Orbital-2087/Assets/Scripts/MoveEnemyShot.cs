@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveTrail : MonoBehaviour 
+public class MoveEnemyShot : MonoBehaviour 
 {
-    public int moveSpeed;
-
-    public Transform firePoint;
-    public Transform earth;
-    public LayerMask whatToHit;    
+    public int moveSpeed;  
 
     void Update () 
     {

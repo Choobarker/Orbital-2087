@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
     private float maxHealth;
     private float shieldDurationLeft = 0;
 
-    public Transform Basic;
     public Transform explosion;
 	public Transform hitSplash;
 
@@ -22,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     public Sprite ship;
     public Sprite shipShielded;
 
-    private ShootProjectile playerWeapon;
+    private PlayerWeapon playerWeapon;
     private BoostTimerController btc;
 
     public Slider healthbar;
@@ -33,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health = STARTING_HEALTH;
         maxHealth = STARTING_HEALTH;
-        playerWeapon = gameObject.GetComponent<ShootProjectile>();
+        playerWeapon = gameObject.GetComponent<PlayerWeapon>();
         btc = gameObject.GetComponent<BoostTimerController>();
 
         healthbar.value = CalculateHealth();

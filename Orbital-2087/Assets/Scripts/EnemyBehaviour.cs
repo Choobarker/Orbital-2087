@@ -3,42 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
-{
+{	
     private const float BOOST_DROP_RATE = 20;
     
-	public float speed = 1;
+    public float speed = 1;
     private float health = 35f;
-	private float moveTime;
-	private float timeMoved = 0f;
-	private float minMovePercent = 10;
-	private float maxMovePercent = 50;
+    private float moveTime;
+    private float timeMoved = 0f;
+    private float minMovePercent = 10;
+    private float maxMovePercent = 50;
     private float score = 15;
     private float minScore = 10;
     private float scoreTimer = 5;
     private float timePassed = 0;
 
     private bool alive = false;
-	private bool inPosition = false;
+    private bool inPosition = false;
 
-	public Transform explosion;
-	public Transform hitSplash;
+    public Transform explosion;
+    public Transform hitSplash;
     public Transform fireRateBoost;
     public Transform shieldBoost;
     public Transform speedBoost;
 
-	private Vector3 direction;
+    private Vector3 direction;
 
     private ScoreKeeping scoreKeeping;
 	
 	void Start()
 	{
 		alive = true;
-        timePassed = Time.time;
+    	timePassed = Time.time;
 
 		SetDirection();
 		SetMovementTime();
-        scoreKeeping = GameObject.FindGameObjectWithTag("Player").GetComponent<ScoreKeeping>();
-        scoreTimer += Time.deltaTime;
+      	scoreKeeping = GameObject.FindGameObjectWithTag("Player").GetComponent<ScoreKeeping>();
+      	scoreTimer += Time.deltaTime;
 	}
 	
 	void Update ()

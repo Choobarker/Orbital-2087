@@ -75,8 +75,7 @@ public class BoostTimerController : MonoBehaviour
         else
         {
             shieldTimer.gameObject.SetActive(true);
-        }
-        
+        }        
     }
 
     public void UpdateSpeedTimer(float timeLeft)

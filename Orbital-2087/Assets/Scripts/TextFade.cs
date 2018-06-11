@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextFade : MonoBehaviour {
-
-    public CanvasGroup uiElement;
-    public bool isFaded = false;
+public class TextFade : MonoBehaviour 
+{
+	public bool isFaded = false;
+    public CanvasGroup uiElement;    
 
     private void Awake()
     {
@@ -18,6 +18,7 @@ public class TextFade : MonoBehaviour {
         isFaded = false;
         StartCoroutine(FadeCanvasGroup(uiElement, uiElement.alpha, 1));
     }
+  
     public void FadeOut()
     {
         isFaded = true;

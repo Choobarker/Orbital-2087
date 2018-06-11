@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 70741588747295816}
   - component: {fileID: 82836971262518972}
   m_Layer: 9
-  m_Name: Red_laser-ConvertImage_votu8o
+  m_Name: EnemyShot
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -162,11 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  firePoint: {fileID: 0}
-  earth: {fileID: 4376929303876616, guid: 4a3be68bf1d116f40948b89cba2e6e8d, type: 2}
-  whatToHit:
-    serializedVersion: 2
-    m_Bits: 4294966728
 --- !u!212 &212813452617452118
 SpriteRenderer:
   m_ObjectHideFlags: 1

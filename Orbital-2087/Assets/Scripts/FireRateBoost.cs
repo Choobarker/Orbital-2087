@@ -8,11 +8,11 @@ public class FireRateBoost : MonoBehaviour
     private const float MULTIPLIER = 2;
     private const float MOVE_SPEED = 20;
 
-    ShootProjectile playerWeapon;
+    PlayerWeapon playerWeapon;
 
     void Start()
     {
-        playerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<ShootProjectile>();
+        playerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWeapon>();
     }
 
     void Update()

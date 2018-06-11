@@ -10,7 +10,7 @@ public class ShootProjectileTest : MonoBehaviour
     [Test]
     public void DestroyShotsTest()
     {
-        ShootProjectile sp = new ShootProjectile();
+        PlayerWeapon sp = new PlayerWeapon();
         shot = sp.CreateShot();
         StartCoroutine("Waiting");
     }

@@ -9,24 +9,20 @@ public class UpgradeInterface : MonoBehaviour
     private int damageLevel = 0;
     private int maxHealthLevel = 0;
 
-    private float baseFireRate = 2;
-    private float baseDamage = 1;
-    private float baseHealth = 100;
-
     private float fireRateLevelIncrease = .15f;
     private float damageLevelIncrease = .6f;
     private float maxHealthLevelIncrease = 15;
 
-    private float levelCostMultiplier = 2f;
+    private float levelCostMultiplier = 2;
+    private float healingCost = 5; // default healing cost for the earth & player
+    private float fireRateUpgradeCost, damageUpgradeCost, healthUpgradeCost;
 
     PlayerHealth playerHealth;
-    ShootProjectile playerWeapon;
+    PlayerWeapon playerWeapon;
     ScoreKeeping scoreKeeping;
     EarthHealth earthHealth;
 
-    UpgradeMenu upgradeMenu;
-    private float fireRateUpgradeCost, damageUpgradeCost, healthUpgradeCost;
-    private float healingCost = 5f; // default healing cost for the earth & player
+    UpgradeMenu upgradeMenu;    
 
     void Start()
     {
@@ -34,17 +30,26 @@ public class UpgradeInterface : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         playerHealth = player.GetComponent<PlayerHealth>();
-        playerWeapon = player.GetComponent<ShootProjectile>();
+        playerWeapon = player.GetComponent<PlayerWeapon>();
         scoreKeeping = player.GetComponent<ScoreKeeping>();
         earthHealth = earth.GetComponent<EarthHealth>();
         upgradeMenu = gameObject.GetComponent<UpgradeMenu>();
 
-        RefreshTexts();
-        ToggleUpgradeButtons();
+        if(upgradeMenu != null)
+        {
+            RefreshTexts();
+            ToggleUpgradeButtons();
+        }
+        
     }
 
     public float GetPlayerCurrency()
     {
+        if(scoreKeeping == null)
+        {
+            Start();
+        }
+
         return scoreKeeping.GetCash();
     }
 
@@ -58,14 +63,6 @@ public class UpgradeInterface : MonoBehaviour
                 DeductCost(healingCost);
                 UpdateCashText();
             }
-            else
-            {
-                Debug.Log("You are at max health");
-            }
-        }
-        else
-        {
-            Debug.Log("Not enough cash to purchase upgrade");
         }
 
         ToggleUpgradeButtons();
@@ -82,14 +79,6 @@ public class UpgradeInterface : MonoBehaviour
                 DeductCost(healingCost);
                 UpdateCashText();
             }
-            else
-            {
-                Debug.Log("The earth is at max health");
-            }
-        }
-        else
-        {
-            Debug.Log("Not enough cash to purchase this");
         }
 
         ToggleUpgradeButtons();
@@ -107,10 +96,7 @@ public class UpgradeInterface : MonoBehaviour
             UpdateDamageText();
             UpdateCashText();
         }
-        else
-        {
-            Debug.Log("Not enough cash to purchase upgrade");
-        }
+        
         ToggleUpgradeButtons();
     }
 
@@ -125,10 +111,7 @@ public class UpgradeInterface : MonoBehaviour
             UpdateFireRateText();
             UpdateCashText();
         }
-        else
-        {
-            Debug.Log("Not enough cash to purchase upgrade");
-        }
+        
         ToggleUpgradeButtons();
     }
 
@@ -143,10 +126,7 @@ public class UpgradeInterface : MonoBehaviour
             UpdateHealText();
             UpdateCashText();
         }
-        else
-        {
-            Debug.Log("Not enough cash to purchase upgrade");
-        }
+        
         ToggleUpgradeButtons();
     }
 
@@ -157,22 +137,9 @@ public class UpgradeInterface : MonoBehaviour
         if(GetPlayerCurrency() < cost)
         {
             canAfford = false;
-            //disable upgrade
-
         }
 
         return canAfford;
-    }
-
-    // can avoid this method if you just start all levels at 0
-    void CalculateLevels()
-    {
-        fireRateLevel = (int)((GetFireRate() - baseFireRate) / fireRateLevelIncrease);
-        damageLevel = (int)((GetDamage() - baseDamage) / damageLevelIncrease);
-        maxHealthLevel = (int)((GetMaxHealth() - baseHealth) / maxHealthLevelIncrease);
-        Debug.Log(GetMaxHealth());
-        Debug.Log(baseHealth);
-        Debug.Log(maxHealthLevelIncrease);
     }
     
     void UpdateHealText()
@@ -218,6 +185,11 @@ public class UpgradeInterface : MonoBehaviour
 
     public void ToggleUpgradeButtons()
     {
+        if(upgradeMenu == null)
+        {
+            Start();
+        }
+        
         upgradeMenu.ToggleDamageButton(CanAfford(damageUpgradeCost));
         upgradeMenu.ToggleFireRateButton(CanAfford(fireRateUpgradeCost));
         upgradeMenu.ToggleHealthButton(CanAfford(healthUpgradeCost));

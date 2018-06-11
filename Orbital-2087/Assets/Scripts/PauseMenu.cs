@@ -19,7 +19,6 @@ public class PauseMenu : MonoBehaviour
 
     private Image pauseButtonImage;
 
-	// Use this for initialization
 	void Start () 
     {
         pauseButtonImage = pause.gameObject.GetComponent<Image>();

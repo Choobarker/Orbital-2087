@@ -13,21 +13,23 @@ public class WaveSpawner : MonoBehaviour
 
 	// ***** End Of Debugging Tools *****
 
-    private const float HEALTH_BUFF_INCREASE = 10f;
-    private const float DAMAGE_BUFF_INCREASE = 5f;
-    private const float SCORE_BUFF_INCREASE = 5f;
+    private const float HEALTH_BUFF_INCREASE = 10;
+    private const float DAMAGE_BUFF_INCREASE = 5;
+    private const float SCORE_BUFF_INCREASE = 5;
+    
     private const int HEALTH_BUFF_INTERVAL = 5;
     private const int DAMAGE_BUFF_INTERVAL = 10;
 
 	public enum SpawnState{SPAWNING, WAITING, COUNTING};	
 	private SpawnState state = SpawnState.COUNTING;
 
-	public float secondsBetweenWaves = 5f;
+	public float secondsBetweenWaves = 5;
 	private float waveCountDown = 0;	
-	// Number of seconds between each search for enemies still alive
+	
+    // Number of seconds between each search for enemies still alive
 	// A number too low will be too demanding on performance, and too
 	// high will create too much of a delay. 1 second seems to work well
-	private float searchCountDown = 1f;
+	private float searchCountDown = 1;
 
 	[System.Serializable]
 	public class Wave
@@ -36,7 +38,8 @@ public class WaveSpawner : MonoBehaviour
 		public Transform enemy;
 		public int count;
 		public float delay;
-		// Number of spawns on either side of the center 
+		
+        // Number of spawns on either side of the center 
 		// e.g. 'range = 2' means enemies can spawn 2 locations to the left or right of the center spawn
 		// for a total of 5 possible locations
 		public int range;
@@ -50,7 +53,8 @@ public class WaveSpawner : MonoBehaviour
 
 	public float spawnRadius;
 	public int numberOfSpawns;
-	private float distanceBetweenSpawns;
+	
+    private float distanceBetweenSpawns;
 	private float angleBetweenSpawns;
 	private float angleOnPerimeter;
 
@@ -66,7 +70,7 @@ public class WaveSpawner : MonoBehaviour
 		CreateSpawns();
 		waveCountDown = secondsBetweenWaves;
         upgradeMenu = GameObject.FindGameObjectWithTag("UpgradeMenu").GetComponent<UpgradeMenu>();
-        upgradeMenu.CloseMenu(); // TODO should look at making the upgrade menu start closed
+        upgradeMenu.CloseMenu();
         fade = gameObject.GetComponent<TextFade>();
 	}
 
@@ -77,9 +81,9 @@ public class WaveSpawner : MonoBehaviour
             if (!EnemyIsAlive())
 			{
 				WaveCompleted();
-                WaveNotifier.waveNum += 1; // TODO should make a method to increment the waveNum variable, rather than access directly
-                upgradeMenu.EnableButton();
-                fade.FadeIn(); // TODO should look at controlling timed fade in/out inside TextFade, and have a call to start it
+                WaveNotifier.IncrementWave();
+                upgradeMenu.EnableUpgradeButton();
+                fade.FadeIn();
             }
             else
 			{
@@ -137,8 +141,8 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave(Wave wave)
 	{
 		state = SpawnState.SPAWNING;
-        upgradeMenu.DisableButton();
-        fade.FadeOut(); // TODO as described above for fade.FadeIn()
+        upgradeMenu.DisableUpgradeButton();
+        fade.FadeOut();
         CalculateBuffs();
         
 		List<Transform> spawnPoints = new List<Transform>();
@@ -180,7 +184,7 @@ public class WaveSpawner : MonoBehaviour
 
         enemyBehaviour.BuffHealth(healthBuff);
         enemyBehaviour.BuffScore(scoreBuff);
-        enemy.gameObject.GetComponent<Weapon>().BuffDamage(damageBuff);
+        enemy.gameObject.GetComponent<EnemyWeapon>().BuffDamage(damageBuff);
 	}
 	
 	void CreateSpawns()

@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class EarthHealth : MonoBehaviour 
 {
     private const float STARTING_HEALTH = 1000;
+    private const float HALF_HEALTH = (STARTING_HEALTH / 2);
+    private const float QUARTER_HEALTH = (STARTING_HEALTH / 4);
+    
     private float health;
 
     public Transform Basic;
@@ -31,21 +34,18 @@ public class EarthHealth : MonoBehaviour
     }
 
     public void UpdateFillColour()
-    {
-        float halfHealth = (STARTING_HEALTH / 2);
-        float quarterHealth = (STARTING_HEALTH / 4);
-
-        if (health <= STARTING_HEALTH && health > halfHealth)
+    {  
+        if(health <= STARTING_HEALTH && health > HALF_HEALTH)
         {
             healthFill.color = Color.green;
         }
 
-        if (health <= halfHealth && health > quarterHealth)
+        if(health <= HALF_HEALTH && health > QUARTER_HEALTH)
         {
             healthFill.color = Color.yellow;
         }
 
-        if (health <= quarterHealth)
+        if(health <= QUARTER_HEALTH)
         {
             healthFill.color = Color.red;
         }
@@ -59,7 +59,7 @@ public class EarthHealth : MonoBehaviour
 
     public void HealEarth(float amount)
     {
-        if ((health + amount) < STARTING_HEALTH)
+        if((health + amount) < STARTING_HEALTH)
         {
             health += amount;
         }

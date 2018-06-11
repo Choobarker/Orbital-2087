@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootProjectile : MonoBehaviour 
+public class PlayerWeapon : MonoBehaviour 
 {
     private bool fireRateBoostActive = false;
-
+	private bool weaponActive = true;
+	private bool fireButtonPressed = false;
+    
     private float fireRate = 2;
     private float nextFire;
     private float damage = 10;
     private float boostDurationLeft = 0;
     private float boostMultiplier = 0;
-
-    private bool weaponActive = true;
-
-    public GameObject projectile;
-    public Transform projectileSpawn;
-
+    
     private BoostTimerController btc;
 
-    private bool fireButtonPressed = false;
+	public GameObject projectile;
+    public Transform projectileSpawn;
 
-    void Start()
+	void Start()
     {
         btc = gameObject.GetComponent<BoostTimerController>();
     }

@@ -7,18 +7,18 @@ public class PlayerMovement : MonoBehaviour
 {
     public bool playerAcceloToggle;
     private bool speedBoostActive = false;
+	private bool isMoveLeft, isMoveRight = false;
 
     public float speed;
     public float radius = 3;
     private float moveVar;
     private float boostDurationLeft = 0;
     private float boostMultiplier = 0;
-    private bool isMoveLeft, isMoveRight = false;
 
     public Transform earth;
     public Transform midSpace;
 
-    public GameObject joystickButton, movementArrows;
+    public GameObject movementArrows;
 
     private Vector3 lastPos;
 
@@ -28,17 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         btc = gameObject.GetComponent<BoostTimerController>();
         lastPos = transform.position;
-    }
-
-    public Vector3 GetNextLocation(float moveVar)
-    {
-        float x = Mathf.Sin(moveVar) * radius; //Used to make player rotate on the circular axis
-        float y = Mathf.Cos(moveVar) * radius;
-        float z = 0f;
-        Vector3 move = new Vector3(x, y, z);
-        
-        return move;
-    }
+    }    
 
     private void FixedUpdate()
     {
@@ -56,13 +46,13 @@ public class PlayerMovement : MonoBehaviour
         }
         
         //Controls player movement
-        if (playerAcceloToggle)
+        if(playerAcceloToggle)
         {   
             moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller.
             moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed / 3.0f; //RA Remove inputgetaxis when building final android ver.
         }
 
-        if (!playerAcceloToggle)
+        if(!playerAcceloToggle)
         {  
             if(isMoveLeft)
             {
@@ -84,6 +74,17 @@ public class PlayerMovement : MonoBehaviour
             float rotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 90; //+90 or the sprite doesn't face outwards
             this.transform.eulerAngles = new Vector3(0, 0, rotation);
         }
+    }
+    
+    public Vector3 GetNextLocation(float moveVar)
+    {
+        float x = Mathf.Sin(moveVar) * radius; //Used to make player rotate on the circular axis
+        float y = Mathf.Cos(moveVar) * radius;
+        float z = 0f;
+        
+        Vector3 move = new Vector3(x, y, z);
+        
+        return move;
     }
 
     public void OnPressLeft()
@@ -112,14 +113,12 @@ public class PlayerMovement : MonoBehaviour
         {
             movementArrows.SetActive(true);
             playerAcceloToggle = false;
-            Debug.Log("accelo disabled");
         }
 
         else if(!playerAcceloToggle)
         {
             movementArrows.SetActive(false);
             playerAcceloToggle = true;
-            Debug.Log("accelo enabled");
         }
     }
 

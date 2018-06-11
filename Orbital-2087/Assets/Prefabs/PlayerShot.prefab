@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 23774425817788018}
   - component: {fileID: 33099248721232696}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: PlayerShot
   m_TagString: Shot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

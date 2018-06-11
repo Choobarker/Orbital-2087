@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class ScoreKeeping : MonoBehaviour
 {
+	private const float CASH_MULT = 0.5F;
+    
     private static float score = 0;
-    private static float cash = 0;
+    private static float cash = 0;    
 
     public Text scoreText;
 
@@ -23,7 +25,7 @@ public class ScoreKeeping : MonoBehaviour
     public void AddScore(float addScore)
     {
         score += addScore;
-        cash += addScore / 2;
+        cash += addScore * CASH_MULT;
 
         UpdateScore();
     }
