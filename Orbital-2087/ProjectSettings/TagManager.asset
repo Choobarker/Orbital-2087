@@ -3,7 +3,28 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Shot
+  - Projectile
+  - PlayerHealthDisplay
+  - EarthHealthDisplay
+  - Boost
+  - FireRateBoost
+  - SpeedBoost
+  - ShieldBoost
+  - WaveCounter
+  - UpgradeMenu
+  - CashDisplay
+  - FireRateLevel
+  - DamageLevel
+  - MaxHealthLevel
+  - FireRatePrice
+  - DamagePrice
+  - MaxHealthPrice
+  - Earth
+  - SettingsButton
+  - ResumeButton
   layers:
   - Default
   - TransparentFX
@@ -15,8 +36,8 @@ TagManager:
   - 
   - Player
   - Aliens
-  - 
-  - 
+  - Earth
+  - Boosts
   - 
   - 
   - 
