@@ -17,6 +17,7 @@ public class UpgradeMenu : MonoBehaviour
 
     public UpgradeInterface upgradeInterface;
     public GameObject upgradeButton;
+    public Image fireRateButton, damageButton, maxHealthButton, healPlayerButton, healEarthButton;
 
     void Start()
     {
@@ -47,16 +48,22 @@ public class UpgradeMenu : MonoBehaviour
         menu.SetActive(true);
         upgradeInterface.RefreshTexts();
 
+        fireRateButton.color = Color.green;
+        damageButton.color = Color.green;
+        healPlayerButton.color = Color.green;
+        healEarthButton.color = Color.green;
+        maxHealthButton.color = Color.green;
+
         //pause the game while the upgrade menu is open
         Time.timeScale = 0f;
     }
 
-    public void UpdateDamagePrice(float price)
+    public void UpdateDamagePrice(float price, bool canAfford)
     {
         damagePrice.text = "$" + price;
     }
 
-    public void UpdateMaxHealthPrice(float price)
+    public void UpdateMaxHealthPrice(float price, bool canAfford)
     {
         maxHealthPrice.text = "$" + price;
     }
@@ -64,6 +71,56 @@ public class UpgradeMenu : MonoBehaviour
     public void UpdateFireRatePrice(float price)
     {
         fireRatePrice.text = "$" + price;
+    }
+
+    public void ToggleFireRateButton(bool canAfford)
+    {
+        if (canAfford == true)
+        {
+            fireRateButton.color = Color.green;
+        }
+        else if (canAfford == false)
+        {
+            fireRateButton.color = Color.red;
+        }
+    }
+
+    public void ToggleDamageButton(bool canAfford)
+    {
+        if (canAfford == true)
+        {
+            damageButton.color = Color.green;
+        }
+        else if (canAfford == false)
+        {
+            damageButton.color = Color.red;
+        }
+    }
+
+    public void ToggleHealthButton(bool canAfford)
+    {
+        if (canAfford == true)
+        {
+            maxHealthButton.color = Color.green;
+        }
+        else if (canAfford == false)
+        {
+            maxHealthButton.color = Color.red;
+        }
+    }
+
+    public void ToggleHealingButtons(bool canAfford)
+    {
+        if (canAfford == true)
+        {
+            healPlayerButton.color = Color.green;
+            healEarthButton.color = Color.green;
+        }
+        else if (canAfford == false)
+        {
+            healPlayerButton.color = Color.red;
+            healEarthButton.color = Color.red;
+        }
     }
 
     //methods for updating the players stats & cash on the screen
@@ -94,5 +151,4 @@ public class UpgradeMenu : MonoBehaviour
     {
         damageText.text = "DAMAGE: (LEVEL " + level + ") - " + damage + " damage";
     }
-
 }

@@ -40,6 +40,7 @@ public class UpgradeInterface : MonoBehaviour
         upgradeMenu = gameObject.GetComponent<UpgradeMenu>();
 
         RefreshTexts();
+        ToggleUpgradeButtons();
     }
 
     public float GetPlayerCurrency()
@@ -66,6 +67,8 @@ public class UpgradeInterface : MonoBehaviour
         {
             Debug.Log("Not enough cash to purchase upgrade");
         }
+
+        ToggleUpgradeButtons();
         UpdateCurrentHealthText();
     }
 
@@ -88,6 +91,8 @@ public class UpgradeInterface : MonoBehaviour
         {
             Debug.Log("Not enough cash to purchase this");
         }
+
+        ToggleUpgradeButtons();
         UpdateCurrentHealthText();
     }
 
@@ -106,6 +111,7 @@ public class UpgradeInterface : MonoBehaviour
         {
             Debug.Log("Not enough cash to purchase upgrade");
         }
+        ToggleUpgradeButtons();
     }
 
     public void UpgradeFireRate()
@@ -123,6 +129,7 @@ public class UpgradeInterface : MonoBehaviour
         {
             Debug.Log("Not enough cash to purchase upgrade");
         }
+        ToggleUpgradeButtons();
     }
 
     public void UpgradeHealth()
@@ -140,6 +147,7 @@ public class UpgradeInterface : MonoBehaviour
         {
             Debug.Log("Not enough cash to purchase upgrade");
         }
+        ToggleUpgradeButtons();
     }
 
     private bool CanAfford(float cost)
@@ -170,7 +178,7 @@ public class UpgradeInterface : MonoBehaviour
     void UpdateHealText()
     {
         healthUpgradeCost = GetNextLevelCost(maxHealthLevel);
-        upgradeMenu.UpdateMaxHealthPrice(healthUpgradeCost);
+        upgradeMenu.UpdateMaxHealthPrice(healthUpgradeCost, CanAfford(healthUpgradeCost));
         upgradeMenu.UpdateHealthLevel(maxHealthLevel, GetMaxHealth());
         UpdateCurrentHealthText();
     }
@@ -178,7 +186,7 @@ public class UpgradeInterface : MonoBehaviour
     void UpdateDamageText()
     {
         damageUpgradeCost = GetNextLevelCost(damageLevel);
-        upgradeMenu.UpdateDamagePrice(damageUpgradeCost);
+        upgradeMenu.UpdateDamagePrice(damageUpgradeCost, CanAfford(damageUpgradeCost));
         upgradeMenu.UpdateDamageLevel(damageLevel, GetDamage());
     }
 
@@ -206,6 +214,14 @@ public class UpgradeInterface : MonoBehaviour
         UpdateFireRateText();
         UpdateHealText();
         UpdateCurrentHealthText();
+    }
+
+    public void ToggleUpgradeButtons()
+    {
+        upgradeMenu.ToggleDamageButton(CanAfford(damageUpgradeCost));
+        upgradeMenu.ToggleFireRateButton(CanAfford(fireRateUpgradeCost));
+        upgradeMenu.ToggleHealthButton(CanAfford(healthUpgradeCost));
+        upgradeMenu.ToggleHealingButtons(CanAfford(healingCost));
     }
 
     void UpdateCashText()

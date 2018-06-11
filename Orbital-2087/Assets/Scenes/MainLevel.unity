@@ -214,6 +214,11 @@ MonoBehaviour:
   currentHealthText: {fileID: 28497604}
   upgradeInterface: {fileID: 0}
   upgradeButton: {fileID: 315058266}
+  fireRateButton: {fileID: 790565096}
+  damageButton: {fileID: 697642217}
+  maxHealthButton: {fileID: 1208271117}
+  healPlayerButton: {fileID: 1313428742}
+  healEarthButton: {fileID: 539760199}
 --- !u!114 &9966043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,7 +681,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 27cb1ad137f583e489b83293df2538dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 660b49eff05652945b9b9dad23a9d305, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2226,7 +2231,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 49b611e658efbf443b686a4036f74fe3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34db77ae55bcc8242bddb46f8944190d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
