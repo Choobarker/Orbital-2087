@@ -65,7 +65,6 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
     public void OpenSettingsMenu()
     {
         settingsMenu.SetActive(true);
@@ -77,13 +76,12 @@ public class MenuScript : MonoBehaviour
         pauseMenu.SetActive(true);
 
     }
-=======
+
     public AudioSource AlienBullets;
     public AudioSource playerBullets;
     public AudioSource Earth;
     public AudioSource Player;
 
->>>>>>> c841fa8fcfd23128274e3de629e171113779b346
 
     public void MusicToggle()
     {
