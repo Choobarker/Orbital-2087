@@ -57,15 +57,13 @@ public class PlayerMovement : MonoBehaviour
         
         //Controls player movement
         if (playerAcceloToggle)
-        {
-            movementArrows.SetActive(false);
-            moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller. TEMPORARY
+        {   
+            moveVar += Input.acceleration.x * Time.deltaTime * speed; //Accelerometer controller.
             moveVar += Input.GetAxis("Horizontal") * Time.deltaTime * speed / 3.0f; //RA Remove inputgetaxis when building final android ver.
         }
+
         if (!playerAcceloToggle)
-        {
-            movementArrows.SetActive(true);
-            
+        {  
             if(isMoveLeft)
             {
                 moveVar -= 0.35f * Time.deltaTime * speed;
@@ -112,12 +110,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if(playerAcceloToggle)
         {
+            movementArrows.SetActive(true);
             playerAcceloToggle = false;
             Debug.Log("accelo disabled");
         }
 
         else if(!playerAcceloToggle)
         {
+            movementArrows.SetActive(false);
             playerAcceloToggle = true;
             Debug.Log("accelo enabled");
         }
