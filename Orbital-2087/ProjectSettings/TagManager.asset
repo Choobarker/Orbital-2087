@@ -23,6 +23,8 @@ TagManager:
   - DamagePrice
   - MaxHealthPrice
   - Earth
+  - SettingsButton
+  - ResumeButton
   layers:
   - Default
   - TransparentFX
