@@ -98,14 +98,17 @@ public class PlayerMovement : MonoBehaviour
     {
         isMoveLeft = true;
     }
+
     public void OnReleaseLeft()
     {
         isMoveLeft = false;
     }
+
     public void OnPressRight()
     {
         isMoveRight = true;
     }
+
     public void OnReleaseRight()
     {
         isMoveRight = false;
