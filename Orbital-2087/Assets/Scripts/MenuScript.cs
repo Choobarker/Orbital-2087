@@ -8,6 +8,7 @@ public class MenuScript : MonoBehaviour
 {
     public Sprite pauseSprite;
     public Sprite playSprite;
+    public AudioSource Audio;
 
     private Image pauseButtonImage;
 
@@ -49,8 +50,9 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    public void MusicToggle()
+    public void AudioToggle()
     {
-        AudioListener.pause = !AudioListener.pause;
+        Audio.mute = !Audio.mute;
     }
+
 }

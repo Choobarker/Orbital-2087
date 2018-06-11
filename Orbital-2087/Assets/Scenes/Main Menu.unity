@@ -1336,6 +1336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseSprite: {fileID: 0}
   playSprite: {fileID: 0}
+  Audio: {fileID: 0}
   gamePaused: 0
 --- !u!1 &1417622822
 GameObject:
@@ -1497,7 +1498,7 @@ GameObject:
   - component: {fileID: 1468169195}
   - component: {fileID: 1468169198}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: BackgroundMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2020,7 +2021,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1722318106}
-        m_MethodName: MusicToggle
+        m_MethodName: AudioToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2046,6 +2047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseSprite: {fileID: 0}
   playSprite: {fileID: 0}
+  Audio: {fileID: 1468169195}
   gamePaused: 0
 --- !u!1 &1856739797
 GameObject:
@@ -2129,6 +2131,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2071992182}
+  - component: {fileID: 2071992184}
   - component: {fileID: 2071992183}
   m_Layer: 5
   m_Name: SoundToggle
@@ -2202,3 +2205,18 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!114 &2071992184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071992181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseSprite: {fileID: 0}
+  playSprite: {fileID: 0}
+  Audio: {fileID: 0}
+  gamePaused: 0
