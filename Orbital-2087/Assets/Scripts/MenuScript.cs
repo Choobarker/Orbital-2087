@@ -50,6 +50,12 @@ public class MenuScript : MonoBehaviour
         }
     }
 
+    public AudioSource AlienBullets;
+    public AudioSource playerBullets;
+    public AudioSource Earth;
+    public AudioSource Player;
+
+
     public void MusicToggle()
     {
         Audio.mute = !Audio.mute;
@@ -57,7 +63,10 @@ public class MenuScript : MonoBehaviour
 
     public void AudioToggle()
     {
-        AudioListener.pause = !AudioListener.pause;
+        AlienBullets.mute = !AlienBullets.mute;
+        playerBullets.mute = !playerBullets.mute;
+        Earth.mute = !Earth.mute;
+        Player.mute = !Player.mute;
     }
 
     public void AccelerometerToggle()
