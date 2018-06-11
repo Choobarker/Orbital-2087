@@ -50,9 +50,18 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    public void AudioToggle()
+    public void MusicToggle()
     {
         Audio.mute = !Audio.mute;
     }
 
+    public void AudioToggle()
+    {
+        AudioListener.pause = !AudioListener.pause;
+    }
+
+    public void AccelerometerToggle()
+    {
+        AudioListener.pause = !AudioListener.pause;
+    }
 }
