@@ -2,8 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class MenuScript : MonoBehaviour {
+public class MenuScript : MonoBehaviour 
+{
+    public Sprite pauseSprite;
+    public Sprite playSprite;
+
+    private Image pauseButtonImage;
+
+    void Start()
+    {
+        pauseButtonImage = gameObject.GetComponent<Image>();
+    }
 
     public void PlayButton()
     {
@@ -18,16 +29,23 @@ public class MenuScript : MonoBehaviour {
     public bool gamePaused = false;
 
     public void PauseGame()
-    {    
+    {
+        if(pauseButtonImage == null)
+        {
+            Start();
+        }
+
         if (!gamePaused)
         {
             Time.timeScale = 0;
             gamePaused = true;
+            pauseButtonImage.sprite = playSprite;
         }
         else if (gamePaused)
         {
             Time.timeScale = 1;
             gamePaused = false;
+            pauseButtonImage.sprite = pauseSprite;
         }
     }
 }
