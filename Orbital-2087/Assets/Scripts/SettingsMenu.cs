@@ -11,6 +11,9 @@ public class SettingsMenu : MonoBehaviour
     public AudioSource playerBullets;
     public AudioSource earthExplosion;
     public AudioSource shipExplosion;
+    public AudioSource fireRateBoost;
+    public AudioSource shieldBoost;
+    public AudioSource speedBoost;
 
     public GameObject pauseMenu;
     public GameObject settingsMenu;
@@ -24,6 +27,15 @@ public class SettingsMenu : MonoBehaviour
         soundEffectsToggle.onClick.AddListener(SoundEffectsToggle);
         musicToggle.onClick.AddListener(MusicToggle);
         back.onClick.AddListener(Back);
+
+        bgMusic.mute = false;
+        alienBullets.mute = false;
+        playerBullets.mute = false;
+        earthExplosion.mute = false;
+        shipExplosion.mute = false;
+        fireRateBoost.mute = false;
+        shieldBoost.mute = false;
+        speedBoost.mute = false;
     }
 
     private void CloseSettingsMenu()
@@ -43,6 +55,9 @@ public class SettingsMenu : MonoBehaviour
         playerBullets.mute = !playerBullets.mute;
         earthExplosion.mute = !earthExplosion.mute;
         shipExplosion.mute = !shipExplosion.mute;
+        fireRateBoost.mute = !fireRateBoost.mute;
+        shieldBoost.mute = !shieldBoost.mute;
+        speedBoost.mute = !speedBoost.mute;
     }
 
     private void Back()
