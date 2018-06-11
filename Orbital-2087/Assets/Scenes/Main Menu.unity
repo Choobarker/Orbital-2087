@@ -435,7 +435,6 @@ GameObject:
   - component: {fileID: 1309669746}
   - component: {fileID: 1309669745}
   - component: {fileID: 1309669748}
-  - component: {fileID: 1309669749}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -548,27 +547,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309669743}
 --- !u!114 &1309669748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1309669743}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d73a12c43b961e47bffe6289dfe54cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseSprite: {fileID: 0}
-  playSprite: {fileID: 0}
-  Audio: {fileID: 0}
-  AlienBullets: {fileID: 0}
-  playerBullets: {fileID: 0}
-  Earth: {fileID: 0}
-  Player: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
-  gamePaused: 0
---- !u!114 &1309669749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
