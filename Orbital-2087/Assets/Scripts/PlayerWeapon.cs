@@ -15,15 +15,14 @@ public class PlayerWeapon : MonoBehaviour
     private float boostMultiplier = 0;
     
     private BoostTimerController btc;
-
-	public GameObject projectile;
-    public Transform projectileSpawn;
-
-	void Start()
+    private Transform projectileSpawn;
+    public GameObject projectile;
+    
+    void Start()
     {
         btc = gameObject.GetComponent<BoostTimerController>();
+        projectileSpawn = GetComponentInChildren<Transform>();
     }
-
     void Update()
     {
         if(fireButtonPressed == true)
