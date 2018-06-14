@@ -2970,6 +2970,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 739300984}
   soundEffectsToggle: {fileID: 1785386154}
   musicToggle: {fileID: 451507493}
+  accelorometerToggle: {fileID: 1224439514}
   back: {fileID: 356435811}
 --- !u!1 &790565093
 GameObject:
@@ -4876,18 +4877,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1224439515}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 871861306}
-        m_MethodName: TogglePlayerAccelorometer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1224439515

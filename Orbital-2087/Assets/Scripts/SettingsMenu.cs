@@ -20,13 +20,28 @@ public class SettingsMenu : MonoBehaviour
 
     public Button soundEffectsToggle;
     public Button musicToggle;
+    public Button accelorometerToggle;
     public Button back;
+
+    bool acceloOn = false;
+    bool musicOn = true;
+    bool effectsOn = true;
+
+    PlayerMovement playerMovement;
 
     void Start()
     {
         soundEffectsToggle.onClick.AddListener(SoundEffectsToggle);
         musicToggle.onClick.AddListener(MusicToggle);
+        accelorometerToggle.onClick.AddListener(AccelorometerToggle);
         back.onClick.AddListener(Back);
+
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        acceloOn = playerMovement.getAcceloToggle();
+
+        musicToggle.GetComponent<Image>().color = Color.green;
+        soundEffectsToggle.GetComponent<Image>().color = Color.green;
+        accelorometerToggle.GetComponent<Image>().color = Color.green;
 
         bgMusic.mute = false;
         alienBullets.mute = false;
@@ -47,6 +62,17 @@ public class SettingsMenu : MonoBehaviour
     private void MusicToggle()
     {
         bgMusic.mute = !bgMusic.mute;
+        
+        musicOn = !musicOn;
+
+        if(!musicOn)
+        {
+            musicToggle.GetComponent<Image>().color = Color.red;
+        }
+        else
+        {
+            musicToggle.GetComponent<Image>().color = Color.green;
+        }
     }
 
     private void SoundEffectsToggle()
@@ -58,6 +84,32 @@ public class SettingsMenu : MonoBehaviour
         fireRateBoost.mute = !fireRateBoost.mute;
         shieldBoost.mute = !shieldBoost.mute;
         speedBoost.mute = !speedBoost.mute;
+
+        effectsOn = !effectsOn;
+
+        if(!effectsOn)
+        {
+            soundEffectsToggle.GetComponent<Image>().color = Color.red;
+        }
+        else
+        {
+            soundEffectsToggle.GetComponent<Image>().color = Color.green;
+        }
+    }
+
+    private void AccelorometerToggle()
+    {
+        playerMovement.TogglePlayerAccelorometer();
+        acceloOn = !acceloOn;
+
+        if(!acceloOn)
+        {
+            accelorometerToggle.GetComponent<Image>().color = Color.red;
+        }
+        else
+        {
+            accelorometerToggle.GetComponent<Image>().color = Color.green;
+        }
     }
 
     private void Back()

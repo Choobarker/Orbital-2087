@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         btc = gameObject.GetComponent<BoostTimerController>();
         lastPos = transform.position;
+        movementArrows.SetActive(!playerAcceloToggle);
     }    
 
     private void FixedUpdate()
@@ -147,5 +148,10 @@ public class PlayerMovement : MonoBehaviour
         lastPos = newPos;
 
         return new Vector3(x, y, 0);
+    }
+
+    public bool getAcceloToggle()
+    {
+        return playerAcceloToggle;
     }
 }
