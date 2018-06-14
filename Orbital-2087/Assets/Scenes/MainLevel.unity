@@ -1841,7 +1841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 296.55, y: 8.799988}
+  m_AnchoredPosition: {x: 296.55, y: 8.800049}
   m_SizeDelta: {x: 204.9, y: 91.8}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &539760198
@@ -3370,7 +3370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3dc214c701582408949edbc1dd5a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAcceloToggle: 0
+  playerAcceloToggle: 1
   speed: 4
   radius: 6.3
   earth: {fileID: 1877509434}
@@ -5167,7 +5167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 35.950012, y: 8.799988}
+  m_AnchoredPosition: {x: 35.950012, y: 8.800049}
   m_SizeDelta: {x: 204.9, y: 91.8}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1313428741

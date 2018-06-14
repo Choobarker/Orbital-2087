@@ -56,11 +56,11 @@ public class PlayerMovement : MonoBehaviour
         {  
             if(isMoveLeft)
             {
-                moveVar -= 0.35f * Time.deltaTime * speed;
+                moveVar -= 0.25f * Time.deltaTime * speed;
             }
             if(isMoveRight)
             {
-                moveVar += 0.35f * Time.deltaTime * speed;
+                moveVar += 0.25f * Time.deltaTime * speed;
             }
         }
 

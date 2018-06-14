@@ -12,6 +12,8 @@ public class EarthHealth : MonoBehaviour
     
     private float health;
 
+    private bool destroyed = false;
+
     public Transform Basic;
     public Transform earthExplosion;
     public Transform hitSplash;
@@ -127,13 +129,17 @@ public class EarthHealth : MonoBehaviour
 
     void DestroyEarth()
     {
-        Destroy(Instantiate(earthExplosion, new Vector3(0, 0, 0), transform.rotation).gameObject, 2);
-        gameObject.GetComponent<Renderer>().enabled = false;
+        if(!destroyed)
+        {
+            destroyed = true;
+            Destroy(Instantiate(earthExplosion, new Vector3(0, 0, 0), transform.rotation).gameObject, 2);
+            gameObject.GetComponent<Renderer>().enabled = false;
+        }        
     }
 
     IEnumerator Waiting() 
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Destroy(this.gameObject);        
     }

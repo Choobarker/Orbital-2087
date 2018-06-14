@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
 	private const float STARTING_HEALTH = 100;
 
     private bool shieldActive = false;
+    private bool destroyed = false;
 
     private float health;
     private float maxHealth;
@@ -178,15 +179,20 @@ public class PlayerHealth : MonoBehaviour
 
     void DestroyPlayer()
     {
-        playerWeapon.setWeaponActive(false);
-        Destroy(Instantiate(explosion, transform.position, transform.rotation).gameObject, 2);
-        gameObject.GetComponent<Renderer>().enabled = false;
+        if(!destroyed)
+        {
+            destroyed = true;
+            playerWeapon.setWeaponActive(false);
+            Destroy(Instantiate(explosion, transform.position, transform.rotation).gameObject, 2);
+            gameObject.GetComponent<Renderer>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        }        
     }
 
     IEnumerator Waiting()
 	{
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Destroy(this.gameObject);        
+        Destroy(this.gameObject);
     }
 }
