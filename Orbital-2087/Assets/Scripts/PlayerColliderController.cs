@@ -44,7 +44,7 @@ public class PlayerColliderController : MonoBehaviour
         if(audio != null)
         {
             collider.GetComponent<SpriteRenderer>().enabled = false;
-            Destroy(collider.gameObject, 5);
+            Destroy(collider.gameObject, 3);
         }
         else
         {
