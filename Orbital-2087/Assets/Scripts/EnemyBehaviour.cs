@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {	
     private const float BOOST_DROP_RATE = 20;
     
     public float speed = 1;
-    private float health = 35f;
+    private float startHealth = 35f;
+    private float health;
     private float moveTime;
     private float timeMoved = 0f;
     private float minMovePercent = 10;
@@ -25,6 +27,9 @@ public class EnemyBehaviour : MonoBehaviour
     public Transform fireRateBoost;
     public Transform shieldBoost;
     public Transform speedBoost;
+    public Transform healthBarLocation;
+
+    public Image healthBar;   
 
     private Vector3 direction;
 
@@ -35,10 +40,14 @@ public class EnemyBehaviour : MonoBehaviour
 		alive = true;
     	timePassed = Time.time;
 
+        health = startHealth;
+
 		SetDirection();
 		SetMovementTime();
       	scoreKeeping = GameObject.FindGameObjectWithTag("Player").GetComponent<ScoreKeeping>();
       	scoreTimer += Time.deltaTime;
+
+        UpdateHealthBar();     
 	}
 	
 	void Update ()
@@ -86,6 +95,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         health -= damage;
 
+        UpdateHealthBar();
         CheckHealth();
     }
 
@@ -156,12 +166,25 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void BuffHealth(float buff)
     {
+        startHealth += buff;
         health += buff;
+
+        UpdateHealthBar();
     }
 
     public void BuffScore(float buff)
     {
         minScore += buff;
         score += buff;
+    }
+
+    private void UpdateHealthBar()
+    {
+        healthBar.fillAmount = CalculateHealth();
+    }
+
+    private float CalculateHealth()
+    {
+        return health / startHealth;
     }
 }
